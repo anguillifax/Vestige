@@ -1,0 +1,11 @@
+# ======================
+# FMOD Project GitIgnore
+# ======================
+
+# Private files
+/.user
+/.cache
+/.unsaved
+
+# Built banks
+/Build/

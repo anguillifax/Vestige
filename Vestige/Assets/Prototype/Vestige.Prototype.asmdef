@@ -1,0 +1,16 @@
+{
+    "name": "Vestige.Prototype",
+    "rootNamespace": "Vestige.Prototype",
+    "references": [
+        "GUID:c165ac0b3d33e1c44bbfca6d3ceaf95a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
