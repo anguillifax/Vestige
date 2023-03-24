@@ -619,9 +619,14 @@ namespace FMODUnity
             Platforms.ForEach(LinkPlatform);
 
 #if UNITY_EDITOR
-            EditorSettings.CheckActiveBuildTarget();
+			// This is a known issue in FMOD that hasn't been patched yet.
+			// https://qa.fmod.com/t/unable-to-build-settings-instance-has-not-been-initialized-unable-to-continue-build/19668/3
+			//
+			// The solution is to comment out the following line of code.
+
+			//EditorSettings.CheckActiveBuildTarget();
 #endif
-        }
+		}
 
         private void PopulatePlatformsFromAsset()
         {
