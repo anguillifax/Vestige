@@ -1,15 +1,17 @@
 {
-    "name": "Vestige.Prototype",
-    "rootNamespace": "Vestige.Prototype",
+    "name": "Vestige.Editor",
+    "rootNamespace": "",
     "references": [
         "GUID:c165ac0b3d33e1c44bbfca6d3ceaf95a"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": false,
+    "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false

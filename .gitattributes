@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Fix translation of FMOD Mac libraries
+*.bundle text eol=lf
