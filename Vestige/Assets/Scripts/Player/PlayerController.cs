@@ -7,17 +7,16 @@ namespace Vestige
 	public class PlayerController : MonoBehaviour
 	{
 		[Header("Common")]
+		[Expandable] public PlayerControllerConfig config;
+		public PlayerAvatar avatar;
+
+		[Header("Motion")]
 		public Transform lookRotation;
 		public InspectorCallbackButton triggerLog = new InspectorCallbackButton(
 			"Log()",
 			() => Debug.Log("Clicked")
 		);
 
-		[Header("Walk")]
-		public float walkVel = 8;
-		public float walkAccel = 30;
-
-		public PlayerAvatar avatar;
 
 		private void Awake()
 		{
@@ -49,8 +48,8 @@ namespace Vestige
 
 			vel = Vector3.MoveTowards(
 				vel,
-				rotated * walkVel,
-				walkAccel * Time.fixedDeltaTime);
+				rotated * config.walkVel,
+				config.walkAccel * Time.fixedDeltaTime);
 
 			vel.y = avatar.Rigidbody.velocity.y;
 			avatar.Rigidbody.velocity = vel;

@@ -7,11 +7,10 @@ namespace Vestige
 	[Serializable]
 	public class InspectorCallbackButton
 	{
-		[SerializeField]
-		private string tooltip;
-		private readonly Action callback;
+		public string tooltip;
+		public Action callback;
 
-		public InspectorCallbackButton(string tooltip, Action callback)
+		public InspectorCallbackButton(string tooltip, Action callback = null)
 		{
 			this.tooltip = tooltip;
 			this.callback = callback;
