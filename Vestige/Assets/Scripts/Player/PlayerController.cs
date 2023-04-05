@@ -8,16 +8,25 @@ namespace Vestige
 	{
 		[Header("Common")]
 		public Transform lookRotation;
+		public InspectorCallbackButton triggerLog = new InspectorCallbackButton(
+			"Log()",
+			() => Debug.Log("Clicked")
+		);
 
 		[Header("Walk")]
 		public float walkVel = 8;
 		public float walkAccel = 30;
 
-		private Rigidbody body;
+		public PlayerAvatar avatar;
 
 		private void Awake()
 		{
-			body = GetComponent<Rigidbody>();
+			if (avatar == null)
+			{
+				Debug.LogWarning("Player controller has no assigned avatar and will deactivate.", this);
+				enabled = false;
+				return;
+			}
 
 			if (!lookRotation)
 			{
@@ -27,7 +36,7 @@ namespace Vestige
 
 		private void FixedUpdate()
 		{
-			Vector3 vel = body.velocity;
+			Vector3 vel = avatar.Rigidbody.velocity;
 			vel.y = 0;
 
 			Vector3 inputs = new Vector3(
@@ -43,8 +52,8 @@ namespace Vestige
 				rotated * walkVel,
 				walkAccel * Time.fixedDeltaTime);
 
-			vel.y = body.velocity.y;
-			body.velocity = vel;
+			vel.y = avatar.Rigidbody.velocity.y;
+			avatar.Rigidbody.velocity = vel;
 		}
 	}
 }
