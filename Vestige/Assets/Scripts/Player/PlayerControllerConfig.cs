@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Vestige
 {
-	[CreateAssetMenu(menuName = "Vestige/Player Controller Config", order = 10)]
+	[CreateAssetMenu(menuName = "Vestige/Player Controller Config", order = 100)]
 	public class PlayerControllerConfig : ScriptableObject
 	{
 		[Header("Walk")]

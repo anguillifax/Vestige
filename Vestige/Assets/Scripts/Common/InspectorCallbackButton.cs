@@ -10,7 +10,7 @@ namespace Vestige
 		public string tooltip;
 		public Action callback;
 
-		public InspectorCallbackButton(string tooltip, Action callback = null)
+		public InspectorCallbackButton(string tooltip = "Activate", Action callback = null)
 		{
 			this.tooltip = tooltip;
 			this.callback = callback;
