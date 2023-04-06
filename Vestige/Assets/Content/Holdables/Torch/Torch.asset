@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6afbb06efee1d499e17a9b065fac85, type: 3}
   m_Name: Torch
   m_EditorClassIdentifier: 
-  hudOverlay: {fileID: 0}
+  hudOverlay: {fileID: 2008836468163116116, guid: efa6eadfc9a9f0f46802a1c40ec4637e, type: 3}

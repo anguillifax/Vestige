@@ -45,11 +45,34 @@ namespace Vestige
 
 		public void ActivatePrimary(IHoldable.InputPhase phase)
 		{
+			switch (phase)
+			{
+				case IHoldable.InputPhase.Start:
+					Debug.Log("Throw torch");
+					break;
+
+				case IHoldable.InputPhase.Hold:
+					break;
+
+				case IHoldable.InputPhase.Stop:
+					break;
+			}
 		}
 
 		public void ActivateSecondary(IHoldable.InputPhase phase)
 		{
-			harness.Detach();
+			switch (phase)
+			{
+				case IHoldable.InputPhase.Start:
+					harness.Detach();
+					break;
+
+				case IHoldable.InputPhase.Hold:
+					break;
+
+				case IHoldable.InputPhase.Stop:
+					break;
+			}
 		}
 
 		public void BindInstructionOverlay(GameObject spawnedObject)

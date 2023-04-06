@@ -20,6 +20,7 @@ namespace Vestige
 
 		[Header("Holdable")]
 		public HoldableHarness harness;
+		public RectTransform overlayContainer;
 
 		private Vector3 cursorTarget;
 		private Plane cursorRaycastPlane;
@@ -43,6 +44,7 @@ namespace Vestige
 			}
 
 			cursorRaycastPlane = new Plane(Vector3.up, 0);
+			harness.overlayContainer = overlayContainer;
 		}
 
 		private void OnEnable()
@@ -58,6 +60,7 @@ namespace Vestige
 		{
 			UpdateCursorTarget();
 			UpdateHoldableDetach();
+			UpdateHoldableActions();
 		}
 
 		private void UpdateCursorTarget()
@@ -78,6 +81,12 @@ namespace Vestige
 			{
 				harness.Detach();
 			}
+		}
+
+		private void UpdateHoldableActions()
+		{
+			harness.SendPrimaryActionAuto(Input.GetButton("Fire1"));
+			harness.SendSecondaryActionAuto(Input.GetButton("Fire2"));
 		}
 
 		// =========================================================
@@ -114,10 +123,10 @@ namespace Vestige
 		{
 			if (Input.GetKey(KeyCode.E))
 			{
-				var script = other.attachedRigidbody.GetComponent<IHoldable>();
-				if (script != null)
+				var holdable = other.attachedRigidbody.GetComponent<IHoldable>();
+				if (holdable != null)
 				{
-					harness.Attach(script);
+					harness.Attach(holdable);
 				}
 			}
 		}
