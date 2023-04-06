@@ -10,10 +10,10 @@ namespace Vestige
 		// Data
 		// =========================================================
 
-		public GameObject instructionOverlay;
-		public Collider solidCollider;
+		public HoldableConfig config;
 
 		private HoldableHarness harness;
+		private HoldablePhysicsHelper physicsHelper;
 
 		// =========================================================
 		// Initialization
@@ -21,6 +21,7 @@ namespace Vestige
 
 		private void Awake()
 		{
+			physicsHelper = GetComponent<HoldablePhysicsHelper>();
 		}
 
 		// =========================================================
@@ -28,19 +29,17 @@ namespace Vestige
 		// =========================================================
 
 		public GameObject Object => gameObject;
+		public HoldableConfig Config => config;
 
 		public void OnPickup(HoldableHarness harness)
 		{
-			transform.rotation = harness.InitialRotation;
-			GetComponent<Rigidbody>().isKinematic = true;
-			solidCollider.enabled = false;
+			physicsHelper.Attach(harness.Socket);
 			this.harness = harness;
 		}
 
 		public void OnDrop()
 		{
-			GetComponent<Rigidbody>().isKinematic = false;
-			solidCollider.enabled = true;
+			physicsHelper.Detach(harness.DropPoint);
 			harness = null;
 		}
 
@@ -52,8 +51,6 @@ namespace Vestige
 		{
 			harness.Detach();
 		}
-
-		public GameObject GetInstructionOverlay() => instructionOverlay;
 
 		public void BindInstructionOverlay(GameObject spawnedObject)
 		{

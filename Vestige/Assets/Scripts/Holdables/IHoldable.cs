@@ -12,6 +12,7 @@ namespace Vestige
 		}
 
 		GameObject Object { get; }
+		HoldableConfig Config { get; }
 
 		void OnPickup(HoldableHarness harness);
 		void OnDrop();
@@ -19,7 +20,6 @@ namespace Vestige
 		void ActivatePrimary(InputPhase phase);
 		void ActivateSecondary(InputPhase phase);
 
-		GameObject GetInstructionOverlay();
 		void BindInstructionOverlay(GameObject spawnedObject);
 	}
 }
