@@ -18,6 +18,9 @@ namespace Vestige
 		[Header("Motion")]
 		public Transform lookRotation;
 
+		[Header("Holdable")]
+		public HoldableHarness harness;
+
 		private Vector3 cursorTarget;
 		private Plane cursorRaycastPlane;
 
@@ -54,6 +57,7 @@ namespace Vestige
 		private void Update()
 		{
 			UpdateCursorTarget();
+			UpdateHoldableDetach();
 		}
 
 		private void UpdateCursorTarget()
@@ -66,6 +70,14 @@ namespace Vestige
 			}
 
 			Debug.DrawRay(cursorTarget, Vector3.up);
+		}
+
+		private void UpdateHoldableDetach()
+		{
+			if (Input.GetKeyDown(KeyCode.Q))
+			{
+				harness.Detach();
+			}
 		}
 
 		// =========================================================
@@ -92,6 +104,22 @@ namespace Vestige
 
 			vel.y = avatar.Rigidbody.velocity.y;
 			avatar.Rigidbody.velocity = vel;
+		}
+
+		// =========================================================
+		// Physics Callbacks
+		// =========================================================
+
+		private void OnTriggerStay(Collider other)
+		{
+			if (Input.GetKey(KeyCode.E))
+			{
+				var script = other.attachedRigidbody.GetComponent<IHoldable>();
+				if (script != null)
+				{
+					harness.Attach(script);
+				}
+			}
 		}
 
 		// =========================================================
