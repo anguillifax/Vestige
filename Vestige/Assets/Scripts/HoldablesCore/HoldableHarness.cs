@@ -14,19 +14,19 @@ namespace Vestige
 		{
 			private bool last;
 
-			public void Send(bool current, Action<IHoldable.InputPhase> callback)
+			public void Send(bool current, Action<HoldableInputPhase> callback)
 			{
 				if (!last && current)
 				{
-					callback(IHoldable.InputPhase.Start);
+					callback(HoldableInputPhase.Start);
 				}
 				else if (last && current)
 				{
-					callback(IHoldable.InputPhase.Hold);
+					callback(HoldableInputPhase.Hold);
 				}
 				else if (last && !current)
 				{
-					callback(IHoldable.InputPhase.Stop);
+					callback(HoldableInputPhase.Stop);
 				}
 
 				last = current;
@@ -119,7 +119,7 @@ namespace Vestige
 			}
 			target = null;
 
-			if (overlayContainer != null)
+			if (overlayContainer != null && overlayContainer.childCount > 0)
 			{
 				Destroy(overlayContainer.GetChild(0).gameObject);
 			}

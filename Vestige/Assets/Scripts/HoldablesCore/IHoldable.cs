@@ -6,19 +6,14 @@ namespace Vestige
 {
 	public interface IHoldable
 	{
-		public enum InputPhase
-		{
-			Start, Hold, Stop
-		}
-
 		GameObject Object { get; }
 		HoldableConfig Config { get; }
 
 		void OnPickup(HoldableHarness harness);
 		void OnDrop();
 
-		void ActivatePrimary(InputPhase phase);
-		void ActivateSecondary(InputPhase phase);
+		void ActivatePrimary(HoldableInputPhase phase);
+		void ActivateSecondary(HoldableInputPhase phase);
 
 		void BindInstructionOverlay(GameObject spawnedObject);
 	}

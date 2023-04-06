@@ -31,13 +31,6 @@ namespace Vestige
 
 		private void Awake()
 		{
-			if (avatar == null)
-			{
-				Debug.LogWarning("Player controller has no assigned avatar and will deactivate.", this);
-				enabled = false;
-				return;
-			}
-
 			if (!lookRotation)
 			{
 				lookRotation = transform;
