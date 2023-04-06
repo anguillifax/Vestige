@@ -6,17 +6,24 @@ namespace Vestige
 {
 	public class PlayerController : MonoBehaviour
 	{
+		// =========================================================
+		// Data
+		// =========================================================
+
 		[Header("Common")]
 		[Expandable] public PlayerControllerConfig config;
 		public PlayerAvatar avatar;
+		public Camera cameraMain;
 
 		[Header("Motion")]
 		public Transform lookRotation;
-		public InspectorCallbackButton triggerLog = new InspectorCallbackButton(
-			"Log()",
-			() => Debug.Log("Clicked")
-		);
 
+		private Vector3 cursorTarget;
+		private Plane cursorRaycastPlane;
+
+		// =========================================================
+		// Initialization
+		// =========================================================
 
 		private void Awake()
 		{
@@ -31,7 +38,39 @@ namespace Vestige
 			{
 				lookRotation = transform;
 			}
+
+			cursorRaycastPlane = new Plane(Vector3.up, 0);
 		}
+
+		private void OnEnable()
+		{
+			cursorTarget = transform.position;
+		}
+
+		// =========================================================
+		// Render Update
+		// =========================================================
+
+		private void Update()
+		{
+			UpdateCursorTarget();
+		}
+
+		private void UpdateCursorTarget()
+		{
+			cursorRaycastPlane.distance = transform.position.y;
+			var ray = cameraMain.ScreenPointToRay(Input.mousePosition);
+			if (cursorRaycastPlane.Raycast(ray, out float dist))
+			{
+				cursorTarget = ray.GetPoint(dist);
+			}
+
+			Debug.DrawRay(cursorTarget, Vector3.up);
+		}
+
+		// =========================================================
+		// Physics Update
+		// =========================================================
 
 		private void FixedUpdate()
 		{
@@ -53,6 +92,28 @@ namespace Vestige
 
 			vel.y = avatar.Rigidbody.velocity.y;
 			avatar.Rigidbody.velocity = vel;
+		}
+
+		// =========================================================
+		// Public API
+		// =========================================================
+
+		public Vector3 GetCameraFocusPoint()
+		{
+			Vector2 mpos = new Vector2(
+				Mathf.Clamp(Input.mousePosition.x, 0, Screen.width) - Screen.width / 2,
+				Mathf.Clamp(Input.mousePosition.y, 0, Screen.height) - Screen.height / 2);
+			mpos /= Screen.height;
+
+			Vector3 worldOffset = new Vector3(
+				mpos.x * config.cameraMouseVertWorldOffset,
+				0,
+				mpos.y * config.cameraMouseVertWorldOffset);
+
+			Vector3 combined = avatar.transform.position + worldOffset;
+			//Debug.DrawRay(combined, Vector3.up);
+			//Debug.Log($"Offset {worldOffset} combined {combined}");
+			return combined;
 		}
 	}
 }

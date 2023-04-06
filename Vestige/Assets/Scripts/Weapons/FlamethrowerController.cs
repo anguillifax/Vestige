@@ -36,7 +36,7 @@ namespace Vestige
 
 		private void OnTriggerStay(Collider other)
 		{
-			Debug.Log("Hit " + other.name, other);
+			//Debug.Log("Hit " + other.name, other);
 		}
 	}
 }
