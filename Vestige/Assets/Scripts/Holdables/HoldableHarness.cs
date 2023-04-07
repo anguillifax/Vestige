@@ -58,19 +58,14 @@ namespace Vestige
 
 			target = newTarget;
 			target.OnPickup(this);
+
+			primaryLast = false;
+			secondaryLast = false;
+
 			if (debugLogInfo)
 			{
 				Debug.Log($"Picked up holdable {target.Object.name}", target.Object);
 			}
-
-			if (overlayContainer != null && target.Config.hudOverlay != null)
-			{
-				var ui = Instantiate(target.Config.hudOverlay, overlayContainer);
-				target.BindInstructionOverlay(ui);
-			}
-
-			primaryLast = false;
-			secondaryLast = false;
 		}
 
 		public void Detach()
@@ -81,15 +76,11 @@ namespace Vestige
 			}
 
 			target.OnDrop();
+			target = null;
+
 			if (debugLogInfo)
 			{
 				Debug.Log($"Dropped holdable {target.Object.name}", target.Object);
-			}
-			target = null;
-
-			if (overlayContainer != null && overlayContainer.childCount > 0)
-			{
-				Destroy(overlayContainer.GetChild(0).gameObject);
 			}
 		}
 
@@ -102,18 +93,7 @@ namespace Vestige
 				return;
 			}
 
-			HoldableInputState state = new HoldableInputState()
-			{
-				Primary = primary,
-				PrimaryDown = !primaryLast && primary,
-				PrimaryUp = primaryLast && !primary,
-
-				Secondary = secondary,
-				SecondaryDown = !secondaryLast && secondary,
-				SecondaryUp = secondaryLast && !secondary,
-			};
-
-			target.ReceiveInput(state);
+			target.InputState.SetFromContinuous(primary, primaryLast, secondary, secondaryLast);
 
 			primaryLast = primary;
 			secondaryLast = secondary;

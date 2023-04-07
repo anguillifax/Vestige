@@ -8,12 +8,9 @@ namespace Vestige
 	{
 		GameObject Object { get; }
 		HoldableConfig Config { get; }
+		HoldableInputState InputState { get; }
 
 		void OnPickup(HoldableHarness harness);
 		void OnDrop();
-
-		void ReceiveInput(HoldableInputState input);
-
-		void BindInstructionOverlay(GameObject spawnedObject);
 	}
 }

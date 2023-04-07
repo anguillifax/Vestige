@@ -4,12 +4,14 @@ using UnityEngine;
 
 namespace Vestige
 {
-	public class HoldablePhysicsHelper : MonoBehaviour
+	[Serializable]
+	public class HoldablePhysicsHelper
 	{
 		// =========================================================
 		// Data
 		// =========================================================
 
+		public Transform transform;
 		public Collider[] solidColliders;
 		public Rigidbody mainRigidbody;
 

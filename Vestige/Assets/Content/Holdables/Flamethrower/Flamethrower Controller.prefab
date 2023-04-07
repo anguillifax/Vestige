@@ -228,7 +228,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6449273219938832761
+--- !u!114 &1421144659429169874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,16 +237,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 13000938895825266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b83c0198031b11b4da03ebf88fd2814b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8af31eef765ad264997de9b8a69d7d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 1695339370352293729}
-  config: {fileID: 11400000, guid: 24ac00009edad5a43b1e8ea328b5ec0d, type: 2}
+  holdable: {fileID: 1998652104387890585}
   maxAmmo: 20
   refillRate: 6
   consumeRate: 3
   currentAmmo: 0
---- !u!114 &5786779311043972075
+  overlay: {fileID: 0}
+  inUse: 0
+--- !u!114 &1998652104387890585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,12 +257,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 13000938895825266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c48cd857169e33448fc339e325af4fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 634cfad6bf3408e4ea39ff896ed3f357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  solidColliders:
-  - {fileID: 4225260614856841613}
-  mainRigidbody: {fileID: 2570139142525041604}
+  config: {fileID: 11400000, guid: 24ac00009edad5a43b1e8ea328b5ec0d, type: 2}
+  attached:
+    m_PersistentCalls:
+      m_Calls: []
+  detached:
+    m_PersistentCalls:
+      m_Calls: []
+  autoConfigPhysicsHelper: 1
+  physicsHelper:
+    transform: {fileID: 0}
+    solidColliders: []
+    mainRigidbody: {fileID: 0}
+  harness: {fileID: 0}
+  overlay: {fileID: 0}
 --- !u!114 &1695339370352293729 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2873979420581422758, guid: 9f98ddff9abb8dd4a82f7bb152a6db0d, type: 3}
@@ -275,10 +288,5 @@ MonoBehaviour:
 --- !u!4 &4122977174109961883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 671778272962604892, guid: 9f98ddff9abb8dd4a82f7bb152a6db0d, type: 3}
-  m_PrefabInstance: {fileID: 3487302486700380615}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &4225260614856841613 stripped
-MeshCollider:
-  m_CorrespondingSourceObject: {fileID: 776386077264005194, guid: 9f98ddff9abb8dd4a82f7bb152a6db0d, type: 3}
   m_PrefabInstance: {fileID: 3487302486700380615}
   m_PrefabAsset: {fileID: 0}
