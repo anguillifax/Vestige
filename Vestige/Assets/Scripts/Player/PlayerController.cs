@@ -78,8 +78,7 @@ namespace Vestige
 
 		private void UpdateHoldableActions()
 		{
-			harness.SendPrimaryActionAuto(Input.GetButton("Fire1"));
-			harness.SendSecondaryActionAuto(Input.GetButton("Fire2"));
+			harness.SendInputs(Input.GetButton("Fire1"), Input.GetButton("Fire2"));
 		}
 
 		// =========================================================

@@ -4,16 +4,26 @@ using UnityEngine;
 
 namespace Vestige
 {
-	public class TorchHoldable : MonoBehaviour, IHoldable
+	public class FlamethrowerController : MonoBehaviour, IHoldable
 	{
 		// =========================================================
 		// Data
 		// =========================================================
 
+		[Header("Common")]
+		public FlamethrowerAvatar avatar;
 		public HoldableConfig config;
+		public float maxAmmo = 20;
+		public float refillRate = 6;
+		public float consumeRate = 3;
 
-		private HoldableHarness harness;
+		[Header("Runtime")]
+		public float currentAmmo;
+		public FlamethrowerOverlay overlay;
+		public bool inUse;
+
 		private HoldablePhysicsHelper physicsHelper;
+		private HoldableHarness harness;
 
 		// =========================================================
 		// Initialization
@@ -22,6 +32,25 @@ namespace Vestige
 		private void Awake()
 		{
 			physicsHelper = GetComponent<HoldablePhysicsHelper>();
+		}
+
+		private void Start()
+		{
+			currentAmmo = maxAmmo;
+		}
+
+		private void Update()
+		{
+			if (currentAmmo < maxAmmo && !inUse)
+			{
+				currentAmmo += refillRate * Time.deltaTime;
+				currentAmmo = Mathf.Min(currentAmmo, maxAmmo);
+			}
+
+			if (overlay != null)
+			{
+				overlay.SetAmmo(currentAmmo);
+			}
 		}
 
 		// =========================================================
@@ -35,6 +64,7 @@ namespace Vestige
 		{
 			physicsHelper.Attach(harness.Socket);
 			this.harness = harness;
+			inUse = false;
 		}
 
 		void IHoldable.OnDrop()
@@ -43,40 +73,27 @@ namespace Vestige
 			harness = null;
 		}
 
-		void IHoldable.ActivatePrimary(HoldableInputPhase phase)
+		void IHoldable.ReceiveInput(HoldableInputState input)
 		{
-			switch (phase)
+			bool fire = input.Primary && currentAmmo > 0;
+			if (fire && !inUse)
 			{
-				case HoldableInputPhase.Start:
-					Debug.Log("Throw torch");
-					break;
-
-				case HoldableInputPhase.Hold:
-					break;
-
-				case HoldableInputPhase.Stop:
-					break;
+				avatar.StartFiring();
 			}
-		}
-
-		void IHoldable.ActivateSecondary(HoldableInputPhase phase)
-		{
-			switch (phase)
+			if (fire)
 			{
-				case HoldableInputPhase.Start:
-					harness.Detach();
-					break;
-
-				case HoldableInputPhase.Hold:
-					break;
-
-				case HoldableInputPhase.Stop:
-					break;
+				currentAmmo -= consumeRate * Time.deltaTime;
 			}
+			if (!fire && inUse)
+			{
+				avatar.StopFiring();
+			}
+			inUse = fire;
 		}
 
 		void IHoldable.BindInstructionOverlay(GameObject spawnedObject)
 		{
+			overlay = spawnedObject.GetComponent<FlamethrowerOverlay>();
 		}
 	}
 }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6afbb06efee1d499e17a9b065fac85, type: 3}
   m_Name: Flamethrower
   m_EditorClassIdentifier: 
-  hudOverlay: {fileID: 0}
+  hudOverlay: {fileID: 2008836468163116116, guid: 224ad9183f7810e4e95d2788f10e4d47, type: 3}

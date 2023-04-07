@@ -12,8 +12,7 @@ namespace Vestige
 		void OnPickup(HoldableHarness harness);
 		void OnDrop();
 
-		void ActivatePrimary(HoldableInputPhase phase);
-		void ActivateSecondary(HoldableInputPhase phase);
+		void ReceiveInput(HoldableInputState input);
 
 		void BindInstructionOverlay(GameObject spawnedObject);
 	}

@@ -4,24 +4,16 @@ using UnityEngine;
 
 namespace Vestige
 {
-	public class FlamethrowerHoldable : MonoBehaviour, IHoldable
+	public class TorchController : MonoBehaviour, IHoldable
 	{
 		// =========================================================
 		// Data
 		// =========================================================
 
-		[Header("Common")]
-		public FlamethrowerAvatar avatar;
 		public HoldableConfig config;
-		public float maxAmmo = 20;
-		public float refillRate = 6;
-		public float consumeRate = 3;
 
-		[Header("Runtime")]
-		public float currentAmmo;
-
-		private HoldablePhysicsHelper physicsHelper;
 		private HoldableHarness harness;
+		private HoldablePhysicsHelper physicsHelper;
 
 		// =========================================================
 		// Initialization
@@ -30,20 +22,6 @@ namespace Vestige
 		private void Awake()
 		{
 			physicsHelper = GetComponent<HoldablePhysicsHelper>();
-		}
-
-		private void Start()
-		{
-			currentAmmo = maxAmmo;
-		}
-
-		private void Update()
-		{
-			if (currentAmmo < maxAmmo)
-			{
-				currentAmmo += refillRate * Time.deltaTime;
-				currentAmmo = Mathf.Max(currentAmmo, maxAmmo);
-			}
 		}
 
 		// =========================================================
@@ -65,18 +43,17 @@ namespace Vestige
 			harness = null;
 		}
 
-		void IHoldable.ActivatePrimary(HoldableInputPhase phase)
+		void IHoldable.ReceiveInput(HoldableInputState input)
 		{
-			if (currentAmmo > 0)
+			if (input.PrimaryDown)
 			{
-				currentAmmo -= consumeRate * Time.deltaTime;
-				Debug.Log("Use");
+				Debug.Log("Primary action on torch");
 			}
-			// Debounce if run out of ammo
-		}
 
-		void IHoldable.ActivateSecondary(HoldableInputPhase phase)
-		{
+			if (input.SecondaryDown)
+			{
+				harness.Detach();
+			}
 		}
 
 		void IHoldable.BindInstructionOverlay(GameObject spawnedObject)

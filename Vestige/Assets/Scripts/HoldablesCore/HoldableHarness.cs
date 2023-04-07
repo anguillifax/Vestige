@@ -7,38 +7,6 @@ namespace Vestige
 	public class HoldableHarness : MonoBehaviour
 	{
 		// =========================================================
-		// Support Types
-		// =========================================================
-
-		private class AutoKey
-		{
-			private bool last;
-
-			public void Send(bool current, Action<HoldableInputPhase> callback)
-			{
-				if (!last && current)
-				{
-					callback(HoldableInputPhase.Start);
-				}
-				else if (last && current)
-				{
-					callback(HoldableInputPhase.Hold);
-				}
-				else if (last && !current)
-				{
-					callback(HoldableInputPhase.Stop);
-				}
-
-				last = current;
-			}
-
-			public void Reset()
-			{
-				last = false;
-			}
-		}
-
-		// =========================================================
 		// Data
 		// =========================================================
 
@@ -54,8 +22,8 @@ namespace Vestige
 		[Header("Debug")]
 		[SerializeField] private bool debugLogInfo;
 
-		private readonly AutoKey autoPrimary = new AutoKey();
-		private readonly AutoKey autoSecondary = new AutoKey();
+		private bool primaryLast;
+		private bool secondaryLast;
 
 		// =========================================================
 		// Interface
@@ -101,8 +69,8 @@ namespace Vestige
 				target.BindInstructionOverlay(ui);
 			}
 
-			autoPrimary.Reset();
-			autoSecondary.Reset();
+			primaryLast = false;
+			secondaryLast = false;
 		}
 
 		public void Detach()
@@ -125,20 +93,30 @@ namespace Vestige
 			}
 		}
 
-		public void SendPrimaryActionAuto(bool currentValue)
+		public void SendInputs(bool primary, bool secondary)
 		{
-			if (Target != null)
+			if (target == null)
 			{
-				autoPrimary.Send(currentValue, Target.ActivatePrimary);
+				primaryLast = false;
+				secondaryLast = false;
+				return;
 			}
-		}
 
-		public void SendSecondaryActionAuto(bool currentValue)
-		{
-			if (Target != null)
+			HoldableInputState state = new HoldableInputState()
 			{
-				autoSecondary.Send(currentValue, Target.ActivateSecondary);
-			}
+				Primary = primary,
+				PrimaryDown = !primaryLast && primary,
+				PrimaryUp = primaryLast && !primary,
+
+				Secondary = secondary,
+				SecondaryDown = !secondaryLast && secondary,
+				SecondaryUp = secondaryLast && !secondary,
+			};
+
+			target.ReceiveInput(state);
+
+			primaryLast = primary;
+			secondaryLast = secondary;
 		}
 	}
 }
