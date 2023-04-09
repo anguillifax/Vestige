@@ -15,7 +15,8 @@ namespace Vestige
 		private static HoldableConfig sharedDefaultConfig;
 
 		[Header("Common")]
-		public HoldableConfig config;
+		public bool attachable = true;
+		[Expandable] public HoldableConfig config;
 		public bool autoConfigPhysicsHelper = true;
 		public HoldablePhysicsHelper physicsHelper;
 
@@ -24,8 +25,8 @@ namespace Vestige
 		public UnityEvent detached;
 
 		[HideInInspector] public HoldableHarness harness;
-		public HoldableInputState input;
 		[HideInInspector] public GameObject overlay;
+		public HoldableInputState input;
 
 		// =========================================================
 		// Properties
@@ -69,9 +70,11 @@ namespace Vestige
 		// IHoldable Implementation
 		// =========================================================
 
-		GameObject IHoldable.Object => gameObject;
+		HoldableHarness IHoldable.Harness => harness;
 		HoldableConfig IHoldable.Config => config;
 		HoldableInputState IHoldable.InputState => input;
+
+		bool IHoldable.Attachable => attachable;
 
 		void IHoldable.OnPickup(HoldableHarness harness)
 		{

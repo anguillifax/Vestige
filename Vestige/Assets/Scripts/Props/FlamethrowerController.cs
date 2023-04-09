@@ -86,5 +86,25 @@ namespace Vestige
 
 			overlay.SetAmmo(currentAmmo);
 		}
+
+		// =========================================================
+		// Physic Callbacks
+		// =========================================================
+
+		private void OnTriggerStay(Collider other)
+		{
+			if (inUse && other.attachedRigidbody != null)
+			{
+				var recipient = other.attachedRigidbody.GetComponent<IRecipient>();
+				if (recipient != null)
+				{
+					Effect e = new Effect(gameObject)
+					{
+						ignite = true,
+					};
+					recipient.RecieveEffect(e);
+				}
+			}
+		}
 	}
 }

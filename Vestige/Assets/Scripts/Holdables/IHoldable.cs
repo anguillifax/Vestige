@@ -6,9 +6,10 @@ namespace Vestige
 {
 	public interface IHoldable
 	{
-		GameObject Object { get; }
+		HoldableHarness Harness { get; }
 		HoldableConfig Config { get; }
 		HoldableInputState InputState { get; }
+		bool Attachable { get; }
 
 		void OnPickup(HoldableHarness harness);
 		void OnDrop();

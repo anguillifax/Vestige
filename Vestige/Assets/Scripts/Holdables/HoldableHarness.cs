@@ -19,9 +19,6 @@ namespace Vestige
 		[Header("Interface Bindings")]
 		public RectTransform overlayContainer;
 
-		[Header("Debug")]
-		[SerializeField] private bool debugLogInfo;
-
 		private bool primaryLast;
 		private bool secondaryLast;
 
@@ -42,17 +39,13 @@ namespace Vestige
 				return;
 			}
 
-			if (target == newTarget)
+			if (!newTarget.Attachable || newTarget.Harness != null || target == newTarget)
 			{
 				return;
 			}
 
 			if (target != null)
 			{
-				if (debugLogInfo)
-				{
-					Debug.Log("Replacing with new target");
-				}
 				Detach();
 			}
 
@@ -61,11 +54,6 @@ namespace Vestige
 
 			primaryLast = false;
 			secondaryLast = false;
-
-			if (debugLogInfo)
-			{
-				Debug.Log($"Picked up holdable {target.Object.name}", target.Object);
-			}
 		}
 
 		public void Detach()
@@ -77,11 +65,6 @@ namespace Vestige
 
 			target.OnDrop();
 			target = null;
-
-			if (debugLogInfo)
-			{
-				Debug.Log($"Dropped holdable {target.Object.name}", target.Object);
-			}
 		}
 
 		public void SendInputs(bool primary, bool secondary)
