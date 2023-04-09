@@ -6,28 +6,88 @@ namespace Vestige
 {
 	public class PlayerController : MonoBehaviour
 	{
+		// =========================================================
+		// Data
+		// =========================================================
+
 		[Header("Common")]
+		[Expandable] public PlayerControllerConfig config;
+		public PlayerAvatar avatar;
+		public Camera cameraMain;
+
+		[Header("Motion")]
 		public Transform lookRotation;
 
-		[Header("Walk")]
-		public float walkVel = 8;
-		public float walkAccel = 30;
+		[Header("Holdable")]
+		public HoldableHarness harness;
+		public RectTransform overlayContainer;
 
-		private Rigidbody body;
+		private Vector3 cursorTarget;
+		private Plane cursorRaycastPlane;
+
+		// =========================================================
+		// Initialization
+		// =========================================================
 
 		private void Awake()
 		{
-			body = GetComponent<Rigidbody>();
-
 			if (!lookRotation)
 			{
 				lookRotation = transform;
 			}
+
+			cursorRaycastPlane = new Plane(Vector3.up, 0);
+			harness.overlayContainer = overlayContainer;
 		}
+
+		private void OnEnable()
+		{
+			cursorTarget = transform.position;
+		}
+
+		// =========================================================
+		// Render Update
+		// =========================================================
+
+		private void Update()
+		{
+			UpdateCursorTarget();
+			UpdateHoldableDetach();
+			UpdateHoldableActions();
+		}
+
+		private void UpdateCursorTarget()
+		{
+			cursorRaycastPlane.distance = transform.position.y;
+			var ray = cameraMain.ScreenPointToRay(Input.mousePosition);
+			if (cursorRaycastPlane.Raycast(ray, out float dist))
+			{
+				cursorTarget = ray.GetPoint(dist);
+			}
+
+			Debug.DrawRay(cursorTarget, Vector3.up);
+		}
+
+		private void UpdateHoldableDetach()
+		{
+			if (Input.GetKeyDown(KeyCode.Q))
+			{
+				harness.Detach();
+			}
+		}
+
+		private void UpdateHoldableActions()
+		{
+			harness.SendInputs(Input.GetButton("Fire1"), Input.GetButton("Fire2"));
+		}
+
+		// =========================================================
+		// Physics Update
+		// =========================================================
 
 		private void FixedUpdate()
 		{
-			Vector3 vel = body.velocity;
+			Vector3 vel = avatar.Rigidbody.velocity;
 			vel.y = 0;
 
 			Vector3 inputs = new Vector3(
@@ -40,11 +100,49 @@ namespace Vestige
 
 			vel = Vector3.MoveTowards(
 				vel,
-				rotated * walkVel,
-				walkAccel * Time.fixedDeltaTime);
+				rotated * config.walkVel,
+				config.walkAccel * Time.fixedDeltaTime);
 
-			vel.y = body.velocity.y;
-			body.velocity = vel;
+			vel.y = avatar.Rigidbody.velocity.y;
+			avatar.Rigidbody.velocity = vel;
+		}
+
+		// =========================================================
+		// Physics Callbacks
+		// =========================================================
+
+		private void OnTriggerStay(Collider other)
+		{
+			if (Input.GetKey(KeyCode.E))
+			{
+				var holdable = other.attachedRigidbody.GetComponent<IHoldable>();
+				if (holdable != null)
+				{
+					harness.Attach(holdable);
+				}
+			}
+		}
+
+		// =========================================================
+		// Public API
+		// =========================================================
+
+		public Vector3 GetCameraFocusPoint()
+		{
+			Vector2 mpos = new Vector2(
+				Mathf.Clamp(Input.mousePosition.x, 0, Screen.width) - Screen.width / 2,
+				Mathf.Clamp(Input.mousePosition.y, 0, Screen.height) - Screen.height / 2);
+			mpos /= Screen.height;
+
+			Vector3 worldOffset = new Vector3(
+				mpos.x * config.cameraMouseVertWorldOffset,
+				0,
+				mpos.y * config.cameraMouseVertWorldOffset);
+
+			Vector3 combined = avatar.transform.position + worldOffset;
+			//Debug.DrawRay(combined, Vector3.up);
+			//Debug.Log($"Offset {worldOffset} combined {combined}");
+			return combined;
 		}
 	}
 }

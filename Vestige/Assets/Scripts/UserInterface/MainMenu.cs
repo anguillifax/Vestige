@@ -16,7 +16,12 @@ namespace Vestige
 
 		public void Quit()
 		{
+#if UNITY_EDITOR
+			UnityEditor.EditorApplication.ExitPlaymode();
+			return;
+#else
 			Application.Quit();
+#endif
 		}
 	}
 }
