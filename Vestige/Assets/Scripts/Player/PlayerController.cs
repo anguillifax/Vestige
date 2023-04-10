@@ -87,6 +87,12 @@ namespace Vestige
 
 		private void FixedUpdate()
 		{
+			UpdateMovement();
+			UpdateLookRotation();
+		}
+
+		private void UpdateMovement()
+		{
 			Vector3 vel = avatar.Rigidbody.velocity;
 			vel.y = 0;
 
@@ -105,6 +111,18 @@ namespace Vestige
 
 			vel.y = avatar.Rigidbody.velocity.y;
 			avatar.Rigidbody.velocity = vel;
+		}
+
+		private void UpdateLookRotation()
+		{
+			Vector3 delta = cursorTarget - transform.position;
+			delta.y = 0;
+			if (delta.sqrMagnitude > 0)
+			{
+				Quaternion angle = Quaternion.LookRotation(delta.normalized, Vector3.up);
+				avatar.Rigidbody.MoveRotation(angle);
+				//harness.transform.rotation = angle;
+			}
 		}
 
 		// =========================================================

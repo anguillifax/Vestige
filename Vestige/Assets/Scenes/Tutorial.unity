@@ -1976,6 +1976,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 123050594}
     - target: {fileID: 2055658662, guid: 98fc3f6bfcb5966468ad4fb84ebe9be7, type: 3}
+      propertyPath: lookRotation
+      value: 
+      objectReference: {fileID: 513316286}
+    - target: {fileID: 2055658662, guid: 98fc3f6bfcb5966468ad4fb84ebe9be7, type: 3}
       propertyPath: overlayContainer
       value: 
       objectReference: {fileID: 1324193280}
