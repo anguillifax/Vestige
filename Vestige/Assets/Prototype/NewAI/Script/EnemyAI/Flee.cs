@@ -7,7 +7,7 @@ using TheKiwiCoder;
 public class Flee : ActionNode
 {
     public float fleeSpeed = 5f;
-    private bool isFiredPlayed = false;
+    //private bool isFiredPlayed = false;   suppressing warning
     private bool isReachedDestination = false;
     protected override void OnStart()
     {
