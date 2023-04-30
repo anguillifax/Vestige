@@ -30,16 +30,17 @@ namespace Vestige
 		public string ToStringVerbose()
 		{
 			StringBuilder sb = new StringBuilder();
-			sb.Append("Source: ").AppendLine(source.name);
+			sb.Append("Source: ").AppendLine(source ? source.name : "(destroyed)");
 			sb.Append("Callback: ").AppendLine(callback == null ? "none" : "present");
 
-			sb.AppendLine("Attributes");
-			if (burn) sb.AppendLine("burn");
-			if (ignite) sb.AppendLine("ignite");
-			if (soak) sb.AppendLine("soak");
-			if (douse) sb.AppendLine("douse");
-			if (obliterate) sb.AppendLine("obliterate");
-			if (regenerate) sb.AppendLine("regenerate");
+			sb.Append("Attributes:");
+			if (burn) sb.Append(" Burn");
+			if (douse) sb.Append(" Douse");
+			if (ignite) sb.Append(" Ignite");
+			if (obliterate) sb.Append(" Obliterate");
+			if (regenerate) sb.Append(" Regenerate");
+			if (soak) sb.Append(" Soak");
+			sb.AppendLine();
 
 			sb.AppendLine("Negotiations");
 			if (requestWater != 0) sb.Append("requestWater: ").Append(requestWater).AppendLine();
