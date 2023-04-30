@@ -23,7 +23,6 @@ namespace Vestige
 		public RectTransform overlayContainer;
 
 		private Vector3 cursorTarget;
-		private Plane cursorRaycastPlane;
 
 		// =========================================================
 		// Initialization
@@ -36,7 +35,6 @@ namespace Vestige
 				lookRotation = transform;
 			}
 
-			cursorRaycastPlane = new Plane(Vector3.up, 0);
 			harness.overlayContainer = overlayContainer;
 		}
 
@@ -58,9 +56,9 @@ namespace Vestige
 
 		private void UpdateCursorTarget()
 		{
-			cursorRaycastPlane.distance = transform.position.y;
+			Plane plane = new Plane(Vector3.up, transform.position);
 			var ray = cameraMain.ScreenPointToRay(Input.mousePosition);
-			if (cursorRaycastPlane.Raycast(ray, out float dist))
+			if (plane.Raycast(ray, out float dist))
 			{
 				cursorTarget = ray.GetPoint(dist);
 			}
