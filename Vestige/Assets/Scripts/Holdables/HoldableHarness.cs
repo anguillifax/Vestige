@@ -41,6 +41,7 @@ namespace Vestige
 
 			if (!newTarget.Attachable || newTarget.Harness != null || target == newTarget)
 			{
+				Debug.Log("Guard B " + newTarget.Config.name, this);
 				return;
 			}
 

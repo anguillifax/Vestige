@@ -92,13 +92,13 @@ namespace Vestige
 		{
 			detached.Invoke();
 			physicsHelper.Detach(harness.DropPoint);
-			if (harness.overlayContainer && harness.overlayContainer.childCount > 0)
+			if (overlay != null)
 			{
-				Destroy(harness.overlayContainer.GetChild(0).gameObject);
+				Destroy(overlay);
+				overlay = null;
 			}
 			harness = null;
 			input = null;
-			overlay = null;
 		}
 	}
 }

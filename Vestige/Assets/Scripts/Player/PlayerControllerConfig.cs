@@ -13,5 +13,10 @@ namespace Vestige
 		[Header("Walk")]
 		public float walkVel = 8;
 		public float walkAccel = 30;
+
+		[Header("Holdable")]
+		public float pickupRadius = 2;
+		public Vector3 pickupOffset = new Vector3(0, 0.5f, 0);
+		public LayerMask pickupMask = int.MaxValue;
 	}
 }
