@@ -135,6 +135,10 @@ namespace Vestige
 				config.walkAccel * Time.fixedDeltaTime);
 
 			vel.y = avatar.Rigidbody.velocity.y;
+
+			Vector3 extraGravity = Mathf.Max(0, config.gravityMultiplier - 1) * Physics.gravity;
+			vel.y += extraGravity.y * Time.fixedDeltaTime;
+
 			avatar.Rigidbody.velocity = vel;
 		}
 

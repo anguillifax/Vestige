@@ -10,6 +10,9 @@ namespace Vestige
 		[Header("Camera")]
 		public float cameraMouseVertWorldOffset = 3;
 
+		[Header("Physics")]
+		public float gravityMultiplier = 2;
+
 		[Header("Walk")]
 		public float walkVel = 8;
 		public float walkAccel = 30;
