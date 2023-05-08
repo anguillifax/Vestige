@@ -5,9 +5,9 @@ using Pathfinding;
 
 public class EnemyManager : MonoBehaviour
 {
-	// public IAstarAI agent;
+	public AIDestinationSetter agent;
 	[Header("Important locations")]
-	public Transform waterSource;
+	// public Transform waterSource;
 	public Vector3 restSpot;
 	public Quaternion initialRotation;
 	[Header("Effects")]
@@ -32,9 +32,10 @@ public class EnemyManager : MonoBehaviour
 
 	private void Awake()
 	{
-		waterSource = FindObjectOfType<Water>().position;
+		// waterSource = FindObjectOfType<Water>().position;
 		restSpot = this.transform.position;
 		initialRotation = this.transform.rotation;
+		agent = GetComponent<AIDestinationSetter>();
 
 	}
 	void Start()

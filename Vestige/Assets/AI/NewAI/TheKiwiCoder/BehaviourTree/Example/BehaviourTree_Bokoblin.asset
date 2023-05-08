@@ -38,13 +38,11 @@ MonoBehaviour:
     isDead: 0
     disFromPlayer: 0
     player: {fileID: 0}
-  viewPosition: {x: 17.6, y: 22.4, z: 0}
+  viewPosition: {x: -343, y: 129, z: 0}
   viewScale: {x: 0.8695652, y: 0.8695652, z: 1}
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 3851174811283226624
       type: {class: FindPlayer, ns: , asm: Assembly-CSharp}
       data:

@@ -38,11 +38,13 @@ MonoBehaviour:
     isDead: 0
     disFromPlayer: 0
     player: {fileID: 0}
-  viewPosition: {x: 97.6, y: -277.6, z: 0}
-  viewScale: {x: 0.49717674, y: 0.49717674, z: 1}
+  viewPosition: {x: -3, y: -4, z: 0}
+  viewScale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3851175196634382340
       type: {class: RootNode, ns: TheKiwiCoder, asm: Vestige.Prototype}
       data:
