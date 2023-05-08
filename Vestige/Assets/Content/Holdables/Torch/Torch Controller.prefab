@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 11400000, guid: 4b42a54da75423348a4d64008d753af5, type: 2}
+  sender: {fileID: 1395597136544890054}
 --- !u!135 &7942166109477185719
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Config
   m_EditorClassIdentifier: 
   cameraMouseVertWorldOffset: 0.4
+  healthMax: 100
+  healthGrowSpeed: 20
+  healthDecaySpeed: 12
   gravityMultiplier: 1.8
   walkVel: 8
   walkAccel: 30

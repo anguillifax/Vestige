@@ -73,8 +73,8 @@ namespace Vestige
 		HoldableHarness IHoldable.Harness => harness;
 		HoldableConfig IHoldable.Config => config;
 		HoldableInputState IHoldable.InputState => input;
-
 		bool IHoldable.Attachable => attachable;
+		GameObject IHoldable.Root => gameObject;
 
 		void IHoldable.OnPickup(HoldableHarness harness)
 		{
