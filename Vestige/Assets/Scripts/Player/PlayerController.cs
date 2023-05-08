@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Vestige
@@ -51,6 +52,7 @@ namespace Vestige
 		{
 			UpdateCursorTarget();
 			UpdateHoldableDetach();
+			UpdateHoldableAttach();
 			UpdateHoldableActions();
 		}
 
@@ -71,6 +73,31 @@ namespace Vestige
 			if (Input.GetKeyDown(KeyCode.Q))
 			{
 				harness.Detach();
+			}
+		}
+
+		private void UpdateHoldableAttach()
+		{
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				Vector3 origin = transform.position + config.pickupOffset;
+
+				Collider[] nearby = Physics.OverlapSphere(
+					origin,
+					config.pickupRadius,
+					config.pickupMask,
+					QueryTriggerInteraction.Collide);
+
+				IHoldable closest = nearby
+					.Where(x => x.attachedRigidbody != null)
+					.OrderBy(x => Vector3.SqrMagnitude(origin - x.attachedRigidbody.position))
+					.Select(x => x.attachedRigidbody.GetComponent<IHoldable>())
+					.FirstOrDefault(x => x != null && x != harness.Target);
+
+				if (closest != null)
+				{
+					harness.Attach(closest);
+				}
 			}
 		}
 
@@ -108,6 +135,10 @@ namespace Vestige
 				config.walkAccel * Time.fixedDeltaTime);
 
 			vel.y = avatar.Rigidbody.velocity.y;
+
+			Vector3 extraGravity = Mathf.Max(0, config.gravityMultiplier - 1) * Physics.gravity;
+			vel.y += extraGravity.y * Time.fixedDeltaTime;
+
 			avatar.Rigidbody.velocity = vel;
 		}
 
@@ -129,14 +160,6 @@ namespace Vestige
 
 		private void OnTriggerStay(Collider other)
 		{
-			if (Input.GetKey(KeyCode.E))
-			{
-				var holdable = other.attachedRigidbody.GetComponent<IHoldable>();
-				if (holdable != null)
-				{
-					harness.Attach(holdable);
-				}
-			}
 		}
 
 		// =========================================================

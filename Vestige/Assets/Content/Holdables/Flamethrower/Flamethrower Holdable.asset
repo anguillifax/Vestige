@@ -9,15 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0e29ed8f53f0784b91000c7e23e2e70, type: 3}
-  m_Name: Config
+  m_Script: {fileID: 11500000, guid: 2d6afbb06efee1d499e17a9b065fac85, type: 3}
+  m_Name: Flamethrower Holdable
   m_EditorClassIdentifier: 
-  cameraMouseVertWorldOffset: 0.4
-  gravityMultiplier: 1.8
-  walkVel: 8
-  walkAccel: 30
-  pickupRadius: 2
-  pickupOffset: {x: 0, y: 0.5, z: 0}
-  pickupMask:
-    serializedVersion: 2
-    m_Bits: 128
+  hudOverlay: {fileID: 2008836468163116116, guid: 224ad9183f7810e4e95d2788f10e4d47, type: 3}
