@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: icemat
+  m_Name: Ice Material
   m_Shader: {fileID: -6465566751694194690, guid: 8420ff2e3554b2249afd712bf6c96147, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

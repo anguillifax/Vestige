@@ -76,7 +76,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6106224796223296619}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7042121574114675722
 MonoBehaviour:
@@ -149,6 +149,76 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.450282, y: 1.8585982, z: 2.548351}
   m_Center: {x: 0, y: 0, z: 0.7741755}
+--- !u!1001 &3306844867908706144
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6106224796223296619}
+    m_Modifications:
+    - target: {fileID: 8988316386539343318, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748224, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_Name
+      value: SlashEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748238, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+--- !u!198 &5861628165891097390 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8988316386838748238, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+  m_PrefabInstance: {fileID: 3306844867908706144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3765128476676104810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -276,6 +346,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: c543458d81a53c6458dfca414f866549, type: 2}
+    - target: {fileID: 4883970629998380273, guid: 98444a4837996bb4cb97ac48efc27d8e, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6967523438506306257, guid: 98444a4837996bb4cb97ac48efc27d8e, type: 3}
       propertyPath: m_Name
       value: Torch Controller
@@ -329,6 +403,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2107464267781714947}
         m_TargetAssemblyTypeName: Vestige.StandardSlashEffectAvatar, Vestige
         m_MethodName: BeginSlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5861628165891097390}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

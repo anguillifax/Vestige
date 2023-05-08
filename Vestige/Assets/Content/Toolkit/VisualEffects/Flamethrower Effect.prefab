@@ -233,7 +233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2240855399463595639}
   m_Layer: 0
-  m_Name: flamethrowereffect
+  m_Name: Flamethrower Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
