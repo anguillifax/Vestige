@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Vestige
 {
@@ -14,6 +17,7 @@ namespace Vestige
 		[Expandable] public PlayerControllerConfig config;
 		public PlayerAvatar avatar;
 		public Camera cameraMain;
+		public PlayerHealthbarAvatar healthbar;
 
 		[Header("Motion")]
 		public Transform lookRotation;
@@ -22,6 +26,12 @@ namespace Vestige
 		public HoldableHarness harness;
 		public RectTransform overlayContainer;
 
+		[Header("Health")]
+		public UnityEvent died;
+
+		private StandardRecipient systemic;
+		private float capacityFire;
+		private float capacityWater;
 		private Vector3 cursorTarget;
 
 		// =========================================================
@@ -36,6 +46,10 @@ namespace Vestige
 			}
 
 			harness.overlayContainer = overlayContainer;
+			systemic = GetComponent<StandardRecipient>();
+
+			capacityFire = 0;
+			capacityWater = 0;
 		}
 
 		private void OnEnable()
@@ -51,7 +65,9 @@ namespace Vestige
 		{
 			UpdateCursorTarget();
 			UpdateHoldableDetach();
+			UpdateHoldableAttach();
 			UpdateHoldableActions();
+			UpdateHealth();
 		}
 
 		private void UpdateCursorTarget()
@@ -74,9 +90,65 @@ namespace Vestige
 			}
 		}
 
+		private void UpdateHoldableAttach()
+		{
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				Vector3 origin = transform.position + config.pickupOffset;
+
+				Collider[] nearby = Physics.OverlapSphere(
+					origin,
+					config.pickupRadius,
+					config.pickupMask,
+					QueryTriggerInteraction.Collide);
+
+				IHoldable closest = nearby
+					.Where(x => x.attachedRigidbody != null)
+					.OrderBy(x => Vector3.SqrMagnitude(origin - x.attachedRigidbody.position))
+					.Select(x => x.attachedRigidbody.GetComponent<IHoldable>())
+					.FirstOrDefault(x => x != null && x != harness.Target);
+
+				if (closest != null)
+				{
+					harness.Attach(closest);
+				}
+			}
+		}
+
 		private void UpdateHoldableActions()
 		{
 			harness.SendInputs(Input.GetButton("Fire1"), Input.GetButton("Fire2"));
+		}
+
+		private void UpdateHealth()
+		{
+			var nonPlayer = systemic.effects.AsEnumerable();
+			if (harness.Target != null)
+			{
+				nonPlayer = systemic.effects.Where(x => x.source != harness.Target.Root);
+			}
+			bool hasFire = nonPlayer.Any(x => x.ignite || x.burn);
+			bool hasWater = nonPlayer.Any(x => x.douse || x.soak);
+
+			void Do(ref float cap, bool grow)
+			{
+				cap += (grow ? config.healthGrowSpeed : -config.healthDecaySpeed) * Time.deltaTime;
+				cap = Mathf.Clamp(cap, 0, config.healthMax);
+			}
+
+			Do(ref capacityFire, hasFire);
+			Do(ref capacityWater, hasWater);
+
+			healthbar.SetFireCapacity(capacityFire / config.healthMax);
+			healthbar.SetWaterCapacity(capacityWater / config.healthMax);
+
+			if (capacityFire == config.healthMax || capacityWater == config.healthMax)
+			{
+				died.Invoke();
+				harness.Detach();
+				Destroy(gameObject);
+				FindObjectOfType<GameSession>().ReloadSceneAfterDelay();
+			}
 		}
 
 		// =========================================================
@@ -108,6 +180,10 @@ namespace Vestige
 				config.walkAccel * Time.fixedDeltaTime);
 
 			vel.y = avatar.Rigidbody.velocity.y;
+
+			Vector3 extraGravity = Mathf.Max(0, config.gravityMultiplier - 1) * Physics.gravity;
+			vel.y += extraGravity.y * Time.fixedDeltaTime;
+
 			avatar.Rigidbody.velocity = vel;
 		}
 
@@ -129,14 +205,6 @@ namespace Vestige
 
 		private void OnTriggerStay(Collider other)
 		{
-			if (Input.GetKey(KeyCode.E))
-			{
-				var holdable = other.attachedRigidbody.GetComponent<IHoldable>();
-				if (holdable != null)
-				{
-					harness.Attach(holdable);
-				}
-			}
 		}
 
 		// =========================================================

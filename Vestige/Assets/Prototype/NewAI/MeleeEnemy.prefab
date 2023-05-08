@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2145639610421430490}
   - component: {fileID: 2145639610421430485}
   - component: {fileID: 2145639610421430486}
-  - component: {fileID: 2145639610421430489}
-  - component: {fileID: 2145639610421430483}
   - component: {fileID: 2145639610421430487}
   - component: {fileID: 2145639610421430488}
   m_Layer: 0
@@ -41,7 +39,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2145639610421430485
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -58,7 +56,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!54 &2145639610421430486
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75,38 +73,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 1
---- !u!114 &2145639610421430489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145639610421430491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58c6f9b140a52a14881ec09eaebb66eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: 08c609f788559df4cb30634886b4642a, type: 2}
---- !u!114 &2145639610421430483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145639610421430491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caefa059eb2566f4db6dd7a49a6c32ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterSource: {fileID: 0}
-  restSpot: {x: 0, y: 0, z: 0}
-  fireVFX: {fileID: 2145639612061950357}
-  isFired: 0
-  isPanic: 0
-  isSleep: 0
-  isDead: 0
 --- !u!136 &2145639610421430487
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -218,8 +184,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 2ef59bc5d753ebe4490b708befe65999, type: 3}
 --- !u!1 &2145639610623156800 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 114438, guid: 2ef59bc5d753ebe4490b708befe65999,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 114438, guid: 2ef59bc5d753ebe4490b708befe65999, type: 3}
   m_PrefabInstance: {fileID: 2145639610623122758}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2145639610623122756
@@ -236,21 +201,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterSource: {fileID: 0}
   restSpot: {x: 0, y: 0, z: 0}
+  initialRotation: {x: 0, y: 0, z: 0, w: 0}
   fireVFX: {fileID: 0}
   isFired: 0
   isPanic: 0
   isSleep: 0
   isDead: 0
+  isFiredPlayed: 0
+  detectionRadius: 20
+  minDetectionAngle: -60
+  maxDetectionAngle: 60
+  stoppingDistance: 1.5
+  RotationSpeed: 15
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &2145639610623260406 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 404400, guid: 2ef59bc5d753ebe4490b708befe65999,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 404400, guid: 2ef59bc5d753ebe4490b708befe65999, type: 3}
   m_PrefabInstance: {fileID: 2145639610623122758}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2145639610623307442 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 488436, guid: 2ef59bc5d753ebe4490b708befe65999,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 488436, guid: 2ef59bc5d753ebe4490b708befe65999, type: 3}
   m_PrefabInstance: {fileID: 2145639610623122758}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2145639611507072799
@@ -389,13 +362,6 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
 --- !u!4 &2145639612061728181 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: fabff3cbe4a4be24a90f7b23e155e025,
-    type: 3}
-  m_PrefabInstance: {fileID: 2145639612061853493}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2145639612061950357 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: fabff3cbe4a4be24a90f7b23e155e025,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 400000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
   m_PrefabInstance: {fileID: 2145639612061853493}
   m_PrefabAsset: {fileID: 0}

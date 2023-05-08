@@ -10,8 +10,21 @@ namespace Vestige
 		[Header("Camera")]
 		public float cameraMouseVertWorldOffset = 3;
 
+		[Header("Health")]
+		public float healthMax = 100;
+		public float healthGrowSpeed = 20;
+		public float healthDecaySpeed = 12;
+
+		[Header("Physics")]
+		public float gravityMultiplier = 2;
+
 		[Header("Walk")]
 		public float walkVel = 8;
 		public float walkAccel = 30;
+
+		[Header("Holdable")]
+		public float pickupRadius = 2;
+		public Vector3 pickupOffset = new Vector3(0, 0.5f, 0);
+		public LayerMask pickupMask = int.MaxValue;
 	}
 }

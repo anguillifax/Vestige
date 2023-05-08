@@ -73,8 +73,8 @@ namespace Vestige
 		HoldableHarness IHoldable.Harness => harness;
 		HoldableConfig IHoldable.Config => config;
 		HoldableInputState IHoldable.InputState => input;
-
 		bool IHoldable.Attachable => attachable;
+		GameObject IHoldable.Root => gameObject;
 
 		void IHoldable.OnPickup(HoldableHarness harness)
 		{
@@ -92,13 +92,13 @@ namespace Vestige
 		{
 			detached.Invoke();
 			physicsHelper.Detach(harness.DropPoint);
-			if (harness.overlayContainer && harness.overlayContainer.childCount > 0)
+			if (overlay != null)
 			{
-				Destroy(harness.overlayContainer.GetChild(0).gameObject);
+				Destroy(overlay);
+				overlay = null;
 			}
 			harness = null;
 			input = null;
-			overlay = null;
 		}
 	}
 }

@@ -14,6 +14,7 @@ namespace Vestige
 		public float maxAmmo = 20;
 		public float refillRate = 6;
 		public float consumeRate = 3;
+		public SystemicEffectTemplate effectTemplate;
 
 		private FlamethrowerAvatar avatar;
 		private StandardHoldable holdable;
@@ -98,10 +99,7 @@ namespace Vestige
 				var recipient = other.attachedRigidbody.GetComponent<IRecipient>();
 				if (recipient != null)
 				{
-					Effect e = new Effect(gameObject)
-					{
-						ignite = true,
-					};
+					Effect e = effectTemplate.AsEffect(gameObject);
 					recipient.RecieveEffect(e);
 				}
 			}
