@@ -10,6 +10,11 @@ namespace Vestige
 		[Header("Camera")]
 		public float cameraMouseVertWorldOffset = 3;
 
+		[Header("Health")]
+		public float healthMax = 100;
+		public float healthGrowSpeed = 20;
+		public float healthDecaySpeed = 12;
+
 		[Header("Physics")]
 		public float gravityMultiplier = 2;
 

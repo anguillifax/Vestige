@@ -11,6 +11,7 @@ namespace Vestige
 		// =========================================================
 
 		[Header("Common")]
+		public GameObject sender;
 		[Expandable] public SystemicEffectTemplate effect;
 
 		// =========================================================
@@ -30,7 +31,8 @@ namespace Vestige
 			IRecipient systemic = root.GetComponent<IRecipient>();
 			if (systemic != null)
 			{
-				systemic.RecieveEffect(effect.AsEffect(gameObject));
+				GameObject source = sender ? sender : gameObject;
+				systemic.RecieveEffect(effect.AsEffect(source));
 			}
 		}
 	}
