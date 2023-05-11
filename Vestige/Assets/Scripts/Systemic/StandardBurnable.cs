@@ -121,7 +121,7 @@ namespace Vestige
 
 		private void FindAndSendIgnite()
 		{
-			Collider[] targets = Physics.OverlapSphere(transform.position, propagateIgniteRadius);
+			Collider[] targets = Physics.OverlapSphere(transform.position, propagateIgniteRadius, int.MaxValue, QueryTriggerInteraction.Collide);
 			foreach (Collider c in targets)
 			{
 				var recipient = c.GetComponent<IRecipient>();
