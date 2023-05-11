@@ -30,6 +30,7 @@ namespace Vestige
 		[Header("Burn")]
 		public UnityEvent ignited;
 		public bool useDefaultFlameEffect = true;
+		public bool spawnFlameAsChild = false;
 
 		[Header("Propagation")]
 		public bool propagateIgnite = true;
@@ -74,6 +75,10 @@ namespace Vestige
 						if (useDefaultFlameEffect)
 						{
 							flameEffect = Instantiate(prefabFlames, transform.position, prefabFlames.transform.rotation);
+							if (spawnFlameAsChild)
+							{
+								flameEffect.transform.parent = transform;
+							}
 						}
 						burnDuration.Start();
 
