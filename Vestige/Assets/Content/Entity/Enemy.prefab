@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBurn: 1
   burnDuration:
-    duration: 5
+    duration: 10
     elapsed: 0
   ignited:
     m_PersistentCalls:

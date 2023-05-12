@@ -271,12 +271,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachable: 1
   config: {fileID: 0}
-  autoConfigPhysicsHelper: 1
+  autoConfigPhysicsHelper: 0
   physicsHelper:
-    transform: {fileID: 0}
+    transform: {fileID: 202299463357616419}
     solidColliders:
     - {fileID: 155655007953404613}
-    mainRigidbody: {fileID: 0}
+    mainRigidbody: {fileID: -6917863774701792641}
   attached:
     m_PersistentCalls:
       m_Calls: []
