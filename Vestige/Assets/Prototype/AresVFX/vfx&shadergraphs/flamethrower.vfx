@@ -56,10 +56,10 @@ MonoBehaviour:
   - title: SMOKE
     position:
       serializedVersion: 2
-      x: 2027
+      x: 2022
       y: -290
-      width: 754
-      height: 1604
+      width: 758
+      height: 1912
     contents:
     - model: {fileID: 8926484042661614645}
       id: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
   particlePerStripCount: 16
   needsComputeBounds: 0
   boundsMode: 0
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661614569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2550,7 +2550,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614664}
   - {fileID: 8926484042661614675}
   - {fileID: 8926484042661614678}
-  m_UIPosition: {x: 2332, y: 74}
+  m_UIPosition: {x: 2331, y: 68}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -4333,7 +4333,7 @@ MonoBehaviour:
   particlePerStripCount: 16
   needsComputeBounds: 0
   boundsMode: 0
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661614708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4376,7 +4376,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614709}
       inputSlot: {fileID: 8926484042661614648}
-    position: {x: 2047.3914, y: -124.34784}
+    position: {x: 2047, y: -124}
     expandedSlots: []
     expanded: 1
 --- !u!114 &8926484042661614709
