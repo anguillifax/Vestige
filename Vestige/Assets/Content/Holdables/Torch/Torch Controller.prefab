@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ebdd480c108a348ac1d5ba996c4299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 11400000, guid: 4b42a54da75423348a4d64008d753af5, type: 2}
   sender: {fileID: 1395597136544890054}
+  effect: {fileID: 11400000, guid: 4b42a54da75423348a4d64008d753af5, type: 2}
 --- !u!135 &7942166109477185719
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -428,6 +428,10 @@ MonoBehaviour:
   throwAngle: 50
   throwVelocity: 6
   inheritFactor: 0.8
+  throwBurningTimer:
+    duration: 2
+    elapsed: 0
+  throwEffect: {fileID: 11400000, guid: 4ba44ac79ef956841a910224575550e3, type: 2}
 --- !u!114 &7832142761607276285
 MonoBehaviour:
   m_ObjectHideFlags: 0
