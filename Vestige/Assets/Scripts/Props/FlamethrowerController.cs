@@ -43,7 +43,7 @@ namespace Vestige
 
 		private void OnAttach()
 		{
-			overlay = holdable.overlay.GetComponent<FlamethrowerOverlay>();
+			overlay = holdable.InstructionOverlay.GetComponent<FlamethrowerOverlay>();
 			inUse = false;
 		}
 
@@ -59,7 +59,7 @@ namespace Vestige
 
 		private void Update()
 		{
-			if (holdable.Active) UpdateHoldable();
+			if (holdable.IsHeld) UpdateHoldable();
 
 			if (currentAmmo < maxAmmo && !inUse)
 			{
@@ -70,7 +70,7 @@ namespace Vestige
 
 		private void UpdateHoldable()
 		{
-			bool fire = holdable.input.Primary && currentAmmo > 0;
+			bool fire = holdable.InputState.Primary && currentAmmo > 0;
 			if (fire && !inUse)
 			{
 				avatar.StartFiring();

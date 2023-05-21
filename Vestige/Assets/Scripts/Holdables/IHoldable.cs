@@ -11,6 +11,8 @@ namespace Vestige
 		HoldableInputState InputState { get; }
 		bool Attachable { get; }
 		GameObject Root { get; }
+		bool IsHeld { get; }
+		GameObject InstructionOverlay { get; }
 
 		void OnPickup(HoldableHarness harness);
 		void OnDrop();
