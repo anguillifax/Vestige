@@ -244,6 +244,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2833360705715782268}
     m_Modifications:
+    - target: {fileID: 7886410936900613756, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7886410937998599682, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -292,6 +296,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torch Flame
       objectReference: {fileID: 0}
+    - target: {fileID: 7886410937998599685, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
 --- !u!4 &4883970629998380273 stripped
@@ -312,7 +320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
       propertyPath: m_RootOrder

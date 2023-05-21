@@ -24,15 +24,9 @@ namespace Vestige
 		public UnityEvent attached;
 		public UnityEvent detached;
 
-		[HideInInspector] public HoldableHarness harness;
-		[HideInInspector] public GameObject overlay;
-		public HoldableInputState input;
-
-		// =========================================================
-		// Properties
-		// =========================================================
-
-		public bool Active => harness != null;
+		private HoldableHarness harness;
+		private GameObject overlay;
+		private HoldableInputState input;
 
 		// =========================================================
 		// Initialization
@@ -70,13 +64,15 @@ namespace Vestige
 		// IHoldable Implementation
 		// =========================================================
 
-		HoldableHarness IHoldable.Harness => harness;
-		HoldableConfig IHoldable.Config => config;
-		HoldableInputState IHoldable.InputState => input;
-		bool IHoldable.Attachable => attachable;
-		GameObject IHoldable.Root => gameObject;
+		public HoldableHarness Harness => harness;
+		public HoldableConfig Config => config;
+		public HoldableInputState InputState => input;
+		public bool Attachable => attachable;
+		public GameObject Root => gameObject;
+		public bool IsHeld => harness != null;
+		public GameObject InstructionOverlay => overlay;
 
-		void IHoldable.OnPickup(HoldableHarness harness)
+		public void OnPickup(HoldableHarness harness)
 		{
 			this.harness = harness;
 			physicsHelper.Attach(harness.Socket);
@@ -88,7 +84,7 @@ namespace Vestige
 			attached.Invoke();
 		}
 
-		void IHoldable.OnDrop()
+		public void OnDrop()
 		{
 			detached.Invoke();
 			physicsHelper.Detach(harness.DropPoint);
