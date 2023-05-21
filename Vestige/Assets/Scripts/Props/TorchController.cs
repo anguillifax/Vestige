@@ -30,14 +30,12 @@ namespace Vestige
 		public UnityEvent swipeStarted;
 
 		[Header("Throw")]
-		public float throwAngle = 30f;
-		public float throwVelocity = 6f;
-		public float inheritFactor = 1;
 		public ManualTimer throwBurningTimer = new ManualTimer(2);
 		public SystemicEffectTemplate throwEffect;
 
 		private State state;
 		private StandardHoldable holdable;
+		private StandardThrowable throwable;
 
 		// =========================================================
 		// Initialization
@@ -46,6 +44,7 @@ namespace Vestige
 		private void Awake()
 		{
 			holdable = GetComponent<StandardHoldable>();
+			throwable = GetComponent<StandardThrowable>();
 			holdable.attached.AddListener(PickupReset);
 			PickupReset();
 		}
@@ -62,7 +61,7 @@ namespace Vestige
 		private void Update()
 		{
 			UpdateState();
-			if (holdable.Active) UpdateHoldable();
+			if (holdable.IsHeld) UpdateHoldable();
 
 			cooldown.Update(Time.deltaTime);
 			swipeDuration.Update(Time.deltaTime);
@@ -74,7 +73,7 @@ namespace Vestige
 			switch (state)
 			{
 				case State.Idle:
-					if (holdable.Active && holdable.input.PrimaryDown)
+					if (holdable.IsHeld && holdable.InputState.PrimaryDown)
 					{
 						swipeDuration.Start();
 						swipeStarted.Invoke();
@@ -109,23 +108,9 @@ namespace Vestige
 
 		private void UpdateHoldable()
 		{
-			if (holdable.input.SecondaryDown)
+			if (holdable.InputState.SecondaryDown)
 			{
-				Vector3 localDir = Quaternion.Euler(-throwAngle, 0, 0) * Vector3.forward;
-				Vector3 outDir = holdable.transform.TransformDirection(localDir);
-
-				Vector3 vel = outDir * throwVelocity;
-
-				Rigidbody ownerBody = holdable.harness.Owner.GetComponent<Rigidbody>();
-				if (ownerBody != null)
-				{
-					vel += ownerBody.velocity * inheritFactor;
-				}
-
-				holdable.harness.Detach();
-
-				GetComponent<Rigidbody>().velocity = vel;
-
+				throwable.ThrowObject();
 				throwBurningTimer.Start();
 				state = State.Thrown;
 			}

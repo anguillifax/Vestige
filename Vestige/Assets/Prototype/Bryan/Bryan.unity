@@ -635,6 +635,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 593342003697056314, guid: ef3a9f8aafd213c42ba3e0247061b859, type: 3}
   m_PrefabInstance: {fileID: 256893071}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &399317925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399317926}
+  - component: {fileID: 399317927}
+  m_Layer: 7
+  m_Name: Pickup Radius
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399317926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399317925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 606848159}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &399317927
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399317925}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.04
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &439035601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -875,8 +920,9 @@ GameObject:
   - component: {fileID: 606848155}
   - component: {fileID: 606848154}
   - component: {fileID: 606848153}
+  - component: {fileID: 606848160}
   m_Layer: 0
-  m_Name: Pickup Cube
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -894,8 +940,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634cfad6bf3408e4ea39ff896ed3f357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachable: 0
-  config: {fileID: 0}
+  attachable: 1
+  config: {fileID: 11400000, guid: 7cbb82b8e3864674287892898a5b5ff3, type: 2}
   autoConfigPhysicsHelper: 1
   physicsHelper:
     transform: {fileID: 0}
@@ -907,8 +953,6 @@ MonoBehaviour:
   detached:
     m_PersistentCalls:
       m_Calls: []
-  harness: {fileID: 0}
-  overlay: {fileID: 0}
 --- !u!54 &606848154
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1012,10 +1056,28 @@ Transform:
   m_LocalPosition: {x: 12.85, y: 5.58, z: -2.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 399317926}
   m_Father: {fileID: 1377402376}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &606848160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606848152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804d9a304c64f214daa0d16560482ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerOnSecondaryAction: 1
+  detachFromHoldable: 1
+  throwAngle: 50
+  throwVelocity: 4
+  inheritFactor: 0.4
 --- !u!1001 &676776388
 PrefabInstance:
   m_ObjectHideFlags: 0

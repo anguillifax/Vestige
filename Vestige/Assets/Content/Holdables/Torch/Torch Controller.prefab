@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6106224796223296619}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2717009850711836369
 SphereCollider:
@@ -135,7 +135,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6106224796223296619}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6324825862232149496
 BoxCollider:
@@ -229,7 +229,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3588954528747776878, guid: c4c001a5dbd43064fbb34452f4cf6366, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3588954528747776878, guid: c4c001a5dbd43064fbb34452f4cf6366, type: 3}
       propertyPath: m_LocalPosition.x
@@ -349,7 +349,7 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: c543458d81a53c6458dfca414f866549, type: 2}
     - target: {fileID: 4883970629998380273, guid: 98444a4837996bb4cb97ac48efc27d8e, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6967523438506306257, guid: 98444a4837996bb4cb97ac48efc27d8e, type: 3}
       propertyPath: m_Name
@@ -378,6 +378,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1892821079442541172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395597136544890054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804d9a304c64f214daa0d16560482ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerOnSecondaryAction: 0
+  detachFromHoldable: 1
+  throwAngle: 50
+  throwVelocity: 6
+  inheritFactor: 0.4
 --- !u!114 &2658190670006077596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,9 +442,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  throwAngle: 50
-  throwVelocity: 6
-  inheritFactor: 0.8
   throwBurningTimer:
     duration: 2
     elapsed: 0
@@ -457,8 +471,6 @@ MonoBehaviour:
   detached:
     m_PersistentCalls:
       m_Calls: []
-  harness: {fileID: 0}
-  overlay: {fileID: 0}
 --- !u!4 &6106224796223296619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2833360705715782268, guid: 98444a4837996bb4cb97ac48efc27d8e, type: 3}
