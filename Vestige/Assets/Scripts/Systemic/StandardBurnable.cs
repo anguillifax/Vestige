@@ -92,7 +92,7 @@ namespace Vestige
 						burned.Invoke();
 						if (propagateIgnite)
 						{
-							FindAndSendIgnite();
+							FindAndSendEffect(CreateIgnite);
 						}
 						if (flameEffect)
 						{
@@ -114,25 +114,37 @@ namespace Vestige
 			burnDuration.Update(Time.deltaTime);
 		}
 
+		private void FixedUpdate()
+		{
+			if (state == State.Burning)
+			{
+				FindAndSendEffect(CreateIgnite);
+			}
+		}
+
 		public void Revive()
 		{
 			state = State.Waiting;
 		}
 
-		private void FindAndSendIgnite()
+		private Effect CreateIgnite()
 		{
-			Collider[] targets = Physics.OverlapSphere(transform.position, propagateIgniteRadius, int.MaxValue, QueryTriggerInteraction.Collide);
-			foreach (Collider c in targets)
+			return new Effect(gameObject) { burn = true, ignite = true };
+		}
+
+		private Effect CreateBurn()
+		{
+			return new Effect(gameObject) { burn = true };
+		}
+
+		private void FindAndSendEffect(Func<Effect> generator)
+		{
+			Collider[] targets = Physics.OverlapSphere(
+				transform.position, propagateIgniteRadius, int.MaxValue, QueryTriggerInteraction.Collide);
+
+			foreach (IRecipient r in SystemicUtil.GetRecipients(targets))
 			{
-				var recipient = c.GetComponent<IRecipient>();
-				if (recipient != null)
-				{
-					Effect effect = new Effect(gameObject)
-					{
-						ignite = true,
-					};
-					recipient.RecieveEffect(effect);
-				}
+				r.RecieveEffect(generator());
 			}
 		}
 
