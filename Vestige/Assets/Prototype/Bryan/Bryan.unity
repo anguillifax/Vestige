@@ -1268,10 +1268,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1377402376}
     m_Modifications:
-    - target: {fileID: 1421841388089812454, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
-      propertyPath: isBurningInitial
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
       propertyPath: m_RootOrder
       value: 4
