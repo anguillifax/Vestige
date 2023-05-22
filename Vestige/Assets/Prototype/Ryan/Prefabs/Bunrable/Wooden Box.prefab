@@ -245,6 +245,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1028711491857392242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202299463357411581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804d9a304c64f214daa0d16560482ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerOnSecondaryAction: 1
+  detachFromHoldable: 1
+  throwAngle: 50
+  throwVelocity: 6
+  inheritFactor: 0.4
 --- !u!114 &2176200871353459388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachable: 1
-  config: {fileID: 0}
+  config: {fileID: 11400000, guid: 7cbb82b8e3864674287892898a5b5ff3, type: 2}
   autoConfigPhysicsHelper: 0
   physicsHelper:
     transform: {fileID: 202299463357616419}
@@ -283,8 +300,6 @@ MonoBehaviour:
   detached:
     m_PersistentCalls:
       m_Calls: []
-  harness: {fileID: 0}
-  overlay: {fileID: 0}
 --- !u!114 &4530084950689014814
 MonoBehaviour:
   m_ObjectHideFlags: 0
