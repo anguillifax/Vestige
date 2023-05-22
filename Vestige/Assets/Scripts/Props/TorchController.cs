@@ -132,7 +132,7 @@ namespace Vestige
 
 		private void OnCollisionEnter(Collision collision)
 		{
-			if (throwBurningTimer.Running)
+			if (state == State.Thrown)
 			{
 				throwBurningTimer.Start();
 			}
