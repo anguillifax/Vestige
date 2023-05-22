@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - PlayerVCam
+  - PlayerHoldableInstructionContainer
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - Character
   - Holdable Pickup
   - Hitbox
-  - 
+  - Bonfire
   - 
   - 
   - 

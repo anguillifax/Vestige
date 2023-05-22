@@ -1,5 +1,45 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &51095848691074800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8972200764713479450}
+  m_Layer: 5
+  m_Name: Inset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8972200764713479450
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51095848691074800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3166116924398177832}
+  - {fileID: 5221629634755415094}
+  - {fileID: 6886360479840829493}
+  - {fileID: 6886360479650963423}
+  m_Father: {fileID: 6886360479987490236}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -14.329986}
+  m_SizeDelta: {x: 0, y: -28.660027}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6886360479650963420
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +52,7 @@ GameObject:
   - component: {fileID: 6886360479650963409}
   - component: {fileID: 6886360479650963422}
   m_Layer: 5
-  m_Name: Skull Douse
+  m_Name: Skull Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,17 +65,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6886360479650963420}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6886360479987490236}
-  m_RootOrder: 2
+  m_Father: {fileID: 8972200764713479450}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -188, y: 273}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -188, y: -17.5746}
   m_SizeDelta: {x: 35.1492, y: 35.1492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6886360479650963409
@@ -88,7 +128,7 @@ GameObject:
   - component: {fileID: 6886360479840829495}
   - component: {fileID: 6886360479840829492}
   m_Layer: 5
-  m_Name: Skull Ignite
+  m_Name: Skull Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,17 +141,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6886360479840829490}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6886360479987490236}
-  m_RootOrder: 3
+  m_Father: {fileID: 8972200764713479450}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 184.9, y: 273}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 184.9, y: -17.5746}
   m_SizeDelta: {x: 35.1492, y: 35.1492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6886360479840829495
@@ -181,10 +221,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3166116924398177832}
-  - {fileID: 5221629634755415094}
-  - {fileID: 6886360479650963423}
-  - {fileID: 6886360479840829493}
+  - {fileID: 8972200764713479450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -212,7 +249,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6886360479987490236}
+    m_TransformParent: {fileID: 8972200764713479450}
     m_Modifications:
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_Pivot.x
@@ -232,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_AnchorMin.x
@@ -240,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -284,7 +321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 271.00003
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -324,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7517581471070571671, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_Name
-      value: Ignite
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 8676098512421127803, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_Color.b
@@ -361,7 +398,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6886360479987490236}
+    m_TransformParent: {fileID: 8972200764713479450}
     m_Modifications:
     - target: {fileID: 1452922882728815439, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_Direction
@@ -385,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_AnchorMin.x
@@ -393,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -437,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 271
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 1722539044212636316, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -477,7 +514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7517581471070571671, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_Name
-      value: Douse
+      value: Water
       objectReference: {fileID: 0}
     - target: {fileID: 8676098512421127803, guid: 59240681265946646bbcf8fb93784ab9, type: 3}
       propertyPath: m_Color.b
