@@ -15,24 +15,38 @@ namespace Vestige
 
 		[Header("Common")]
 		[Expandable] public PlayerControllerConfig config;
-		public PlayerAvatar avatar;
-		public Camera cameraMain;
+
+		[Header("Cross Reference")]
 		public PlayerHealthbarAvatar healthbar;
-
-		[Header("Motion")]
 		public Transform lookRotation;
-
-		[Header("Holdable")]
-		public HoldableHarness harness;
 		public RectTransform overlayContainer;
+		public Camera cameraMain;
 
 		[Header("Health")]
 		public UnityEvent died;
 
+		private PlayerAvatar avatar;
+		private HoldableHarness harness;
 		private StandardRecipient systemic;
-		private float capacityFire;
-		private float capacityWater;
+		private float curFireHealth;
+		private float curWaterHealth;
 		private Vector3 cursorTarget;
+
+		// =========================================================
+		// Properties
+		// =========================================================
+
+		public float HealthFire
+		{
+			get => curFireHealth;
+			set => curFireHealth = Mathf.Clamp(value, 0, config.healthFire.max);
+		}
+
+		public float HealthWater
+		{
+			get => curWaterHealth;
+			set => curWaterHealth = Mathf.Clamp(value, 0, config.healthWater.max);
+		}
 
 		// =========================================================
 		// Initialization
@@ -40,16 +54,19 @@ namespace Vestige
 
 		private void Awake()
 		{
-			if (!lookRotation)
-			{
-				lookRotation = transform;
-			}
+			harness = GetComponentInChildren<HoldableHarness>();
+			systemic = GetComponent<StandardRecipient>();
+			avatar = GetComponent<PlayerAvatar>();
+
+			healthbar = FindObjectOfType<PlayerHealthbarAvatar>();
+			overlayContainer = GameObject.FindWithTag("PlayerHoldableInstructionContainer").GetComponent<RectTransform>();
+			cameraMain = Camera.main;
 
 			harness.overlayContainer = overlayContainer;
-			systemic = GetComponent<StandardRecipient>();
+			lookRotation = GameObject.FindWithTag("PlayerVCam").transform;
 
-			capacityFire = 0;
-			capacityWater = 0;
+			HealthFire = config.healthFire.max;
+			HealthWater = config.healthWater.max;
 		}
 
 		private void OnEnable()
@@ -68,6 +85,7 @@ namespace Vestige
 			UpdateHoldableAttach();
 			UpdateHoldableActions();
 			UpdateHealth();
+			UpdateObliterate();
 		}
 
 		private void UpdateCursorTarget()
@@ -127,27 +145,31 @@ namespace Vestige
 			{
 				nonPlayer = systemic.effects.Where(x => x.source != harness.Target.Root);
 			}
-			bool hasFire = nonPlayer.Any(x => x.ignite || x.burn);
-			bool hasWater = nonPlayer.Any(x => x.douse || x.soak);
 
-			void Do(ref float cap, bool grow)
+			if (nonPlayer.Any(x => x.ignite || x.burn))
 			{
-				cap += (grow ? config.healthGrowSpeed : -config.healthDecaySpeed) * Time.deltaTime;
-				cap = Mathf.Clamp(cap, 0, config.healthMax);
+				HealthFire -= config.healthFire.depleteRate * Time.deltaTime;
 			}
 
-			Do(ref capacityFire, hasFire);
-			Do(ref capacityWater, hasWater);
-
-			healthbar.SetFireCapacity(capacityFire / config.healthMax);
-			healthbar.SetWaterCapacity(capacityWater / config.healthMax);
-
-			if (capacityFire == config.healthMax || capacityWater == config.healthMax)
+			if (nonPlayer.Any(x => x.douse || x.soak))
 			{
-				died.Invoke();
-				harness.Detach();
-				Destroy(gameObject);
-				FindObjectOfType<GameSession>().ReloadSceneAfterDelay();
+				HealthWater -= config.healthWater.depleteRate * Time.deltaTime;
+			}
+
+			healthbar.SetFireCapacity(curFireHealth / config.healthFire.max);
+			healthbar.SetWaterCapacity(curWaterHealth / config.healthWater.max);
+
+			if (curFireHealth == 0 || curWaterHealth == 0)
+			{
+				Kill();
+			}
+		}
+
+		private void UpdateObliterate()
+		{
+			if (systemic.effects.Any(x => x.obliterate))
+			{
+				Kill();
 			}
 		}
 
@@ -205,11 +227,24 @@ namespace Vestige
 
 		private void OnTriggerStay(Collider other)
 		{
+			if (other.gameObject.layer == config.regenBonfireLayer)
+			{
+				HealthFire += config.healthFire.regenerateRate * Time.fixedDeltaTime;
+				HealthWater += config.healthWater.regenerateRate * Time.fixedDeltaTime;
+			}
 		}
 
 		// =========================================================
 		// Public API
 		// =========================================================
+
+		public void Kill()
+		{
+			died.Invoke();
+			harness.Detach();
+			Destroy(gameObject);
+			FindObjectOfType<GameSession>().RespawnAfterDelay();
+		}
 
 		public Vector3 GetCameraFocusPoint()
 		{
