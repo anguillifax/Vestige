@@ -6,6 +6,8 @@ namespace Vestige
 {
 	public class WaterBuoyancy : MonoBehaviour
 	{
+		private const float ScaleFactor = 0.01f;
+
 		[Header("Common")]
 		public float upForce = 10;
 		public float forwardForce = 0;
@@ -16,8 +18,8 @@ namespace Vestige
 		{
 			if (other.attachedRigidbody)
 			{
-				Vector3 fwd = forwardForce * transform.TransformDirection(Vector3.forward);
-				float upCur = Mathf.Lerp(0, upForce, (transform.position.y - other.attachedRigidbody.position.y) / maxForceDepth);
+				Vector3 fwd = forwardForce * ScaleFactor * transform.TransformDirection(Vector3.forward);
+				float upCur = Mathf.Lerp(0, upForce * ScaleFactor, (transform.position.y - other.attachedRigidbody.position.y) / maxForceDepth);
 				Vector3 up = upCur * Vector3.up;
 				other.attachedRigidbody.AddForce(fwd + up, ForceMode.VelocityChange);
 			}
