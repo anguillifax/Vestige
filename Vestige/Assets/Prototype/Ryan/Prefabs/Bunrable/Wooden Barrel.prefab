@@ -98,7 +98,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   useDefaultFlameEffect: 1
-  propagateIgnite: 1
+  spawnFlameAsChild: 0
+  propagateIgnite: 0
   propagateIgniteRadius: 3
   burned:
     m_PersistentCalls:
