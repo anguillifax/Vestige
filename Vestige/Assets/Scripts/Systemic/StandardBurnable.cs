@@ -32,6 +32,10 @@ namespace Vestige
 		public bool useDefaultFlameEffect = true;
 		public bool spawnFlameAsChild = false;
 
+		[Header("Doused")]
+		public UnityEvent doused;
+		public bool canDouse = true;
+
 		[Header("Propagation")]
 		public bool propagateIgnite = true;
 		public float propagateIgniteRadius = 3;
@@ -69,7 +73,7 @@ namespace Vestige
 			switch (state)
 			{
 				case State.Waiting:
-					if (receiver.effects.Any(x => x.ignite))
+					if (receiver.effects.Any(x => x.ignite) && !receiver.effects.Any(x => x.soak || x.douse))
 					{
 						ignited.Invoke();
 						if (useDefaultFlameEffect)
@@ -87,6 +91,17 @@ namespace Vestige
 					break;
 
 				case State.Burning:
+					if (canDouse && receiver.effects.Any(x => x.douse))
+					{
+						doused.Invoke();
+						if (flameEffect)
+						{
+							flameEffect.GetComponent<ParticleSystem>().Stop();
+						}
+						state = State.Waiting;
+						break;
+					}
+
 					if (burnDuration.Done)
 					{
 						burned.Invoke();
@@ -118,13 +133,8 @@ namespace Vestige
 		{
 			if (state == State.Burning)
 			{
-				FindAndSendEffect(CreateIgnite);
+				FindAndSendEffect(CreateBurn);
 			}
-		}
-
-		public void Revive()
-		{
-			state = State.Waiting;
 		}
 
 		private Effect CreateIgnite()

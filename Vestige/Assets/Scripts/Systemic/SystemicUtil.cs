@@ -23,14 +23,14 @@ namespace Vestige
 			}
 		}
 
-		public static void BroadcastIfExists(SystemicEffectTemplate template, GameObject self, IEnumerable<Collider> hitComponents)
+		public static void BroadcastToRigidbody(SystemicEffectTemplate template, GameObject self, IEnumerable<Collider> hitComponents)
 		{
 			BroadcastAsSelf(template, self, GetRecipients(hitComponents));
 		}
 
-		public static void BroadcastIfExists(SystemicEffectTemplate template, GameObject self, Collider hitComponent)
+		public static void BroadcastToRigidbody(SystemicEffectTemplate template, GameObject self, Collider hitComponent)
 		{
-			BroadcastIfExists(template, self, new Collider[] { hitComponent });
+			BroadcastToRigidbody(template, self, new Collider[] { hitComponent });
 		}
 	}
 }
