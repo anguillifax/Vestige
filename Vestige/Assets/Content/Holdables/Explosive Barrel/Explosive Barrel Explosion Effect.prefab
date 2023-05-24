@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1224432230613306533}
   - component: {fileID: 1224432230613306534}
   m_Layer: 0
-  m_Name: ExplosionEffect
+  m_Name: Explosive Barrel Explosion Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

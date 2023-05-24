@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Vestige.Prototype
+namespace Vestige
 {
     public class ExplosiveBarrelAvatar : MonoBehaviour
     {
