@@ -121,11 +121,11 @@ namespace Vestige
 			switch (state)
 			{
 				case State.Swipe:
-					SystemicUtil.BroadcastIfExists(swipeEffect, gameObject, other);
+					SystemicUtil.BroadcastToRigidbody(swipeEffect, gameObject, other);
 					break;
 
 				case State.Thrown:
-					SystemicUtil.BroadcastIfExists(throwEffect, gameObject, other);
+					SystemicUtil.BroadcastToRigidbody(throwEffect, gameObject, other);
 					break;
 			}
 		}
