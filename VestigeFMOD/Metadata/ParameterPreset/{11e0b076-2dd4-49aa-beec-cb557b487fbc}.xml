@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{11e0b076-2dd4-49aa-beec-cb557b487fbc}">
+		<property name="name">
+			<value>cobblestone</value>
+		</property>
+		<relationship name="folder">
+			<destination>{adfeff69-20bd-47ed-b299-50e0672c69f0}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d88823bd-a055-4660-b5b4-b49e9567a6ba}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d88823bd-a055-4660-b5b4-b49e9567a6ba}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
