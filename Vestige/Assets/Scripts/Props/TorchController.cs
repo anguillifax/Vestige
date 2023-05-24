@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ namespace Vestige
 
 		public enum State
 		{
-			Idle, Swipe, Cooldown,
+			Idle, Swipe, Cooldown, Thrown, Extinguished,
 		}
 
 		// =========================================================
@@ -21,6 +22,7 @@ namespace Vestige
 		// =========================================================
 
 		[Header("Common")]
+		public bool startLit = true;
 		public ManualTimer cooldown = new ManualTimer(0.5f);
 
 		[Header("Swipe")]
@@ -28,14 +30,17 @@ namespace Vestige
 		public BoxCollider swipeArea;
 		public SystemicEffectTemplate swipeEffect;
 		public UnityEvent swipeStarted;
+		public UnityEvent swipeEnded;
 
 		[Header("Throw")]
-		public float throwAngle = 30f;
-		public float throwVelocity = 6f;
-		public float inheritFactor = 1;
+		public ManualTimer throwBurningTimer = new ManualTimer(2);
+		public SystemicEffectTemplate throwEffect;
 
 		private State state;
+		private TorchAvatar avatar;
 		private StandardHoldable holdable;
+		private StandardThrowable throwable;
+		private StandardRecipient systemic;
 
 		// =========================================================
 		// Initialization
@@ -43,14 +48,21 @@ namespace Vestige
 
 		private void Awake()
 		{
+			avatar = GetComponent<TorchAvatar>();
 			holdable = GetComponent<StandardHoldable>();
+			throwable = GetComponent<StandardThrowable>();
+			systemic = GetComponent<StandardRecipient>();
+
 			holdable.attached.AddListener(PickupReset);
 			PickupReset();
 		}
 
 		private void PickupReset()
 		{
-			state = State.Idle;
+			if (!(state == State.Idle || state == State.Extinguished))
+			{
+				state = State.Idle;
+			}
 		}
 
 		// =========================================================
@@ -59,22 +71,37 @@ namespace Vestige
 
 		private void Update()
 		{
-			if (holdable.Active) UpdateHoldable();
+			UpdateState();
 
 			cooldown.Update(Time.deltaTime);
 			swipeDuration.Update(Time.deltaTime);
+			throwBurningTimer.Update(Time.deltaTime);
 		}
 
-		private void UpdateHoldable()
+		private void UpdateState()
 		{
 			switch (state)
 			{
 				case State.Idle:
-					if (holdable.input.PrimaryDown)
+					if (systemic.effects.Any(x => x.douse))
+					{
+						GotoExtinguished();
+						break;
+					}
+
+					if (holdable.IsHeld && holdable.InputState.PrimaryDown)
 					{
 						swipeDuration.Start();
 						swipeStarted.Invoke();
+						throwBurningTimer.Stop();
 						state = State.Swipe;
+						break;
+					}
+
+					if (holdable.IsHeld && holdable.InputState.SecondaryDown)
+					{
+						throwable.ThrowObject();
+						state = State.Thrown;
 					}
 					break;
 
@@ -82,48 +109,79 @@ namespace Vestige
 					if (swipeDuration.Done)
 					{
 						cooldown.Start();
+						swipeEnded.Invoke();
 						state = State.Cooldown;
 					}
 					break;
 
 				case State.Cooldown:
+					if (systemic.effects.Any(x => x.douse))
+					{
+						cooldown.Stop();
+						GotoExtinguished();
+						break;
+					}
+
 					if (cooldown.Done)
 					{
 						state = State.Idle;
 					}
 					break;
+
+				case State.Thrown:
+					if (systemic.effects.Any(x => x.douse))
+					{
+						GotoExtinguished();
+						break;
+					}
+
+					if (throwBurningTimer.Done)
+					{
+						state = State.Idle;
+					}
+					break;
+
+				case State.Extinguished:
+					if (systemic.effects.Any(x => x.ignite && x.source != gameObject))
+					{
+						avatar.Ignite();
+						state = State.Idle;
+					}
+
+					if (holdable.IsHeld && holdable.InputState.SecondaryDown)
+					{
+						throwable.ThrowObject();
+					}
+
+					break;
 			}
+		}
 
-			if (holdable.input.SecondaryDown)
-			{
-				Vector3 localDir = Quaternion.Euler(-throwAngle, 0, 0) * Vector3.forward;
-				Vector3 outDir = holdable.transform.TransformDirection(localDir);
-
-				Vector3 vel = outDir * throwVelocity;
-
-				Rigidbody ownerBody = holdable.harness.Owner.GetComponent<Rigidbody>();
-				if (ownerBody != null)
-				{
-					vel += ownerBody.velocity * inheritFactor;
-				}
-
-				holdable.harness.Detach();
-				state = State.Cooldown;
-
-				GetComponent<Rigidbody>().velocity = vel;
-			}
+		private void GotoExtinguished()
+		{
+			avatar.Extinguish();
+			state = State.Extinguished;
 		}
 
 		private void OnTriggerStay(Collider other)
 		{
-			if (state == State.Swipe && other.attachedRigidbody != null)
+			switch (state)
 			{
-				IRecipient systemic = other.attachedRigidbody.GetComponent<IRecipient>();
-				if (systemic != null)
-				{
-					Effect e = swipeEffect.AsEffect(gameObject);
-					systemic.RecieveEffect(e);
-				}
+				case State.Swipe:
+					SystemicUtil.BroadcastToRigidbody(swipeEffect, gameObject, other);
+					break;
+
+				case State.Thrown:
+					SystemicUtil.BroadcastToRigidbody(throwEffect, gameObject, other);
+					break;
+			}
+		}
+
+		private void OnCollisionEnter(Collision collision)
+		{
+			if (state == State.Thrown)
+			{
+				throwBurningTimer.Start();
 			}
 		}
 	}

@@ -32,6 +32,10 @@ namespace Vestige
 		public bool useDefaultFlameEffect = true;
 		public bool spawnFlameAsChild = false;
 
+		[Header("Doused")]
+		public UnityEvent doused;
+		public bool canDouse = true;
+
 		[Header("Propagation")]
 		public bool propagateIgnite = true;
 		public float propagateIgniteRadius = 3;
@@ -69,7 +73,7 @@ namespace Vestige
 			switch (state)
 			{
 				case State.Waiting:
-					if (receiver.effects.Any(x => x.ignite))
+					if (receiver.effects.Any(x => x.ignite) && !receiver.effects.Any(x => x.soak || x.douse))
 					{
 						ignited.Invoke();
 						if (useDefaultFlameEffect)
@@ -87,12 +91,23 @@ namespace Vestige
 					break;
 
 				case State.Burning:
+					if (canDouse && receiver.effects.Any(x => x.douse))
+					{
+						doused.Invoke();
+						if (flameEffect)
+						{
+							flameEffect.GetComponent<ParticleSystem>().Stop();
+						}
+						state = State.Waiting;
+						break;
+					}
+
 					if (burnDuration.Done)
 					{
 						burned.Invoke();
 						if (propagateIgnite)
 						{
-							FindAndSendIgnite();
+							FindAndSendEffect(CreateIgnite);
 						}
 						if (flameEffect)
 						{
@@ -114,25 +129,32 @@ namespace Vestige
 			burnDuration.Update(Time.deltaTime);
 		}
 
-		public void Revive()
+		private void FixedUpdate()
 		{
-			state = State.Waiting;
+			if (state == State.Burning)
+			{
+				FindAndSendEffect(CreateBurn);
+			}
 		}
 
-		private void FindAndSendIgnite()
+		private Effect CreateIgnite()
 		{
-			Collider[] targets = Physics.OverlapSphere(transform.position, propagateIgniteRadius, int.MaxValue, QueryTriggerInteraction.Collide);
-			foreach (Collider c in targets)
+			return new Effect(gameObject) { burn = true, ignite = true };
+		}
+
+		private Effect CreateBurn()
+		{
+			return new Effect(gameObject) { burn = true };
+		}
+
+		private void FindAndSendEffect(Func<Effect> generator)
+		{
+			Collider[] targets = Physics.OverlapSphere(
+				transform.position, propagateIgniteRadius, int.MaxValue, QueryTriggerInteraction.Collide);
+
+			foreach (IRecipient r in SystemicUtil.GetRecipients(targets))
 			{
-				var recipient = c.GetComponent<IRecipient>();
-				if (recipient != null)
-				{
-					Effect effect = new Effect(gameObject)
-					{
-						ignite = true,
-					};
-					recipient.RecieveEffect(effect);
-				}
+				r.RecieveEffect(generator());
 			}
 		}
 

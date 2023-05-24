@@ -163,6 +163,166 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab382f4c7668a2d4d9dd01b14d88a82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignitedBase:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3399917582803039730}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4883970629998380278}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3584853108669258931}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  extinguishedBase:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3399917582803039730}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4883970629998380278}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3584853108669258931}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ignited:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3399917582803039730}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4883970629998380278}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3584853108669258931}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  extinguished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3399917582803039730}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4883970629998380278}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3584853108669258931}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  testIgnite:
+    tooltip: Ignite
+  testExtinguish:
+    tooltip: Extinguish
 --- !u!1001 &3114835589327392858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,6 +404,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2833360705715782268}
     m_Modifications:
+    - target: {fileID: 7886410936900613756, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7886410937998599682, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -292,11 +456,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torch Flame
       objectReference: {fileID: 0}
+    - target: {fileID: 7886410937998599685, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
 --- !u!4 &4883970629998380273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7886410937998599682, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
+  m_PrefabInstance: {fileID: 3365721226631176947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4883970629998380278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7886410937998599685, guid: baa5436e0db54804390e127abcf1a02c, type: 3}
   m_PrefabInstance: {fileID: 3365721226631176947}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3399917582822304306
@@ -312,7 +485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
       propertyPath: m_RootOrder
@@ -372,6 +545,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
+--- !u!198 &3399917582803039730 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
+  m_PrefabInstance: {fileID: 3399917582822304306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3399917582822437042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
