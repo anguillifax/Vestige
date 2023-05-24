@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 203496222619070631, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 203496222619070631, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
       propertyPath: m_LocalPosition.z
@@ -146,17 +146,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 203496222619070631, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
   m_PrefabInstance: {fileID: 8715323287411899572}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8800591016210451478 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 203496222619070626, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
-  m_PrefabInstance: {fileID: 8715323287411899572}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8800591016210451951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4317d3020c594314eb5d52c4ee6053c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8800591016210451951 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 203496222619070811, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
@@ -175,7 +164,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: d0f9b7f43cb29d1459a8056f03ef75b9, type: 2}
-  avatar: {fileID: 8800591016210451478}
-  cameraMain: {fileID: 0}
   lookRotation: {fileID: 0}
   harness: {fileID: 1925389473529542706}
+  overlayContainer: {fileID: 0}
+  died:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &574258930970305162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800591016210451951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4593b956e64718e4a99589d733722460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logEffects: 0

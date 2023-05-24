@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1723740047811224926}
   - component: {fileID: 6243884693895263824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6435202742535634066}
   - component: {fileID: 3194640084679021766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pickup Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 0.98
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3487302486700380615
 PrefabInstance:
@@ -240,14 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af31eef765ad264997de9b8a69d7d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avatar: {fileID: 1695339370352293729}
-  holdable: {fileID: 1998652104387890585}
   maxAmmo: 20
   refillRate: 6
   consumeRate: 3
-  currentAmmo: 0
-  overlay: {fileID: 0}
-  inUse: 0
+  effectTemplate: {fileID: 11400000, guid: 9a398d829cafcd64980b831e46d2312c, type: 2}
 --- !u!114 &1998652104387890585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,31 +256,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634cfad6bf3408e4ea39ff896ed3f357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachable: 1
   config: {fileID: 11400000, guid: 24ac00009edad5a43b1e8ea328b5ec0d, type: 2}
+  autoConfigPhysicsHelper: 1
+  physicsHelper:
+    transform: {fileID: 0}
+    solidColliders: []
+    mainRigidbody: {fileID: 0}
   attached:
     m_PersistentCalls:
       m_Calls: []
   detached:
     m_PersistentCalls:
       m_Calls: []
-  autoConfigPhysicsHelper: 1
-  physicsHelper:
-    transform: {fileID: 0}
-    solidColliders: []
-    mainRigidbody: {fileID: 0}
-  harness: {fileID: 0}
-  overlay: {fileID: 0}
---- !u!114 &1695339370352293729 stripped
+--- !u!114 &8929565582586766960
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2873979420581422758, guid: 9f98ddff9abb8dd4a82f7bb152a6db0d, type: 3}
-  m_PrefabInstance: {fileID: 3487302486700380615}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13000938895825266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e6405627b3b4c4290e48a3823ae941, type: 3}
+  m_Script: {fileID: 11500000, guid: 4593b956e64718e4a99589d733722460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logEffects: 0
 --- !u!4 &4122977174109961883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 671778272962604892, guid: 9f98ddff9abb8dd4a82f7bb152a6db0d, type: 3}

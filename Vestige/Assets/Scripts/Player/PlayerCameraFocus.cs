@@ -8,8 +8,13 @@ namespace Vestige
 	{
 		public PlayerController player;
 
-		private void Update()
+		private void LateUpdate()
 		{
+			if (player == null)
+			{
+				return;
+			}
+
 			transform.position = player.GetCameraFocusPoint();
 		}
 	}

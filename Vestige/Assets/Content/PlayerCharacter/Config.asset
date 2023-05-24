@@ -13,5 +13,20 @@ MonoBehaviour:
   m_Name: Config
   m_EditorClassIdentifier: 
   cameraMouseVertWorldOffset: 0.4
+  healthFire:
+    max: 100
+    depleteRate: 20
+    regenerateRate: 12
+  healthWater:
+    max: 100
+    depleteRate: 2
+    regenerateRate: 18
+  regenBonfireLayer: 9
+  gravityMultiplier: 1.8
   walkVel: 8
   walkAccel: 30
+  pickupRadius: 2
+  pickupOffset: {x: 0, y: 0.5, z: 0}
+  pickupMask:
+    serializedVersion: 2
+    m_Bits: 128

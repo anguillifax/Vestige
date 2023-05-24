@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - PlayerVCam
+  - PlayerHoldableInstructionContainer
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - Water
   - UI
   - Character
-  - 
-  - 
-  - 
+  - Holdable Pickup
+  - Hitbox
+  - Bonfire
   - 
   - 
   - 
