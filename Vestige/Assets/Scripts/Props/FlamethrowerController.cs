@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Vestige
@@ -10,6 +11,11 @@ namespace Vestige
 		// Data
 		// =========================================================
 
+		public enum State
+		{
+			Idle, Firing,
+		}
+
 		[Header("Common")]
 		public float maxAmmo = 20;
 		public float refillRate = 6;
@@ -19,9 +25,16 @@ namespace Vestige
 		private FlamethrowerAvatar avatar;
 		private StandardHoldable holdable;
 		private FlamethrowerOverlay overlay;
+		private StandardRecipient systemic;
 
-		private float currentAmmo;
-		private bool inUse;
+		private State state;
+		private float curAmmo;
+
+		public float CurAmmo
+		{
+			get => curAmmo;
+			set => curAmmo = Mathf.Clamp(value, 0, maxAmmo);
+		}
 
 		// =========================================================
 		// Initialization
@@ -31,6 +44,7 @@ namespace Vestige
 		{
 			avatar = GetComponent<FlamethrowerAvatar>();
 			holdable = GetComponent<StandardHoldable>();
+			systemic = GetComponent<StandardRecipient>();
 
 			holdable.attached.AddListener(OnAttach);
 			holdable.detached.AddListener(OnDetach);
@@ -38,19 +52,21 @@ namespace Vestige
 
 		private void Start()
 		{
-			currentAmmo = maxAmmo;
+			CurAmmo = maxAmmo;
+			state = State.Idle;
 		}
 
 		private void OnAttach()
 		{
 			overlay = holdable.InstructionOverlay.GetComponent<FlamethrowerOverlay>();
-			inUse = false;
+			state = State.Idle;
 		}
 
 		private void OnDetach()
 		{
 			overlay = null;
-			inUse = false;
+			state = State.Idle;
+			avatar.StopFiring();
 		}
 
 		// =========================================================
@@ -60,32 +76,55 @@ namespace Vestige
 		private void Update()
 		{
 			if (holdable.IsHeld) UpdateHoldable();
-
-			if (currentAmmo < maxAmmo && !inUse)
-			{
-				currentAmmo += refillRate * Time.deltaTime;
-				currentAmmo = Mathf.Min(currentAmmo, maxAmmo);
-			}
+			UpdateCommon();
 		}
 
 		private void UpdateHoldable()
 		{
-			bool fire = holdable.InputState.Primary && currentAmmo > 0;
-			if (fire && !inUse)
+			bool hasSoak = systemic.effects.Any(x => x.soak);
+			if (hasSoak)
 			{
-				avatar.StartFiring();
+				overlay.SetWaterlogged();
 			}
-			if (fire)
+			else
 			{
-				currentAmmo -= consumeRate * Time.deltaTime;
+				overlay.SetDried();
 			}
-			if (!fire && inUse)
-			{
-				avatar.StopFiring();
-			}
-			inUse = fire;
 
-			overlay.SetAmmo(currentAmmo);
+			switch (state)
+			{
+				case State.Idle:
+					if (!hasSoak && holdable.InputState.Primary)
+					{
+						avatar.StartFiring();
+						state = State.Firing;
+					}
+					break;
+
+				case State.Firing:
+					CurAmmo -= consumeRate * Time.deltaTime;
+					if (hasSoak || !holdable.InputState.Primary)
+					{
+						avatar.StopFiring();
+						state = State.Idle;
+					}
+					break;
+			}
+
+			overlay.SetAmmo(CurAmmo);
+		}
+
+		private void UpdateCommon()
+		{
+			switch (state)
+			{
+				case State.Idle:
+					CurAmmo += refillRate * Time.deltaTime;
+					break;
+
+				case State.Firing:
+					break;
+			}
 		}
 
 		// =========================================================
@@ -94,14 +133,9 @@ namespace Vestige
 
 		private void OnTriggerStay(Collider other)
 		{
-			if (inUse && other.attachedRigidbody != null)
+			if (state == State.Firing)
 			{
-				var recipient = other.attachedRigidbody.GetComponent<IRecipient>();
-				if (recipient != null)
-				{
-					Effect e = effectTemplate.AsEffect(gameObject);
-					recipient.RecieveEffect(e);
-				}
+				SystemicUtil.BroadcastToRigidbody(effectTemplate, gameObject, other);
 			}
 		}
 	}
