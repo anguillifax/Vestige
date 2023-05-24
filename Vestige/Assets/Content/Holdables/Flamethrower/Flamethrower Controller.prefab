@@ -88,7 +88,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 0.98
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3487302486700380615
 PrefabInstance:
@@ -269,8 +269,19 @@ MonoBehaviour:
   detached:
     m_PersistentCalls:
       m_Calls: []
-  harness: {fileID: 0}
-  overlay: {fileID: 0}
+--- !u!114 &8929565582586766960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13000938895825266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4593b956e64718e4a99589d733722460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logEffects: 0
 --- !u!4 &4122977174109961883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 671778272962604892, guid: 9f98ddff9abb8dd4a82f7bb152a6db0d, type: 3}
