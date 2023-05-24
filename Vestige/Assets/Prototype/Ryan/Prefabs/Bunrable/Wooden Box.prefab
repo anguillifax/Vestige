@@ -333,7 +333,11 @@ MonoBehaviour:
         m_CallState: 2
   useDefaultFlameEffect: 1
   spawnFlameAsChild: 1
-  propagateIgnite: 0
+  doused:
+    m_PersistentCalls:
+      m_Calls: []
+  canDouse: 1
+  propagateIgnite: 1
   propagateIgniteRadius: 5
   burned:
     m_PersistentCalls:
