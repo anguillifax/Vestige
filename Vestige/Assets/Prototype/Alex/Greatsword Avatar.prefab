@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6346832931423101364}
   - component: {fileID: 1034267003925272787}
+  - component: {fileID: 5425760915654703599}
   m_Layer: 0
   m_Name: Greatsword Avatar
   m_TagString: Untagged
@@ -50,6 +51,53 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5425760915654703599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6544580789510809599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c59342a48667524aa231fbe19a46075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignited:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2967775447276646613}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  extinguished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2967775447276646613}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  state: 0
+  testIgnite:
+    tooltip: Ignite
+  testExtinquish:
+    tooltip: Extinguish
 --- !u!1001 &625821445858556777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,12 +215,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 19857706, guid: 9614f35940a59a1439cd47c91d71fde9, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19857706, guid: 9614f35940a59a1439cd47c91d71fde9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19932430, guid: 9614f35940a59a1439cd47c91d71fde9, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9614f35940a59a1439cd47c91d71fde9, type: 3}
+--- !u!198 &2967775447276646613 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19857706, guid: 9614f35940a59a1439cd47c91d71fde9, type: 3}
+  m_PrefabInstance: {fileID: 2967775447294931455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2967775447295043193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 415622, guid: 9614f35940a59a1439cd47c91d71fde9, type: 3}
