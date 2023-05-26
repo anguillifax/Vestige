@@ -9,6 +9,7 @@ namespace Vestige.Prototype
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private Transform[] spawnLocations;
         [SerializeField] private float spawnRadius = 2.5f;
+        [SerializeField] private float playerDetectionRadius = 30f;
         [SerializeField] private int maxSpawnAmount;
         [SerializeField] private float spawnDelay;
 
@@ -165,11 +166,14 @@ namespace Vestige.Prototype
         // Helper function to draw the spawnRadius's in the scene
 		private void OnDrawGizmos()
 		{
-            Gizmos.color = Color.red;
 			for (int i = 0; i < spawnLocations.Length; i++)
 			{
+                Gizmos.color = Color.red;
                 Gizmos.DrawWireSphere(spawnLocations[i].position, spawnRadius);
-			}
+
+                Gizmos.color = Color.blue;
+                Gizmos.DrawWireSphere(spawnLocations[i].position, playerDetectionRadius);
+            }
 		}
 	}
 }
