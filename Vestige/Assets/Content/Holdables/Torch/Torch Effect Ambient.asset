@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Torch Effect Ambient
   m_EditorClassIdentifier: 
   burn: 1
-  ignite: 0
+  ignite: 1
   soak: 0
   douse: 0
   obliterate: 0
