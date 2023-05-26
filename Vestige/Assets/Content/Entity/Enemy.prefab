@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  detectionRadius: 20
+  detectionRadius: 25
   FOV: 60
   agent: {fileID: 0}
   rotationSpeed: 15
@@ -374,6 +374,10 @@ MonoBehaviour:
         m_CallState: 2
   useDefaultFlameEffect: 1
   spawnFlameAsChild: 1
+  doused:
+    m_PersistentCalls:
+      m_Calls: []
+  canDouse: 1
   propagateIgnite: 1
   propagateIgniteRadius: 3
   burned:
