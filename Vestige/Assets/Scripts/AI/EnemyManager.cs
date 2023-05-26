@@ -42,6 +42,7 @@ namespace Vestige
 
 		private void Awake()
 		{
+			
 		}
 
 		private void Start()
@@ -57,6 +58,7 @@ namespace Vestige
 		void Update()
 		{
 			// HARDCODED
+			player = FindObjectOfType<PlayerController>();
 			offset = (offset + 1) % 10;
 			if (offset == 0 && Vector3.Distance(player.transform.position, transform.position) < detectionRadius)
 			{

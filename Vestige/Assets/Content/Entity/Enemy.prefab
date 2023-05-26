@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  detectionRadius: 25
+  detectionRadius: 18
   FOV: 60
   agent: {fileID: 0}
   rotationSpeed: 15
