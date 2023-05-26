@@ -41,6 +41,7 @@ namespace Vestige
 		private StandardHoldable holdable;
 		private StandardThrowable throwable;
 		private StandardRecipient systemic;
+		private bool hitSurfaceAfterThrow;
 
 		// =========================================================
 		// Initialization
@@ -101,6 +102,7 @@ namespace Vestige
 					if (holdable.IsHeld && holdable.InputState.SecondaryDown)
 					{
 						throwable.ThrowObject();
+						hitSurfaceAfterThrow = false;
 						state = State.Thrown;
 					}
 					break;
@@ -135,7 +137,7 @@ namespace Vestige
 						break;
 					}
 
-					if (throwBurningTimer.Done)
+					if (hitSurfaceAfterThrow && throwBurningTimer.Done)
 					{
 						state = State.Idle;
 					}
@@ -181,6 +183,7 @@ namespace Vestige
 		{
 			if (state == State.Thrown)
 			{
+				hitSurfaceAfterThrow = true;
 				throwBurningTimer.Start();
 			}
 		}
