@@ -103,8 +103,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0650465, z: 1}
-  m_Center: {x: 0, y: 0.5326597, z: 0}
+  m_Size: {x: 1.0592968, y: 1.0582459, z: 1.0460917}
+  m_Center: {x: 0.008171368, y: 0.53958607, z: 0.0046746046}
 --- !u!1 &6618764288820752663
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +217,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64819706346545198, guid: f5d18f98ce863ec418f3683ffd58ad85, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5d18f98ce863ec418f3683ffd58ad85, type: 3}
 --- !u!64 &155655007953404613 stripped
@@ -245,6 +249,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8642099525162307804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202299463357411581}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0709825, y: 1.0709833, z: 1.0709801}
+  m_Center: {x: 0.00000023841858, y: 0.53549165, z: 0.0000019073486}
 --- !u!114 &1028711491857392242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +350,11 @@ MonoBehaviour:
         m_CallState: 2
   useDefaultFlameEffect: 1
   spawnFlameAsChild: 1
-  propagateIgnite: 0
+  doused:
+    m_PersistentCalls:
+      m_Calls: []
+  canDouse: 1
+  propagateIgnite: 1
   propagateIgniteRadius: 5
   burned:
     m_PersistentCalls:

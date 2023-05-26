@@ -147,7 +147,7 @@ MonoBehaviour:
   countdown:
     duration: 3
     elapsed: 0
-  allowIgniteToCauseExplosion: 1
+  allowIgniteToCauseExplosion: 0
 --- !u!114 &3020314754436133074
 MonoBehaviour:
   m_ObjectHideFlags: 0
