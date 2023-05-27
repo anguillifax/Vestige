@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2658190670006077596, guid: 98444a4837996bb4cb97ac48efc27d8e, type: 3}
+      propertyPath: throwBurningTimer.duration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2833360705715782268, guid: 98444a4837996bb4cb97ac48efc27d8e, type: 3}
       propertyPath: m_RootOrder
       value: 0

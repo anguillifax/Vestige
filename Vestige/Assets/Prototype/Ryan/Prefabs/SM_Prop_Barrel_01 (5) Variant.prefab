@@ -54,7 +54,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 123292, guid: df22dae66d96c2944adb65e1661878de, type: 3}
       propertyPath: m_Name
-      value: SM_Prop_Barrel_01 (5)
+      value: SM_Prop_Barrel_01 (5) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 410682, guid: df22dae66d96c2944adb65e1661878de, type: 3}
       propertyPath: m_RootOrder
@@ -207,6 +207,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1121871166752515745}
+        m_TargetAssemblyTypeName: Vestige.SpawnDestroyGameObject, Vestige
+        m_MethodName: InstantiateTemplate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   destroyOnBurned: 1
 --- !u!114 &1748801278
 MonoBehaviour:
@@ -263,3 +275,16 @@ MonoBehaviour:
   detached:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1121871166752515745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628079551387793252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be26554656e88e4aa629c3369c52ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template: {fileID: 5014879016375439773, guid: c004e0e4bd5a5f044b6294060f34005b, type: 3}

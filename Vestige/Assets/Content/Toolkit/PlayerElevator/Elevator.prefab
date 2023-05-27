@@ -103,8 +103,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.0807426, z: 1}
+  m_Center: {x: 0, y: 0.5403715, z: 0}
 --- !u!114 &4767758097831976694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +186,6 @@ MonoBehaviour:
   start: {fileID: 0}
   end: {fileID: 0}
   speed: 2
-  moveType: 1
 --- !u!54 &4767758097961320399
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -247,8 +246,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.8202858, z: 1}
+  m_Center: {x: 0, y: 0.41014326, z: 0}
 --- !u!114 &4767758098036597199
 MonoBehaviour:
   m_ObjectHideFlags: 0
