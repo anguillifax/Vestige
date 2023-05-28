@@ -569,6 +569,11 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.04
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &402958264 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7261788576576178284, guid: 0c10f2843dddb8f4e896486714ade8e7, type: 3}
+  m_PrefabInstance: {fileID: 2877272632656476188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &439035601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1785,6 +1790,7 @@ Transform:
   - {fileID: 346573}
   - {fileID: 1005176087}
   - {fileID: 332264852}
+  - {fileID: 402958264}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2636,19 +2642,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1377402376}
     m_Modifications:
-    - target: {fileID: 3349126452381114453, guid: 0c10f2843dddb8f4e896486714ade8e7, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4291217766375312601, guid: 0c10f2843dddb8f4e896486714ade8e7, type: 3}
       propertyPath: m_Name
       value: Flame Pit
       objectReference: {fileID: 0}
     - target: {fileID: 7261788576576178284, guid: 0c10f2843dddb8f4e896486714ade8e7, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7261788576576178284, guid: 0c10f2843dddb8f4e896486714ade8e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2668,15 +2670,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7261788576576178284, guid: 0c10f2843dddb8f4e896486714ade8e7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7261788576576178284, guid: 0c10f2843dddb8f4e896486714ade8e7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7261788576576178284, guid: 0c10f2843dddb8f4e896486714ade8e7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7261788576576178284, guid: 0c10f2843dddb8f4e896486714ade8e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
