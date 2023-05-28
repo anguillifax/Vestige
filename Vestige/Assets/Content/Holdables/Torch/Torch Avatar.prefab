@@ -996,6 +996,10 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8988316386539343318, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8988316386838748224, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
       propertyPath: m_Name
       value: SlashEffect
@@ -1006,7 +1010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8988316386838748238, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 12
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8988316386838748239, guid: b8d46d65497a88e498186de30e8f1a4a, type: 3}
       propertyPath: m_RootOrder

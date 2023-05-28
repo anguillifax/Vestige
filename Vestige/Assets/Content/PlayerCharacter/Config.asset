@@ -19,7 +19,7 @@ MonoBehaviour:
     regenerateRate: 12
   healthWater:
     max: 100
-    depleteRate: 2
+    depleteRate: 0
     regenerateRate: 18
   regenBonfireLayer: 9
   gravityMultiplier: 1.8
