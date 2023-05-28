@@ -25,6 +25,9 @@ namespace Vestige
 		[Header("Health")]
 		public UnityEvent died;
 
+		[Header("Debug")]
+		public InspectorCallbackButton testKill = new InspectorCallbackButton("Kill Player");
+
 		private PlayerAvatar avatar;
 		private Rigidbody rbody;
 		private HoldableHarness harness;
@@ -63,6 +66,7 @@ namespace Vestige
 			healthbar = FindObjectOfType<PlayerHealthbarAvatar>();
 			overlayContainer = GameObject.FindWithTag("PlayerHoldableInstructionContainer").GetComponent<RectTransform>();
 			cameraMain = Camera.main;
+			testKill.callback = Kill;
 
 			harness.overlayContainer = overlayContainer;
 			lookRotation = GameObject.FindWithTag("PlayerVCam").transform;
@@ -248,6 +252,7 @@ namespace Vestige
 		public void Kill()
 		{
 			died.Invoke();
+			avatar.StartDeathEffects();
 			harness.Detach();
 			Destroy(gameObject);
 			FindObjectOfType<GameSession>().RespawnAfterDelay();

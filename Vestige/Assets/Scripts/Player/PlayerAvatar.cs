@@ -24,8 +24,12 @@ namespace Vestige
 		public UnityEvent hurtStarted;
 		public UnityEvent hurtStopped;
 
+		[Header("Death")]
+		public UnityEvent died;
+
 		private HurtState hurtCur;
 		private Animator anim;
+		private bool hasDied;
 
 		// =========================================================
 		// Implementation
@@ -36,6 +40,7 @@ namespace Vestige
 			anim = GetComponent<Animator>();
 
 			hurtCur = HurtState.Idle;
+			hasDied = false;
 		}
 
 		private void Update()
@@ -69,6 +74,15 @@ namespace Vestige
 						hurtCur = HurtState.Idle;
 					}
 					break;
+			}
+		}
+
+		public void StartDeathEffects()
+		{
+			if (!hasDied)
+			{
+				hasDied = true;
+				died.Invoke();
 			}
 		}
 	}
