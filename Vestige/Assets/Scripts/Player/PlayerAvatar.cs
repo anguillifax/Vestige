@@ -1,28 +1,96 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Vestige
 {
 	public class PlayerAvatar : MonoBehaviour
 	{
-		public float horzVel;
-		public float vertVel;
+		// =========================================================
+		// Types
+		// =========================================================
 
-		public Rigidbody Rigidbody { get; private set; }
+		public enum HurtState
+		{
+			Idle, Hurt,
+		}
 
+		// =========================================================
+		// Variables
+		// =========================================================
+
+		[Header("Model")]
+		public Transform modelRoot;
+		public float modelRotateSpeed = 30;
+		
+		[Header("Hurt Effect")]
+		public UnityEvent hurtStarted;
+		public UnityEvent hurtStopped;
+
+		[Header("Death")]
+		public UnityEvent died;
+
+		private HurtState hurtCur;
 		private Animator anim;
+		private bool hasDied;
+		private Vector3 curDir;
+
+		// =========================================================
+		// Implementation
+		// =========================================================
 
 		private void Awake()
 		{
-			Rigidbody = GetComponent<Rigidbody>();
 			anim = GetComponent<Animator>();
+
+			hurtCur = HurtState.Idle;
+			hasDied = false;
 		}
 
 		private void Update()
 		{
-			//anim.SetFloat("Vertical", vertVel);
-			//anim.SetFloat("Horizontal", horzVel);
+			//modelRoot.rotation = Quaternion.LookRotation(curDir, Vector3.up);
+		}
+
+		// =========================================================
+		// Public Interface
+		// =========================================================
+
+		public void SetWalk(float x, float y)
+		{
+			curDir = transform.TransformDirection(new Vector3(x, 0, y));
+		}
+
+		public void SetHurtEffect(bool active)
+		{
+			switch (hurtCur)
+			{
+				case HurtState.Idle:
+					if (active)
+					{
+						hurtStarted.Invoke();
+						hurtCur = HurtState.Hurt;
+					}
+					break;
+
+				case HurtState.Hurt:
+					if (!active)
+					{
+						hurtStopped.Invoke();
+						hurtCur = HurtState.Idle;
+					}
+					break;
+			}
+		}
+
+		public void StartDeathEffects()
+		{
+			if (!hasDied)
+			{
+				hasDied = true;
+				died.Invoke();
+			}
 		}
 	}
 }
