@@ -20,6 +20,10 @@ namespace Vestige
 		// Variables
 		// =========================================================
 
+		[Header("Model")]
+		public Transform modelRoot;
+		public float modelRotateSpeed = 30;
+		
 		[Header("Hurt Effect")]
 		public UnityEvent hurtStarted;
 		public UnityEvent hurtStopped;
@@ -30,6 +34,7 @@ namespace Vestige
 		private HurtState hurtCur;
 		private Animator anim;
 		private bool hasDied;
+		private Vector3 curDir;
 
 		// =========================================================
 		// Implementation
@@ -45,14 +50,16 @@ namespace Vestige
 
 		private void Update()
 		{
+			//modelRoot.rotation = Quaternion.LookRotation(curDir, Vector3.up);
 		}
 
 		// =========================================================
 		// Public Interface
 		// =========================================================
 
-		public void SetWalk(Vector2 xy)
+		public void SetWalk(float x, float y)
 		{
+			curDir = transform.TransformDirection(new Vector3(x, 0, y));
 		}
 
 		public void SetHurtEffect(bool active)

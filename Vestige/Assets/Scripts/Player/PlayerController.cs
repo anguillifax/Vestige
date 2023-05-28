@@ -218,6 +218,8 @@ namespace Vestige
 			vel.y += extraGravity.y * Time.fixedDeltaTime;
 
 			rbody.velocity = vel;
+
+			avatar.SetWalk(vel.x, vel.y);
 		}
 
 		private void UpdateLookRotation()
