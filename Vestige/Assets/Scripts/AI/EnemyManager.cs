@@ -42,18 +42,25 @@ namespace Vestige
 
 		private void Awake()
 		{
-			agent = GetComponent<NavMeshAgent>();
-			anim = GetComponentInChildren<EnemyAnim>();
-			locomotion = GetComponent<EnemyLocomotion>();
-			player = FindObjectOfType<PlayerController>();
-			offset = Random.Range(0, 10);
+			
+		}
+
+		private void Start()
+		{
+				//Moved to start because awake not working b/c null reference, disables script - Ryan
+				agent = GetComponent<NavMeshAgent>();
+				anim = GetComponentInChildren<EnemyAnim>();
+				locomotion = GetComponent<EnemyLocomotion>();
+				player = FindObjectOfType<PlayerController>();
+				offset = Random.Range(0, 10);	
 		}
 
 		void Update()
 		{
 			// HARDCODED
+			player = FindObjectOfType<PlayerController>();
 			offset = (offset + 1) % 10;
-			if (offset == 0 && Vector3.Distance(player.transform.position, transform.position) < 10)
+			if (offset == 0 && Vector3.Distance(player.transform.position, transform.position) < detectionRadius)
 			{
 				currentTarget = player.transform;
 			}
@@ -65,6 +72,13 @@ namespace Vestige
 			{
 				anim.ApplyTargetAnimation("attack_02", true);
 			}
+		}
+
+		void OnDrawGizmosSelected()
+		{
+			// Draw a yellow sphere at the transform's position
+			Gizmos.color = Color.blue;
+			Gizmos.DrawWireSphere(transform.position, detectionRadius);
 		}
 	}
 }

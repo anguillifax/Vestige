@@ -146,12 +146,12 @@ namespace Vestige
 				nonPlayer = systemic.effects.Where(x => x.source != harness.Target.Root);
 			}
 
-			if (nonPlayer.Any(x => x.ignite || x.burn))
+			if (nonPlayer.Any(x => x.ignite))
 			{
 				HealthFire -= config.healthFire.depleteRate * Time.deltaTime;
 			}
 
-			if (nonPlayer.Any(x => x.douse || x.soak))
+			if (nonPlayer.Any(x => x.douse))
 			{
 				HealthWater -= config.healthWater.depleteRate * Time.deltaTime;
 			}
