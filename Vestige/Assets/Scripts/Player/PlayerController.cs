@@ -26,6 +26,7 @@ namespace Vestige
 		public UnityEvent died;
 
 		private PlayerAvatar avatar;
+		private Rigidbody rbody;
 		private HoldableHarness harness;
 		private StandardRecipient systemic;
 		private float curFireHealth;
@@ -57,6 +58,7 @@ namespace Vestige
 			harness = GetComponentInChildren<HoldableHarness>();
 			systemic = GetComponent<StandardRecipient>();
 			avatar = GetComponent<PlayerAvatar>();
+			rbody = GetComponent<Rigidbody>();
 
 			healthbar = FindObjectOfType<PlayerHealthbarAvatar>();
 			overlayContainer = GameObject.FindWithTag("PlayerHoldableInstructionContainer").GetComponent<RectTransform>();
@@ -149,6 +151,11 @@ namespace Vestige
 			if (nonPlayer.Any(x => x.ignite))
 			{
 				HealthFire -= config.healthFire.depleteRate * Time.deltaTime;
+				avatar.SetHurtEffect(true);
+			}
+			else
+			{
+				avatar.SetHurtEffect(false);
 			}
 
 			if (nonPlayer.Any(x => x.douse))
@@ -185,7 +192,7 @@ namespace Vestige
 
 		private void UpdateMovement()
 		{
-			Vector3 vel = avatar.Rigidbody.velocity;
+			Vector3 vel = rbody.velocity;
 			vel.y = 0;
 
 			Vector3 inputs = new Vector3(
@@ -201,12 +208,12 @@ namespace Vestige
 				rotated * config.walkVel,
 				config.walkAccel * Time.fixedDeltaTime);
 
-			vel.y = avatar.Rigidbody.velocity.y;
+			vel.y = rbody.velocity.y;
 
 			Vector3 extraGravity = Mathf.Max(0, config.gravityMultiplier - 1) * Physics.gravity;
 			vel.y += extraGravity.y * Time.fixedDeltaTime;
 
-			avatar.Rigidbody.velocity = vel;
+			rbody.velocity = vel;
 		}
 
 		private void UpdateLookRotation()
@@ -216,7 +223,7 @@ namespace Vestige
 			if (delta.sqrMagnitude > 0)
 			{
 				Quaternion angle = Quaternion.LookRotation(delta.normalized, Vector3.up);
-				avatar.Rigidbody.MoveRotation(angle);
+				rbody.MoveRotation(angle);
 				//harness.transform.rotation = angle;
 			}
 		}
