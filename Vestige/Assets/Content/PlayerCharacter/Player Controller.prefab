@@ -128,6 +128,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 203496222619070811, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652178562225027479, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437979908106596565, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
 --- !u!4 &8800591016210451475 stripped
@@ -140,20 +152,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 203496222619070811, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
   m_PrefabInstance: {fileID: 8715323287411899572}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &8464289643176307073
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8800591016210451951}
-  m_Material: {fileID: 13400000, guid: d6e5cd4457733c04599b967b43e353ed, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &4791177877454600703
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -170,6 +168,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &8464289643176307073
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800591016210451951}
+  m_Material: {fileID: 13400000, guid: d6e5cd4457733c04599b967b43e353ed, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2055658662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +202,8 @@ MonoBehaviour:
   died:
     m_PersistentCalls:
       m_Calls: []
+  testKill:
+    tooltip: Kill Player
 --- !u!114 &574258930970305162
 MonoBehaviour:
   m_ObjectHideFlags: 0
