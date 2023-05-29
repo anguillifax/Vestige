@@ -22,6 +22,7 @@ namespace Vestige
 
 		[Header("Model")]
 		public Transform modelRoot;
+		public Animator modelAnimator;
 		public float modelRotateSpeed = 30;
 		
 		[Header("Hurt Effect")]
@@ -32,9 +33,7 @@ namespace Vestige
 		public UnityEvent died;
 
 		private HurtState hurtCur;
-		private Animator anim;
 		private bool hasDied;
-		private Vector3 curDir;
 
 		// =========================================================
 		// Implementation
@@ -42,8 +41,6 @@ namespace Vestige
 
 		private void Awake()
 		{
-			anim = GetComponent<Animator>();
-
 			hurtCur = HurtState.Idle;
 			hasDied = false;
 		}
@@ -57,9 +54,10 @@ namespace Vestige
 		// Public Interface
 		// =========================================================
 
-		public void SetWalk(float x, float y)
+		public void SetWalk(float x, float z)
 		{
-			curDir = transform.TransformDirection(new Vector3(x, 0, y));
+			Vector3 vel = new Vector3(x, 0, z);
+			modelAnimator.SetFloat("Speed", vel.magnitude);
 		}
 
 		public void SetHurtEffect(bool active)

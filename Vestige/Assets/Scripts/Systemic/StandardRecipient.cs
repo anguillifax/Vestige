@@ -12,7 +12,12 @@ namespace Vestige
 
 		public EffectCache effects = new EffectCache();
 
-		private void LateUpdate()
+		private void FixedUpdate()
+		{
+			UpdateData();
+		}
+
+		private void UpdateData()
 		{
 			if (logEffects && effects.Count > 0)
 			{

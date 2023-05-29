@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FMODUnity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -23,6 +24,12 @@ namespace Vestige
 		[Header("Common")]
 		public ManualTimer countdown = new ManualTimer(3);
 		public bool allowIgniteToCauseExplosion = true;
+
+		[Header("Sound")]
+		public StudioEventEmitter evPickup;
+		public StudioEventEmitter evThrow;
+		public StudioEventEmitter evPullPin;
+		public StudioEventEmitter evExplode;
 
 		private State state;
 		private WaterBombSimpleAvatar avatar;
@@ -58,6 +65,7 @@ namespace Vestige
 			{
 				holdable.InstructionOverlay.GetComponent<WaterBombOverlay>().SetHasActivated();
 			}
+			evPickup.Play();
 		}
 
 		private void Update()
@@ -78,7 +86,11 @@ namespace Vestige
 			{
 				throwable.ThrowObject();
 				countdown.Start();
+
 				avatar.Activate();
+				evThrow.Play();
+				evPullPin.Play();
+
 				state = State.Burning;
 				return;
 			}
@@ -89,6 +101,8 @@ namespace Vestige
 			if (activateCondition)
 			{
 				countdown.Start();
+
+				evPullPin.Play();
 				avatar.Activate();
 
 				if (holdable.IsHeld)
@@ -107,6 +121,7 @@ namespace Vestige
 			if (holdable.IsHeld && holdable.InputState.SecondaryDown)
 			{
 				throwable.ThrowObject();
+				evThrow.Play();
 			}
 
 			if (countdown.Done)
@@ -121,8 +136,13 @@ namespace Vestige
 			{
 				holdable.Harness.Detach();
 			}
+
 			explosion.Explode();
 			avatar.Detonate();
+
+			evPullPin.Stop();
+			evExplode.Play();
+
 			state = State.Consumed;
 		}
 
