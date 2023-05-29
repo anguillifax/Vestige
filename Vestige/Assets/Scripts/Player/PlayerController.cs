@@ -219,7 +219,7 @@ namespace Vestige
 
 			rbody.velocity = vel;
 
-			avatar.SetWalk(vel.x, vel.y);
+			avatar.SetWalk(vel.x, vel.z);
 		}
 
 		private void UpdateLookRotation()
