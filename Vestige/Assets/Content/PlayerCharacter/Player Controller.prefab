@@ -61,17 +61,6 @@ PrefabInstance:
       objectReference: {fileID: 8800591016210451951}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 298fd38b7e528b74f8005ce8534f5239, type: 3}
---- !u!114 &1925389473529542706 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9176904516683215612, guid: 298fd38b7e528b74f8005ce8534f5239, type: 3}
-  m_PrefabInstance: {fileID: 7341625571221539534}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211a72e63e4f14144a567b42198d04da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8715323287411899572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,6 +140,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 203496222619070811, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
   m_PrefabInstance: {fileID: 8715323287411899572}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &8464289643176307073
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800591016210451951}
+  m_Material: {fileID: 13400000, guid: d6e5cd4457733c04599b967b43e353ed, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &4791177877454600703
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800591016210451951}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!114 &2055658662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,9 +183,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: d0f9b7f43cb29d1459a8056f03ef75b9, type: 2}
+  healthbar: {fileID: 0}
   lookRotation: {fileID: 0}
-  harness: {fileID: 1925389473529542706}
   overlayContainer: {fileID: 0}
+  cameraMain: {fileID: 0}
   died:
     m_PersistentCalls:
       m_Calls: []

@@ -1968,9 +1968,9 @@
     "m_ShaderOutputName": "Emission",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 2.8751399517059328,
-        "y": 3.434330701828003,
-        "z": 3.5232930183410646
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -2130,9 +2130,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 2.670156955718994,
-        "g": 2.670156955718994,
-        "b": 2.670156955718994,
+        "r": 3.5648696422576906,
+        "g": 0.0,
+        "b": 0.0,
         "a": 0.0
     },
     "isMainColor": false,
