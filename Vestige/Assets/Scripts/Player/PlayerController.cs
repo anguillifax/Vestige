@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FMODUnity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,6 +25,10 @@ namespace Vestige
 
 		[Header("Health")]
 		public UnityEvent died;
+
+		[Header("Sound")]
+		public StudioEventEmitter evSpawn;
+		public StudioEventEmitter evDeath;
 
 		[Header("Debug")]
 		public InspectorCallbackButton testKill = new InspectorCallbackButton("Kill Player");
@@ -73,6 +78,11 @@ namespace Vestige
 
 			HealthFire = config.healthFire.max;
 			HealthWater = config.healthWater.max;
+		}
+
+		private void Start()
+		{
+			evSpawn.Play();
 		}
 
 		private void OnEnable()
@@ -255,6 +265,7 @@ namespace Vestige
 		{
 			died.Invoke();
 			avatar.StartDeathEffects();
+			evDeath.Play();
 			harness.Detach();
 			Destroy(gameObject);
 			FindObjectOfType<GameSession>().RespawnAfterDelay();

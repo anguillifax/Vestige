@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FMODUnity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,6 +22,12 @@ namespace Vestige
 		public float refillRate = 6;
 		public float consumeRate = 3;
 		public SystemicEffectTemplate effectTemplate;
+
+		[Header("Sound")]
+		public StudioEventEmitter evPickup;
+		public StudioEventEmitter evStart;
+		public StudioEventEmitter evStop;
+		public StudioEventEmitter evRestart;
 
 		private FlamethrowerAvatar avatar;
 		private StandardHoldable holdable;
@@ -59,6 +66,7 @@ namespace Vestige
 		private void OnAttach()
 		{
 			overlay = holdable.InstructionOverlay.GetComponent<FlamethrowerOverlay>();
+			evPickup.Play();
 			state = State.Idle;
 		}
 
@@ -83,13 +91,9 @@ namespace Vestige
 		{
 			bool hasSoak = systemic.effects.Any(x => x.soak);
 			if (hasSoak)
-			{
 				overlay.SetWaterlogged();
-			}
 			else
-			{
 				overlay.SetDried();
-			}
 
 			switch (state)
 			{
@@ -97,6 +101,10 @@ namespace Vestige
 					if (!hasSoak && holdable.InputState.Primary)
 					{
 						avatar.StartFiring();
+						if (CurAmmo < maxAmmo)
+							evRestart.Play();
+						else
+							evStart.Play();
 						state = State.Firing;
 					}
 					break;
@@ -105,6 +113,7 @@ namespace Vestige
 					CurAmmo -= consumeRate * Time.deltaTime;
 					if (hasSoak || !holdable.InputState.Primary)
 					{
+						evStop.Play();
 						avatar.StopFiring();
 						state = State.Idle;
 					}
