@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Vestige
 {
@@ -12,11 +13,23 @@ namespace Vestige
 		[SerializeField]
 		protected float explosionTimer;
 
+		[Header("Events")]
+		public UnityEvent activated;
+
 		[Header("Debug")]
-		[SerializeField] private InspectorCallbackButton testExplode = new InspectorCallbackButton("Explode");
+		public InspectorCallbackButton testActivate = new InspectorCallbackButton("Activate");
+		public InspectorCallbackButton testExplode = new InspectorCallbackButton("Explode");
+
 		void Awake()
 		{
+			testActivate.callback = Activate;
 			testExplode.callback = Explode;
+		}
+
+
+		public void Activate()
+		{
+			activated.Invoke();
 		}
 
 		public void Explode()
