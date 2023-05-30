@@ -11,6 +11,18 @@ namespace Vestige
 		public TMP_Text tipText;
 		public GameObject tipObject;
 
+		[Header("ButtonsUI")]
+		public GameObject buttonIcon;
+		/*
+		public GameObject e;
+		public GameObject rightClick;
+		public GameObject leftClick;
+
+		private bool eUI = false;
+		private bool rightClickUI = false;
+		private bool leftClickUI = false;
+		*/
+
 		private void Start()
 		{
 			tipObject.SetActive(false);
@@ -20,6 +32,11 @@ namespace Vestige
 		{
 			if (other.gameObject.GetComponent<PlayerController>())
 			{
+				if(buttonIcon != null)
+				{
+					buttonIcon.SetActive(true);
+				}
+
 				tipObject.SetActive(true);
 				tipText.text = tipMessage;
 
@@ -30,6 +47,10 @@ namespace Vestige
 		{
 			if (other.gameObject.GetComponent<PlayerController>())
 			{
+				if (buttonIcon != null)
+				{
+					buttonIcon.SetActive(false);
+				}
 				tipObject.SetActive(false);
 			}
 		}
