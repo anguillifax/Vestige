@@ -282,13 +282,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  detectionRadius: 18
+  detectionRadius: 30
   FOV: 60
   agent: {fileID: 0}
   rotationSpeed: 15
   chaseSpeed: 5
   stopDistance: 1.5
-  chaseDistance: 20
+  chaseDistance: 30
   currentTarget: {fileID: 0}
   distanceFromPlayer: 0
   WalkBlend: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBurn: 1
   burnDuration:
-    duration: 10
+    duration: 6
     elapsed: 0
   ignited:
     m_PersistentCalls:
