@@ -109,7 +109,22 @@ namespace Vestige
 		}
 		void OnFire(Transform waterPosition)
 		{
-			agent.enabled = false;
+			if (waterPosition == null)
+			{
+				agent.enabled = false;
+				if (!isInteracting)
+				{
+					anim.ApplyTargetAnimation("catchFire", true);
+				}
+
+			}
+			else
+			{
+				agent.enabled = true;
+				anim.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+				agent.SetDestination(waterPosition.position);
+			}
+
 		}
 		// private void WalkRandomly()
 		// {
