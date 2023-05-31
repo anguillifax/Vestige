@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FMODUnity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -36,6 +37,12 @@ namespace Vestige
 		public ManualTimer throwBurningTimer = new ManualTimer(2);
 		public SystemicEffectTemplate throwEffect;
 
+		[Header("Sound")]
+		public StudioEventEmitter evPickup;
+		public StudioEventEmitter evIgnite;
+		public StudioEventEmitter evExtinguish;
+		public StudioEventEmitter evThrow;
+
 		private State state;
 		private TorchAvatar avatar;
 		private StandardHoldable holdable;
@@ -54,16 +61,22 @@ namespace Vestige
 			throwable = GetComponent<StandardThrowable>();
 			systemic = GetComponent<StandardRecipient>();
 
-			holdable.attached.AddListener(PickupReset);
-			PickupReset();
+			holdable.attached.AddListener(OnAttach);
+			OnAttach();
 		}
 
-		private void PickupReset()
+		private void Start()
+		{
+			evIgnite.Play();
+		}
+
+		private void OnAttach()
 		{
 			if (!(state == State.Idle || state == State.Extinguished))
 			{
 				state = State.Idle;
 			}
+			evPickup.Play();
 		}
 
 		// =========================================================
@@ -102,6 +115,7 @@ namespace Vestige
 					if (holdable.IsHeld && holdable.InputState.SecondaryDown)
 					{
 						throwable.ThrowObject();
+						evThrow.Play();
 						hitSurfaceAfterThrow = false;
 						state = State.Thrown;
 					}
@@ -147,11 +161,14 @@ namespace Vestige
 					if (systemic.effects.Any(x => x.ignite && x.source != gameObject))
 					{
 						avatar.Ignite();
+						evExtinguish.Stop();
+						evIgnite.Play();
 						state = State.Idle;
 					}
 
 					if (holdable.IsHeld && holdable.InputState.SecondaryDown)
 					{
+						evThrow.Play();
 						throwable.ThrowObject();
 					}
 
@@ -162,6 +179,8 @@ namespace Vestige
 		private void GotoExtinguished()
 		{
 			avatar.Extinguish();
+			evIgnite.Stop();
+			evExtinguish.Play();
 			state = State.Extinguished;
 		}
 
