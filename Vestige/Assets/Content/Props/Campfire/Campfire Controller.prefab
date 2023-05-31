@@ -209,6 +209,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Campfire Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 8755617711907314518, guid: 63c1cf0cb51b49c4c880b204c2a21cc1, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782667296450945169, guid: 63c1cf0cb51b49c4c880b204c2a21cc1, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782667296450945169, guid: 63c1cf0cb51b49c4c880b204c2a21cc1, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782667296450945169, guid: 63c1cf0cb51b49c4c880b204c2a21cc1, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c1cf0cb51b49c4c880b204c2a21cc1, type: 3}
 --- !u!4 &2144305146360205710 stripped

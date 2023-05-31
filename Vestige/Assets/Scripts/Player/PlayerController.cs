@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FMODUnity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -25,7 +26,15 @@ namespace Vestige
 		[Header("Health")]
 		public UnityEvent died;
 
+		[Header("Sound")]
+		public StudioEventEmitter evSpawn;
+		public StudioEventEmitter evDeath;
+
+		[Header("Debug")]
+		public InspectorCallbackButton testKill = new InspectorCallbackButton("Kill Player");
+
 		private PlayerAvatar avatar;
+		private Rigidbody rbody;
 		private HoldableHarness harness;
 		private StandardRecipient systemic;
 		private float curFireHealth;
@@ -57,16 +66,23 @@ namespace Vestige
 			harness = GetComponentInChildren<HoldableHarness>();
 			systemic = GetComponent<StandardRecipient>();
 			avatar = GetComponent<PlayerAvatar>();
+			rbody = GetComponent<Rigidbody>();
 
 			healthbar = FindObjectOfType<PlayerHealthbarAvatar>();
 			overlayContainer = GameObject.FindWithTag("PlayerHoldableInstructionContainer").GetComponent<RectTransform>();
 			cameraMain = Camera.main;
+			testKill.callback = Kill;
 
 			harness.overlayContainer = overlayContainer;
 			lookRotation = GameObject.FindWithTag("PlayerVCam").transform;
 
 			HealthFire = config.healthFire.max;
 			HealthWater = config.healthWater.max;
+		}
+
+		private void Start()
+		{
+			evSpawn.Play();
 		}
 
 		private void OnEnable()
@@ -146,12 +162,17 @@ namespace Vestige
 				nonPlayer = systemic.effects.Where(x => x.source != harness.Target.Root);
 			}
 
-			if (nonPlayer.Any(x => x.ignite || x.burn))
+			if (nonPlayer.Any(x => x.ignite))
 			{
 				HealthFire -= config.healthFire.depleteRate * Time.deltaTime;
+				avatar.SetHurtEffect(true);
+			}
+			else
+			{
+				avatar.SetHurtEffect(false);
 			}
 
-			if (nonPlayer.Any(x => x.douse || x.soak))
+			if (nonPlayer.Any(x => x.douse))
 			{
 				HealthWater -= config.healthWater.depleteRate * Time.deltaTime;
 			}
@@ -185,7 +206,7 @@ namespace Vestige
 
 		private void UpdateMovement()
 		{
-			Vector3 vel = avatar.Rigidbody.velocity;
+			Vector3 vel = rbody.velocity;
 			vel.y = 0;
 
 			Vector3 inputs = new Vector3(
@@ -201,12 +222,14 @@ namespace Vestige
 				rotated * config.walkVel,
 				config.walkAccel * Time.fixedDeltaTime);
 
-			vel.y = avatar.Rigidbody.velocity.y;
+			vel.y = rbody.velocity.y;
 
 			Vector3 extraGravity = Mathf.Max(0, config.gravityMultiplier - 1) * Physics.gravity;
 			vel.y += extraGravity.y * Time.fixedDeltaTime;
 
-			avatar.Rigidbody.velocity = vel;
+			rbody.velocity = vel;
+
+			avatar.SetWalk(vel.x, vel.z);
 		}
 
 		private void UpdateLookRotation()
@@ -216,7 +239,7 @@ namespace Vestige
 			if (delta.sqrMagnitude > 0)
 			{
 				Quaternion angle = Quaternion.LookRotation(delta.normalized, Vector3.up);
-				avatar.Rigidbody.MoveRotation(angle);
+				rbody.MoveRotation(angle);
 				//harness.transform.rotation = angle;
 			}
 		}
@@ -241,6 +264,8 @@ namespace Vestige
 		public void Kill()
 		{
 			died.Invoke();
+			avatar.StartDeathEffects();
+			evDeath.Play();
 			harness.Detach();
 			Destroy(gameObject);
 			FindObjectOfType<GameSession>().RespawnAfterDelay();

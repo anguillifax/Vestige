@@ -19,6 +19,7 @@ namespace Vestige
 		{
 			testStart.callback = StartFiring;
 			testStop.callback = StopFiring;
+			stopped.Invoke();
 		}
 
 		public void StartFiring()
