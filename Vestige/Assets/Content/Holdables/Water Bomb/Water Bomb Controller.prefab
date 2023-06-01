@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdown:
-    duration: 3
+    duration: 2
     elapsed: 0
   allowIgniteToCauseExplosion: 0
   evPickup: {fileID: 381867883113360075}
