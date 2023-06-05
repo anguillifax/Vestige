@@ -5,7 +5,7 @@
 			<value>Water_Bomb_Explosion</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9f679893-2e55-417f-b370-e29bce1255c4}</destination>
@@ -59,11 +59,18 @@
 	<object class="EventAutomatableProperties" id="{78d0e54e-91f5-42fe-b218-b39fe8a0f021}" />
 	<object class="MarkerTrack" id="{25a12ac1-bed0-4f5b-8d2d-fc8564fd525e}" />
 	<object class="GroupTrack" id="{ccd1c9b2-bafd-432c-bc98-737b23c0eb1f}">
+		<relationship name="modules">
+			<destination>{87e8fb3d-8380-49c5-98cb-7c511bcae574}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{5470cdd0-20a1-4d5b-8980-cd61559c19be}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{1b8372ce-b198-4639-85a3-f626090e1f9a}" />
+	<object class="Timeline" id="{1b8372ce-b198-4639-85a3-f626090e1f9a}">
+		<relationship name="modules">
+			<destination>{87e8fb3d-8380-49c5-98cb-7c511bcae574}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{f80acc97-e08c-4819-987b-8907bf01ada3}">
 		<relationship name="effectChain">
 			<destination>{d5aea444-684a-4dc9-9e69-1108460a8ba8}</destination>
@@ -81,6 +88,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b726c2f6-c623-4fc0-8f3c-8ca49d01fbce}" />
+	<object class="SingleSound" id="{87e8fb3d-8380-49c5-98cb-7c511bcae574}">
+		<property name="length">
+			<value>2.25</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{65312272-52f3-49c1-bb5a-fb63f36fc707}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{5470cdd0-20a1-4d5b-8980-cd61559c19be}">
 		<property name="name">
 			<value>Water Bomb Explosion</value>

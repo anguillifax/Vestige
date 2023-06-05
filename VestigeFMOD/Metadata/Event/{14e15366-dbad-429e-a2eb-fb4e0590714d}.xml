@@ -8,7 +8,7 @@
 			<value>Bridge_Breaking</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9f679893-2e55-417f-b370-e29bce1255c4}</destination>
@@ -62,11 +62,18 @@
 	<object class="EventAutomatableProperties" id="{0032fb50-649c-4066-be56-93d881c169b6}" />
 	<object class="MarkerTrack" id="{3a255131-6b89-44fe-8b16-f98ce88f6023}" />
 	<object class="GroupTrack" id="{498eda1a-9b06-427b-b9d2-d800e950c158}">
+		<relationship name="modules">
+			<destination>{b0be9dec-917d-44e6-8d93-c9ceccde5e41}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{00c3f639-89c9-4ada-8aca-80cc65b33aea}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{7d7188dc-0603-4212-8033-f01911c2f101}" />
+	<object class="Timeline" id="{7d7188dc-0603-4212-8033-f01911c2f101}">
+		<relationship name="modules">
+			<destination>{b0be9dec-917d-44e6-8d93-c9ceccde5e41}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{f329a24e-acee-4a50-a524-17aa86a26419}">
 		<relationship name="effectChain">
 			<destination>{b0d587fb-20ed-41bb-8e1e-48753de89bdc}</destination>
@@ -84,6 +91,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{c83b87f2-881b-4972-8840-6491d1959032}" />
+	<object class="SingleSound" id="{b0be9dec-917d-44e6-8d93-c9ceccde5e41}">
+		<property name="length">
+			<value>9.7175624999999997</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{ca2e7b4c-b0e2-417e-bb38-d6961f90023d}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{00c3f639-89c9-4ada-8aca-80cc65b33aea}">
 		<property name="name">
 			<value>Bridge Breaking</value>

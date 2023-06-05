@@ -8,7 +8,7 @@
 			<value>Wooden_Pillars_Breaking</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9f679893-2e55-417f-b370-e29bce1255c4}</destination>
@@ -62,11 +62,18 @@
 	<object class="EventAutomatableProperties" id="{05a4fbed-e9d2-40db-ad73-8852d1b1b2fa}" />
 	<object class="MarkerTrack" id="{4cc4247f-5153-479c-b8d7-57cb6e068139}" />
 	<object class="GroupTrack" id="{4713ad5d-5b3e-44f6-9146-4a330282083a}">
+		<relationship name="modules">
+			<destination>{5df666df-657f-4974-853e-a950e0fc8f27}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{be47ad4a-12bc-4611-9187-f1ba779f145a}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{b910d4bb-d14f-46e2-869d-2120dc50ae8d}" />
+	<object class="Timeline" id="{b910d4bb-d14f-46e2-869d-2120dc50ae8d}">
+		<relationship name="modules">
+			<destination>{5df666df-657f-4974-853e-a950e0fc8f27}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{53f11f8b-4028-44cb-be61-fc764079bdcf}">
 		<relationship name="effectChain">
 			<destination>{feabfa5a-6fd0-4c76-973e-f32a5592c1f1}</destination>
@@ -84,6 +91,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{15882cb8-7259-44bd-ac24-f84aec008997}" />
+	<object class="SingleSound" id="{5df666df-657f-4974-853e-a950e0fc8f27}">
+		<property name="length">
+			<value>2.9692708333333333</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{5223d73f-8848-4474-84e2-3cbdc1e8de93}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{be47ad4a-12bc-4611-9187-f1ba779f145a}">
 		<property name="name">
 			<value>Pillars Breaking</value>

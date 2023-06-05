@@ -5,7 +5,7 @@
 			<value>Waterfall_Crashing</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{904062c5-de59-4067-81f2-7ab10ed250db}</destination>
@@ -59,11 +59,18 @@
 	<object class="EventAutomatableProperties" id="{1646d299-bc7c-4368-aa47-719bed2e3eab}" />
 	<object class="MarkerTrack" id="{7e5be85f-67b4-42e9-889c-1b97b969dd01}" />
 	<object class="GroupTrack" id="{a5a6d2dd-ceac-471a-9d75-02e37829375c}">
+		<relationship name="modules">
+			<destination>{50d7f316-1644-497b-b44e-52053e401733}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{9cd95dcc-ffac-4e54-8d93-617dfff5f47a}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{d423db22-69e1-48c9-a6f8-66d7b6fc13c7}" />
+	<object class="Timeline" id="{d423db22-69e1-48c9-a6f8-66d7b6fc13c7}">
+		<relationship name="modules">
+			<destination>{50d7f316-1644-497b-b44e-52053e401733}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{a9ae8e5c-7046-49da-b7f7-3eeb8082f922}">
 		<relationship name="effectChain">
 			<destination>{a30aefc3-348e-4269-9118-8c155203ca7b}</destination>
@@ -81,6 +88,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{72b16de3-ae61-4dcc-9aef-03ce3006a832}" />
+	<object class="SingleSound" id="{50d7f316-1644-497b-b44e-52053e401733}">
+		<property name="length">
+			<value>42.069583333333334</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{baf97213-b175-4519-bbd6-2f686866f0ee}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{9cd95dcc-ffac-4e54-8d93-617dfff5f47a}">
 		<property name="name">
 			<value>Waterfall Crashing</value>
