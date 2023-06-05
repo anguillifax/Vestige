@@ -86,5 +86,9 @@ namespace Vestige
 		{
 		}
 
+		public bool GetPlayerIsRiding()
+		{
+			return playerIsRiding;
+		}
 	}
 }
