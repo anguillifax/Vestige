@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 6215971305977116390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.009, z: 2.15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2298, y: 1.2298, z: 1.2298}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6218597764157252693}
@@ -282,13 +282,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  detectionRadius: 18
+  detectionRadius: 30
   FOV: 60
   agent: {fileID: 0}
   rotationSpeed: 15
   chaseSpeed: 5
   stopDistance: 1.5
-  chaseDistance: 20
+  chaseDistance: 30
   currentTarget: {fileID: 0}
   distanceFromPlayer: 0
   WalkBlend: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBurn: 1
   burnDuration:
-    duration: 10
+    duration: 6
     elapsed: 0
   ignited:
     m_PersistentCalls:
@@ -395,9 +395,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Mace_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1520613138636738, guid: 6f3863215fb2a2742b86223d07dfc298, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4984257232028340, guid: 6f3863215fb2a2742b86223d07dfc298, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4984257232028340, guid: 6f3863215fb2a2742b86223d07dfc298, type: 3}
       propertyPath: m_LocalPosition.x
@@ -532,3 +536,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4090544604023792, guid: d5a148a3575c47145a45da3ec571473c, type: 3}
   m_PrefabInstance: {fileID: 6215971306505005585}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8298022376578002419
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6218653787889852897}
+    m_Modifications:
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3460001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3460001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3460001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.724
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5000023
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.50000316
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.4999991
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.49999556
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899330351128035915, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527247610168383729, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
+      propertyPath: m_Name
+      value: Franklin Sword Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7a1375d587b4f14bb627d0de13b76f8, type: 3}
