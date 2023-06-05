@@ -4882,6 +4882,7 @@ GameObject:
   - component: {fileID: 4707797460044765237}
   - component: {fileID: 4707797460044765238}
   - component: {fileID: 3298092127724053966}
+  - component: {fileID: 2135482131215900549}
   m_Layer: 0
   m_Name: BuoyancySplash
   m_TagString: Untagged
@@ -9755,3 +9756,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 4
+--- !u!114 &2135482131215900549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4707797460044765239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1378943344
+      Data2: 1215289076
+      Data3: 1957418369
+      Data4: -139935329
+    Path: event:/Sounds/Player and UI Sounds/Player_Water_Splash
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
