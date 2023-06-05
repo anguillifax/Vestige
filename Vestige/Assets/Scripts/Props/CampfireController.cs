@@ -35,16 +35,21 @@ namespace Vestige
 				case State.Idle:
 					if (systemic.effects.Any(x => x.ignite))
 					{
-						avatar.Ignite();
-						locator.searchState.isFireSource = true;
-						FindObjectOfType<GameSession>().currentPlayerStart = playerStart;
-						state = State.Activated;
+						Ignite();
 					}
 					break;
 
 				case State.Activated:
 					break;
 			}
+		}
+
+		public void Ignite()
+		{
+			avatar.Ignite();
+			locator.searchState.isFireSource = true;
+			FindObjectOfType<GameSession>().currentPlayerStart = playerStart;
+			state = State.Activated;
 		}
 	}
 }

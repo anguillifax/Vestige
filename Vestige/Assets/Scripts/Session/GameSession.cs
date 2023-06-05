@@ -17,6 +17,10 @@ namespace Vestige
 		public GameObject prefabPlayer;
 		public float respawnDelay = 3;
 
+		[Header("Level Finish")]
+		public string finishScene;
+		public float finishDelay = 3;
+
 		// =========================================================
 		// Common
 		// =========================================================
@@ -66,6 +70,20 @@ namespace Vestige
 		public void RespawnAfterDelay()
 		{
 			Invoke(nameof(SpawnPlayer), respawnDelay);
+		}
+
+		// =========================================================
+		// Level Finish
+		// =========================================================
+
+		public void FinishLevel()
+		{
+			Invoke(nameof(FinishLevelAfterDelay), finishDelay);
+		}
+
+		private void FinishLevelAfterDelay()
+		{
+			SceneManager.LoadScene(finishScene);
 		}
 	}
 }
