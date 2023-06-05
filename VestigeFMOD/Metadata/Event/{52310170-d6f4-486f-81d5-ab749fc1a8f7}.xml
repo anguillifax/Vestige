@@ -8,7 +8,7 @@
 			<value>Player_Water_Splash</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{64511275-7dcf-4120-b887-d9877b8c0db6}</destination>
@@ -62,11 +62,18 @@
 	<object class="EventAutomatableProperties" id="{15c3edcb-4ee9-4090-828c-0d92a50bb83c}" />
 	<object class="MarkerTrack" id="{0d773462-5dff-4dff-b1bb-10517f5e4dd5}" />
 	<object class="GroupTrack" id="{1e71e7f9-ceba-4256-a59e-75fb9173edee}">
+		<relationship name="modules">
+			<destination>{23ebbef0-8c81-4911-8c2f-8268c36b3d41}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{f964d439-819b-45e1-9778-c8f3fa5626aa}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{143946f8-cdf0-4955-a988-6ffdf6f41355}" />
+	<object class="Timeline" id="{143946f8-cdf0-4955-a988-6ffdf6f41355}">
+		<relationship name="modules">
+			<destination>{23ebbef0-8c81-4911-8c2f-8268c36b3d41}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{1b5b5b71-56a2-4194-9020-126fc38f9ddb}">
 		<relationship name="effectChain">
 			<destination>{7d4a2ebe-07e7-471d-96ef-37798e1f5616}</destination>
@@ -84,6 +91,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9cd358c7-2382-40f2-9792-81b2967a9c84}" />
+	<object class="SingleSound" id="{23ebbef0-8c81-4911-8c2f-8268c36b3d41}">
+		<property name="length">
+			<value>1.75</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{da55a341-9dbd-491e-a0db-e6f66f7dcba6}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{f964d439-819b-45e1-9778-c8f3fa5626aa}">
 		<property name="name">
 			<value>Splash</value>

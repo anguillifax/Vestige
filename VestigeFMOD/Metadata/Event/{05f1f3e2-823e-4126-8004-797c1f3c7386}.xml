@@ -5,7 +5,7 @@
 			<value>Water_Bomb_Remove_Pin</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9f679893-2e55-417f-b370-e29bce1255c4}</destination>
@@ -59,11 +59,18 @@
 	<object class="EventAutomatableProperties" id="{d52aeac7-104d-4430-bc63-1666081699cb}" />
 	<object class="MarkerTrack" id="{7fa1d391-782b-43e7-baf1-7cf7068238b8}" />
 	<object class="GroupTrack" id="{a3fcbff5-5937-4b47-86f9-302b869df720}">
+		<relationship name="modules">
+			<destination>{9a404bd3-182f-472a-9750-120e74695d9d}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{516485fa-4c70-49de-ace5-43bc69b0daef}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{6759474e-465d-4f9a-9d8f-f8250082973e}" />
+	<object class="Timeline" id="{6759474e-465d-4f9a-9d8f-f8250082973e}">
+		<relationship name="modules">
+			<destination>{9a404bd3-182f-472a-9750-120e74695d9d}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{bbb59d8f-4b22-44e9-a50a-78a6f92e1ee7}">
 		<relationship name="effectChain">
 			<destination>{63787611-3cea-430e-a321-164ef29d3a79}</destination>
@@ -81,6 +88,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9e265a63-243e-407c-8d7f-5837230cd5b1}" />
+	<object class="SingleSound" id="{9a404bd3-182f-472a-9750-120e74695d9d}">
+		<relationship name="audioFile">
+			<destination>{3e477938-a4df-4898-ac9c-a2a6ce5518ef}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{516485fa-4c70-49de-ace5-43bc69b0daef}">
 		<property name="name">
 			<value>Water Bomb Remove Pin</value>

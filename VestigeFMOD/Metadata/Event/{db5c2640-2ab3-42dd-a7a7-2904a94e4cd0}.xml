@@ -5,10 +5,10 @@
 			<value>-Plays in addition to the normal player hurt sound</value>
 		</property>
 		<property name="name">
-			<value>Player_Water_Damaged</value>
+			<value>Player_Water_Emerge</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{64511275-7dcf-4120-b887-d9877b8c0db6}</destination>
@@ -63,7 +63,7 @@
 	<object class="MarkerTrack" id="{4dceb205-b4da-4505-b757-3bd5467e4396}" />
 	<object class="GroupTrack" id="{4ac15a11-d8dc-4db1-9506-d75d3a51efa5}">
 		<relationship name="modules">
-			<destination>{5b1da38b-b9a6-4635-9464-c6cd5bcef8ba}</destination>
+			<destination>{9171216f-2397-48b6-840c-6ed94ed65de5}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{fc9dd529-3d0e-4196-950d-1494375c3740}</destination>
@@ -71,7 +71,7 @@
 	</object>
 	<object class="Timeline" id="{8bb8c3f5-829e-40d0-85a2-a0b903a5f53b}">
 		<relationship name="modules">
-			<destination>{5b1da38b-b9a6-4635-9464-c6cd5bcef8ba}</destination>
+			<destination>{9171216f-2397-48b6-840c-6ed94ed65de5}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{c572121c-b081-4af7-ae45-7ab8c1f32280}">
@@ -91,10 +91,13 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{5e0c0194-c932-4212-ba02-15ab1193657d}" />
-	<object class="MultiSound" id="{5b1da38b-b9a6-4635-9464-c6cd5bcef8ba}">
+	<object class="SingleSound" id="{9171216f-2397-48b6-840c-6ed94ed65de5}">
 		<property name="length">
-			<value>5</value>
+			<value>2.625</value>
 		</property>
+		<relationship name="audioFile">
+			<destination>{96fe6e40-341e-4c50-ad2a-0016efaa2bde}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{fc9dd529-3d0e-4196-950d-1494375c3740}">
 		<property name="name">

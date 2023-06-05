@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{826267f7-69dd-42c3-9b8a-a0edffbb8237}">
+		<property name="name">
+			<value>C-D Transition</value>
+		</property>
+		<relationship name="folder">
+			<destination>{adfeff69-20bd-47ed-b299-50e0672c69f0}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{c4f3e372-8de7-4428-b181-24d998366bf7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{c4f3e372-8de7-4428-b181-24d998366bf7}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

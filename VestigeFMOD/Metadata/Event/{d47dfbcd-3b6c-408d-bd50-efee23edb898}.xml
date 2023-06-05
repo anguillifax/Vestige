@@ -5,7 +5,7 @@
 			<value>Torch_Burn</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9f679893-2e55-417f-b370-e29bce1255c4}</destination>
@@ -59,11 +59,18 @@
 	<object class="EventAutomatableProperties" id="{d169358b-1b12-4495-82a9-c37b84ef37c4}" />
 	<object class="MarkerTrack" id="{8d06e193-b354-432a-9180-fa328ecd2f34}" />
 	<object class="GroupTrack" id="{5629ab34-507d-4e22-ba62-4c1a5911f995}">
+		<relationship name="modules">
+			<destination>{20159209-ab7f-472c-b428-03a742dbb631}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{2c61eba9-cc63-4654-b19d-8d2fa6e021d9}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{a6bf5501-0cbe-4b1a-b7b9-0700d2005474}" />
+	<object class="Timeline" id="{a6bf5501-0cbe-4b1a-b7b9-0700d2005474}">
+		<relationship name="modules">
+			<destination>{20159209-ab7f-472c-b428-03a742dbb631}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{d9cada8c-1f0e-402c-8ae9-c7385802bea8}">
 		<relationship name="effectChain">
 			<destination>{64bc0c02-73b1-48e1-b4c3-694976e157a2}</destination>
@@ -81,6 +88,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{386e7a28-c0df-4954-8589-5ff7df579506}" />
+	<object class="SingleSound" id="{20159209-ab7f-472c-b428-03a742dbb631}">
+		<property name="length">
+			<value>5.46875</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{c2dbd740-e2e7-4d46-b0e0-f94c9d496b2c}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{2c61eba9-cc63-4654-b19d-8d2fa6e021d9}">
 		<property name="name">
 			<value>Torch Burn</value>

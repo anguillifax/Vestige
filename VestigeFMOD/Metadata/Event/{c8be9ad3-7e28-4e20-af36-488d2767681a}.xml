@@ -9,7 +9,7 @@
 			<value>Puzzle_Solved</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{64511275-7dcf-4120-b887-d9877b8c0db6}</destination>
@@ -63,11 +63,18 @@
 	<object class="EventAutomatableProperties" id="{4bda4988-e282-4a20-a3b1-4e18f35f8838}" />
 	<object class="MarkerTrack" id="{6c93bdcf-809b-43f5-99e2-b4d3a79f64e6}" />
 	<object class="GroupTrack" id="{5d2468d6-99ff-4e55-9c8e-e6cd1d0f677c}">
+		<relationship name="modules">
+			<destination>{1d47a138-9a61-44f6-a8ea-f680a51eef9e}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{964bf18c-182a-4aaf-b2de-2c98206ab419}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{70de08f8-b4c9-450f-bb81-766b5a16be79}" />
+	<object class="Timeline" id="{70de08f8-b4c9-450f-bb81-766b5a16be79}">
+		<relationship name="modules">
+			<destination>{1d47a138-9a61-44f6-a8ea-f680a51eef9e}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{593e5911-3336-49ae-a454-ab6e15edcd78}">
 		<relationship name="effectChain">
 			<destination>{e1c99611-b9f6-47e2-82b9-74fde6627612}</destination>
@@ -85,6 +92,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8f0c404c-05f7-4b6e-a598-c42ec718e771}" />
+	<object class="SingleSound" id="{1d47a138-9a61-44f6-a8ea-f680a51eef9e}">
+		<property name="length">
+			<value>5</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{7261cdfd-4a39-427e-ba83-faacedbb3a84}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{964bf18c-182a-4aaf-b2de-2c98206ab419}">
 		<property name="name">
 			<value>Puzzle Solved</value>

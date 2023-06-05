@@ -8,7 +8,7 @@
 			<value>Wooden_Rectangular_Platform_Collapsing</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9f679893-2e55-417f-b370-e29bce1255c4}</destination>
@@ -62,11 +62,18 @@
 	<object class="EventAutomatableProperties" id="{6087dc0e-fc84-4643-bce2-db68fdebe3cb}" />
 	<object class="MarkerTrack" id="{3e0cea97-3cbc-487f-ad8a-a45b63dff9c2}" />
 	<object class="GroupTrack" id="{aebf0c1b-59d7-4ca7-af40-38a2e1b05984}">
+		<relationship name="modules">
+			<destination>{42ad4c2e-4997-4831-a933-46441f8820a2}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{18c2663e-50ab-4e45-a942-514b8f80ac21}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{64ec1a3f-5900-41f8-8b47-c08e37867acf}" />
+	<object class="Timeline" id="{64ec1a3f-5900-41f8-8b47-c08e37867acf}">
+		<relationship name="modules">
+			<destination>{42ad4c2e-4997-4831-a933-46441f8820a2}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{7155d2ec-89e5-482a-b1db-85efc034a6de}">
 		<relationship name="effectChain">
 			<destination>{a32af9e2-b82e-4236-96cc-ba3b95a4c595}</destination>
@@ -84,6 +91,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{d5e2a165-fc54-40bc-9a01-b69696dc3a9d}" />
+	<object class="SingleSound" id="{42ad4c2e-4997-4831-a933-46441f8820a2}">
+		<property name="length">
+			<value>2.9692708333333333</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{5223d73f-8848-4474-84e2-3cbdc1e8de93}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{18c2663e-50ab-4e45-a942-514b8f80ac21}">
 		<property name="name">
 			<value>Platform Collapsing</value>

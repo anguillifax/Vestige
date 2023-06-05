@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{a4729403-9871-449a-8a34-f6a16d6ed4b0}">
-		<property name="note" />
 		<property name="name">
 			<value>Player_Throw_Torch</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{64511275-7dcf-4120-b887-d9877b8c0db6}</destination>
@@ -60,11 +59,18 @@
 	<object class="EventAutomatableProperties" id="{217cf2bd-2bd6-458f-bbb8-4b2f133a34fd}" />
 	<object class="MarkerTrack" id="{4c3eb63b-eac8-4d2e-b290-0f2dd70d536f}" />
 	<object class="GroupTrack" id="{9d6ef581-233b-426a-ada6-49c62771144b}">
+		<relationship name="modules">
+			<destination>{85b04a12-ebde-459f-860a-f323c4f8ffb5}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{88d2c64f-de7b-494e-b3e2-93e740fb9219}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{4902ad7d-0a6b-45f4-a307-6a3022b29e14}" />
+	<object class="Timeline" id="{4902ad7d-0a6b-45f4-a307-6a3022b29e14}">
+		<relationship name="modules">
+			<destination>{85b04a12-ebde-459f-860a-f323c4f8ffb5}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{6aa47e2c-0814-49a0-a602-eb0ae9900a86}">
 		<relationship name="effectChain">
 			<destination>{30360054-ce62-45b8-8762-cb90330bd682}</destination>
@@ -82,6 +88,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{d78a41b1-723a-4236-80f2-b4b609f01770}" />
+	<object class="SingleSound" id="{85b04a12-ebde-459f-860a-f323c4f8ffb5}">
+		<property name="length">
+			<value>2.5</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{659b7019-ff00-4333-9193-ec14ad480495}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{88d2c64f-de7b-494e-b3e2-93e740fb9219}">
 		<property name="name">
 			<value>Torch Throw</value>
