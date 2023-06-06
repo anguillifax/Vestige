@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.Events;
 
 namespace Vestige
@@ -67,6 +68,12 @@ namespace Vestige
 					}
 					break;
 			}
+		}
+
+		//Adding to turn off gameobject when doused - Ryan
+		public State getState()
+		{
+			return state;
 		}
 	}
 }
