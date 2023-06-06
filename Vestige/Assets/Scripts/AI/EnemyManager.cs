@@ -10,6 +10,12 @@ namespace Vestige
 		EnemyAnim anim;
 		EnemyLocomotion locomotion;
 		public PlayerController player;
+		[Header("GamePlay")]
+		[SerializeField] Transform walkStraightDestination;
+		[SerializeField] Transform waterDestination;
+		[SerializeField] float randomFleeRadius = 100.0f;
+		[SerializeField] float timeBetweenMoves = 1.0f;
+		[SerializeField] float timer;
 
 		[Header("AI Setting")]
 		public float detectionRadius = 20f;
@@ -42,43 +48,103 @@ namespace Vestige
 
 		private void Awake()
 		{
-			
-		}
-
-		private void Start()
-		{
-				//Moved to start because awake not working b/c null reference, disables script - Ryan
-				agent = GetComponent<NavMeshAgent>();
-				anim = GetComponentInChildren<EnemyAnim>();
-				locomotion = GetComponent<EnemyLocomotion>();
-				player = FindObjectOfType<PlayerController>();
-				offset = Random.Range(0, 10);	
+			agent = GetComponent<NavMeshAgent>();
+			anim = GetComponentInChildren<EnemyAnim>();
+			locomotion = GetComponent<EnemyLocomotion>();
+			player = FindObjectOfType<PlayerController>();
+			offset = Random.Range(0, 10);
+			timer = timeBetweenMoves;
 		}
 
 		void Update()
 		{
 			// HARDCODED
-			player = FindObjectOfType<PlayerController>();
-			offset = (offset + 1) % 10;
-			if (offset == 0 && Vector3.Distance(player.transform.position, transform.position) < detectionRadius)
-			{
-				currentTarget = player.transform;
-			}
+			// offset = (offset + 1) % 10;
+			// if (offset == 0 && Vector3.Distance(player.transform.position, transform.position) < 10)
+			// {
+			// 	currentTarget = player.transform;
+			// }
 
 			isInteracting = anim.anim.GetBool("isInteracting");
-			locomotion.ChasePlayer();
-			locomotion.FacePlayer();
-			if (locomotion.CanDealDamage())
+			if (isDead)
 			{
-				anim.ApplyTargetAnimation("attack_02", true);
+				agent.enabled = false;
+				//play death animation
+				return;
 			}
-		}
+			else if (!isOnFire && walkStraightDestination == null)
+			{
+				locomotion.ChasePlayer();
+				locomotion.FacePlayer();
+				if (locomotion.CanDealDamage())
+				{
+					anim.ApplyTargetAnimation("attack_02", true);
+				}
+			}
+			else if (isOnFire && walkStraightDestination == null)
+			{
+				//walkstraight will not effect by anything
+				OnFire(waterDestination);
 
-		void OnDrawGizmosSelected()
-		{
-			// Draw a yellow sphere at the transform's position
-			Gizmos.color = Color.blue;
-			Gizmos.DrawWireSphere(transform.position, detectionRadius);
+			}
+			else if (walkStraightDestination)
+			{
+
+				WalkStraight(walkStraightDestination);
+			}
+
 		}
+		void WalkStraight(Transform destination)
+		{
+			if (Vector3.Distance(destination.position, transform.position) < 3f)
+			{
+				anim.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+			}
+			else
+			{
+				anim.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+			}
+			agent.enabled = true;
+			agent.SetDestination(destination.position);
+		}
+		void OnFire(Transform waterPosition)
+		{
+			if (waterPosition == null)
+			{
+				agent.enabled = false;
+				if (!isInteracting)
+				{
+					anim.ApplyTargetAnimation("catchFire", true);
+				}
+
+			}
+			else
+			{
+				agent.enabled = true;
+				anim.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+				agent.SetDestination(waterPosition.position);
+			}
+
+		}
+		// private void WalkRandomly()
+		// {
+		// 	timer += Time.deltaTime;
+		// 	if (timer >= timeBetweenMoves)
+		// 	{
+		// 		Vector3 newPosition = RandomNavSphere(transform.position, randomFleeRadius, -1);
+
+		// 		agent.SetDestination(newPosition);
+		// 		timer = 0;
+		// 	}
+		// }
+
+		// public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)
+		// {
+		// 	Vector3 randomDirection = Random.insideUnitSphere * distance;
+		// 	randomDirection += origin;
+		// 	NavMeshHit navHit;
+		// 	NavMesh.SamplePosition(randomDirection, out navHit, distance, layermask);
+		// 	return navHit.position;
+		// }
 	}
 }
