@@ -54,7 +54,7 @@ namespace Vestige
 				player = FindObjectOfType<PlayerController>();
 				offset = Random.Range(0, 10);	
 		}
-
+		
 		void Update()
 		{
 			// HARDCODED
