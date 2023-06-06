@@ -55,7 +55,7 @@ namespace Vestige
 			offset = Random.Range(0, 10);
 			timer = timeBetweenMoves;
 		}
-
+		
 		void Update()
 		{
 			// HARDCODED
