@@ -13,6 +13,7 @@ namespace Vestige
 		// =========================================================
 
 		private static HoldableConfig sharedDefaultConfig;
+		private static GameObject pickupPrefab;
 
 		[Header("Common")]
 		public bool attachable = true;
@@ -27,6 +28,7 @@ namespace Vestige
 		private HoldableHarness harness;
 		private GameObject overlay;
 		private HoldableInputState input;
+		private HoldablePipController pip;
 
 		// =========================================================
 		// Initialization
@@ -41,6 +43,11 @@ namespace Vestige
 					sharedDefaultConfig = Resources.Load<HoldableConfig>("Default Holdable Config");
 				}
 				config = sharedDefaultConfig;
+			}
+
+			if (pickupPrefab == null)
+			{
+				pickupPrefab = Resources.Load<GameObject>("Holdable Pickup Pip");
 			}
 
 			if (autoConfigPhysicsHelper)
@@ -58,6 +65,8 @@ namespace Vestige
 			{
 				harness.Attach(this);
 			}
+
+			pip = Instantiate(pickupPrefab, transform).GetComponent<HoldablePipController>();
 		}
 
 		// =========================================================
@@ -82,6 +91,7 @@ namespace Vestige
 			}
 			input = new HoldableInputState();
 			attached.Invoke();
+			pip.SetShown(false);
 		}
 
 		public void OnDrop()
@@ -95,6 +105,7 @@ namespace Vestige
 			}
 			harness = null;
 			input = null;
+			pip.SetShown(true);
 		}
 	}
 }

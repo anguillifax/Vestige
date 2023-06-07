@@ -29,6 +29,7 @@ namespace Vestige
 		[Header("Sound")]
 		public StudioEventEmitter evSpawn;
 		public StudioEventEmitter evDeath;
+		public StudioEventEmitter evFootstep;
 
 		[Header("Debug")]
 		public InspectorCallbackButton testKill = new InspectorCallbackButton("Kill Player");
@@ -40,6 +41,7 @@ namespace Vestige
 		private float curFireHealth;
 		private float curWaterHealth;
 		private Vector3 cursorTarget;
+		private float curFootstepDist;
 
 		// =========================================================
 		// Properties
@@ -177,6 +179,11 @@ namespace Vestige
 				HealthWater -= config.healthWater.depleteRate * Time.deltaTime;
 			}
 
+			if (nonPlayer.Any(x => x.regenerate))
+			{
+				HealthFire -= config.healthRegenHurt;
+			}
+
 			healthbar.SetFireCapacity(curFireHealth / config.healthFire.max);
 			healthbar.SetWaterCapacity(curWaterHealth / config.healthWater.max);
 
@@ -230,6 +237,43 @@ namespace Vestige
 			rbody.velocity = vel;
 
 			avatar.SetWalk(vel.x, vel.z);
+
+			curFootstepDist += new Vector2(vel.x, vel.z).magnitude * Time.fixedDeltaTime;
+			if (curFootstepDist > config.footstepDist)
+			{
+				curFootstepDist %= config.footstepDist;
+
+				var ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), Vector3.down);
+				var hits = Physics.RaycastAll(ray, 0.4f, config.footstepMask);
+				var filtered = hits
+					.Where(x => !(x.rigidbody && x.rigidbody == rbody))
+					.OrderBy(x => x.distance);
+
+				foreach (RaycastHit h in filtered)
+				{
+					FootstepSurface surf = null;
+					if (h.rigidbody && h.rigidbody.TryGetComponent<FootstepSurface>(out var s))
+					{
+						surf = s;
+					}
+					if (surf == null && h.transform.TryGetComponent<FootstepSurface>(out var s2))
+					{
+						surf = s2;
+					}
+
+					if (surf)
+					{
+						if (config.foostepEnableLogging)
+						{
+							Debug.Log($"Footstep `{surf.type}` from {surf.name}", surf);
+						}
+
+						evFootstep.SetParameter("Type", (int)surf.type);
+						evFootstep.Play();
+						break;
+					}
+				}
+			}
 		}
 
 		private void UpdateLookRotation()
