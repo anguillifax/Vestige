@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2763506050867531430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6231457444080687471}
+  - component: {fileID: 2756835116086381252}
+  m_Layer: 0
+  m_Name: Footstep
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6231457444080687471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763506050867531430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4118234089463236851}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2756835116086381252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763506050867531430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2111553114
+      Data2: 1158924626
+      Data3: 405391282
+      Data4: -156716806
+    Path: event:/Sounds/Player and UI Sounds/Player_Footstep
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4254207606343863267
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,8 +93,9 @@ Transform:
   - {fileID: 3150003709282133731}
   - {fileID: 6193805811261040650}
   - {fileID: 6011411143259799988}
+  - {fileID: 6231457444080687471}
   m_Father: {fileID: 8800591016210451475}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5745149483807379211
 GameObject:
@@ -410,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 270939926944447742, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1652178562225027479, guid: 16685c6192c63334d84dfe86b011ad47, type: 3}
       propertyPath: m_RootOrder
@@ -466,43 +529,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2055658662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8800591016210451951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77785e54b103aa04bb4c54224a52d9d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: d0f9b7f43cb29d1459a8056f03ef75b9, type: 2}
-  healthbar: {fileID: 0}
-  lookRotation: {fileID: 0}
-  overlayContainer: {fileID: 0}
-  cameraMain: {fileID: 0}
-  died:
-    m_PersistentCalls:
-      m_Calls: []
-  evSpawn: {fileID: 3244514842975884802}
-  evDeath: {fileID: 2295175660565684389}
-  testKill:
-    tooltip: Kill Player
---- !u!114 &574258930970305162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8800591016210451951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4593b956e64718e4a99589d733722460, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logEffects: 0
 --- !u!114 &300064470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,3 +559,41 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &2055658662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800591016210451951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77785e54b103aa04bb4c54224a52d9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: d0f9b7f43cb29d1459a8056f03ef75b9, type: 2}
+  healthbar: {fileID: 0}
+  lookRotation: {fileID: 0}
+  overlayContainer: {fileID: 0}
+  cameraMain: {fileID: 0}
+  died:
+    m_PersistentCalls:
+      m_Calls: []
+  evSpawn: {fileID: 3244514842975884802}
+  evDeath: {fileID: 2295175660565684389}
+  evFootstep: {fileID: 2756835116086381252}
+  testKill:
+    tooltip: Kill Player
+--- !u!114 &574258930970305162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800591016210451951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4593b956e64718e4a99589d733722460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logEffects: 0

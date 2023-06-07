@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30c067809b5cb91479233f8ccaf08292, type: 3}
-  m_Name: Flamepit Effect
+  m_Name: Enemy
   m_EditorClassIdentifier: 
-  burn: 1
-  ignite: 1
+  burn: 0
+  ignite: 0
   soak: 0
   douse: 0
   obliterate: 0
-  regenerate: 0
+  regenerate: 1

@@ -39,10 +39,11 @@ namespace Vestige
 		public StateMachine InitialState;
 
 		private int offset;
+		private EnemyAttackWrapper attackWrapper;
 
 		private void Awake()
 		{
-			
+			attackWrapper = GetComponent<EnemyAttackWrapper>();
 		}
 
 		private void Start()
@@ -54,7 +55,7 @@ namespace Vestige
 				player = FindObjectOfType<PlayerController>();
 				offset = Random.Range(0, 10);	
 		}
-		
+
 		void Update()
 		{
 			// HARDCODED
@@ -71,6 +72,7 @@ namespace Vestige
 			if (locomotion.CanDealDamage())
 			{
 				anim.ApplyTargetAnimation("attack_02", true);
+				attackWrapper.Attack();
 			}
 		}
 
