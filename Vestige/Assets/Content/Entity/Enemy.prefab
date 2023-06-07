@@ -400,7 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 2034016825167257336}
   radius: 2
-  delay: 1
+  delay: 0.4
   template: {fileID: 11400000, guid: 4d136590f25c1194e9df36daf40c8bf9, type: 2}
   mask:
     serializedVersion: 2
