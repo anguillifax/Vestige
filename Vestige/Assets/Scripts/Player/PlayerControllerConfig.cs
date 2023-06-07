@@ -21,7 +21,7 @@ namespace Vestige
 		[Header("Health")]
 		public HealthConfig healthFire;
 		public HealthConfig healthWater;
-		public float healthRegenHurt;
+		public float healthRegenHurt = 15;
 		public int regenBonfireLayer;
 
 		[Header("Physics")]
@@ -30,6 +30,11 @@ namespace Vestige
 		[Header("Walk")]
 		public float walkVel = 8;
 		public float walkAccel = 30;
+
+		[Header("Footstep")]
+		public float footstepDist = 2;
+		public LayerMask footstepMask;
+		public bool foostepEnableLogging;
 
 		[Header("Holdable")]
 		public float pickupRadius = 2;
