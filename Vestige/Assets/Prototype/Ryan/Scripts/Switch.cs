@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Vestige.Prototype
 {
     public class Switch : PopupTip
     {
+		public UnityEvent activated;
 		public Door doorToOpen;
 		public GameObject greenLights;
 
@@ -23,6 +25,7 @@ namespace Vestige.Prototype
 					doorToOpen.currentSwitches++;
 					greenLights.SetActive(true);
 					tipObject.SetActive(false);
+					activated.Invoke();
 					Destroy(gameObject);
 				}
 			}
