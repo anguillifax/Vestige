@@ -177,6 +177,11 @@ namespace Vestige
 				HealthWater -= config.healthWater.depleteRate * Time.deltaTime;
 			}
 
+			if (nonPlayer.Any(x => x.regenerate))
+			{
+				HealthFire -= config.healthRegenHurt;
+			}
+
 			healthbar.SetFireCapacity(curFireHealth / config.healthFire.max);
 			healthbar.SetWaterCapacity(curWaterHealth / config.healthWater.max);
 

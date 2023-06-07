@@ -21,6 +21,7 @@ MonoBehaviour:
     max: 100
     depleteRate: 0
     regenerateRate: 18
+  healthRegenHurt: 15
   regenBonfireLayer: 9
   gravityMultiplier: 1.8
   walkVel: 8

@@ -21,6 +21,7 @@ namespace Vestige
 		[Header("Health")]
 		public HealthConfig healthFire;
 		public HealthConfig healthWater;
+		public float healthRegenHurt;
 		public int regenBonfireLayer;
 
 		[Header("Physics")]
