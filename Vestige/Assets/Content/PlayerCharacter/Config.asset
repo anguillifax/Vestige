@@ -21,10 +21,16 @@ MonoBehaviour:
     max: 100
     depleteRate: 0
     regenerateRate: 18
+  healthRegenHurt: 15
   regenBonfireLayer: 9
   gravityMultiplier: 1.8
   walkVel: 8
   walkAccel: 30
+  footstepDist: 4
+  footstepMask:
+    serializedVersion: 2
+    m_Bits: 17
+  foostepEnableLogging: 0
   pickupRadius: 2
   pickupOffset: {x: 0, y: 0.5, z: 0}
   pickupMask:

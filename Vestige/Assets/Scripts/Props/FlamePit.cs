@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.Events;
 
 namespace Vestige
@@ -31,6 +32,8 @@ namespace Vestige
 		private State state;
 		private StandardRecipient systemic;
 
+		private IEnumerable<Effect> ExternalEffects => systemic.effects.Where(x => x.source != gameObject);
+
 		// =========================================================
 		// Behavior
 		// =========================================================
@@ -52,7 +55,7 @@ namespace Vestige
 			switch (state)
 			{
 				case State.Burning:
-					if (systemic.effects.Any(x => x.douse))
+					if (ExternalEffects.Any(x => x.douse))
 					{
 						extinguished.Invoke();
 						state = State.Inactive;
@@ -60,13 +63,19 @@ namespace Vestige
 					break;
 
 				case State.Inactive:
-					if (systemic.effects.Any(x => x.ignite))
+					if (ExternalEffects.Any(x => x.ignite))
 					{
 						ignited.Invoke();
 						state = State.Burning;
 					}
 					break;
 			}
+		}
+
+		//Adding to turn off gameobject when doused - Ryan
+		public State getState()
+		{
+			return state;
 		}
 	}
 }
