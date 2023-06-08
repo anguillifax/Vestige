@@ -70,6 +70,9 @@
 		<relationship name="modules">
 			<destination>{20159209-ab7f-472c-b428-03a742dbb631}</destination>
 		</relationship>
+		<relationship name="markers">
+			<destination>{c5cbb777-6b25-4f45-a5eb-4d3c74e4c418}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{d9cada8c-1f0e-402c-8ae9-c7385802bea8}">
 		<relationship name="effectChain">
@@ -97,6 +100,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{2c61eba9-cc63-4654-b19d-8d2fa6e021d9}">
+		<property name="volume">
+			<value>-9.5</value>
+		</property>
 		<property name="name">
 			<value>Torch Burn</value>
 		</property>
@@ -108,6 +114,20 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{d9cada8c-1f0e-402c-8ae9-c7385802bea8}</destination>
+		</relationship>
+	</object>
+	<object class="LoopRegion" id="{c5cbb777-6b25-4f45-a5eb-4d3c74e4c418}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="length">
+			<value>5.46875</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{a6bf5501-0cbe-4b1a-b7b9-0700d2005474}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{8d06e193-b354-432a-9180-fa328ecd2f34}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{64bc0c02-73b1-48e1-b4c3-694976e157a2}">

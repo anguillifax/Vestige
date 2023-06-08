@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{e2dbb552-7986-4cb5-a18c-06e6c061cf0c}">
+		<property name="name">
+			<value>Music Master Volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{adfeff69-20bd-47ed-b299-50e0672c69f0}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{dc7dab57-c106-4ea2-9f75-361068ee9c02}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{dc7dab57-c106-4ea2-9f75-361068ee9c02}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
