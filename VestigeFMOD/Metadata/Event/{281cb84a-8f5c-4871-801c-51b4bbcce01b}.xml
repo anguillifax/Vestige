@@ -97,6 +97,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{928c5bdf-277d-454a-a07f-b6bfad851512}">
+		<property name="volume">
+			<value>-4</value>
+		</property>
 		<property name="name">
 			<value>Water Bomb Fuse</value>
 		</property>
