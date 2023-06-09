@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{ce5e93d7-7e9f-45be-a1cd-7f290444b73e}">
+		<property name="name">
+			<value>tavern ambience</value>
+		</property>
+		<relationship name="folder">
+			<destination>{adfeff69-20bd-47ed-b299-50e0672c69f0}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{eca836a7-f3ba-4aa8-b4ee-3f6bfe56a139}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{eca836a7-f3ba-4aa8-b4ee-3f6bfe56a139}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
