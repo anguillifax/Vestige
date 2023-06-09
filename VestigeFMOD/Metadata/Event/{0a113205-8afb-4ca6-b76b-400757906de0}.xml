@@ -61,7 +61,7 @@
 	<object class="GroupTrack" id="{813b61c2-3e88-4f5b-b153-5b447544a9c4}">
 		<relationship name="modules">
 			<destination>{948e43eb-aaf8-4139-b22d-d69458978f12}</destination>
-			<destination>{a154d214-0287-42c3-b718-733796898437}</destination>
+			<destination>{2d5e4e47-f452-49aa-b2bc-afd7293d7d09}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{2cd76192-3405-47b1-9b8d-f64e0d881cb9}</destination>
@@ -70,10 +70,10 @@
 	<object class="Timeline" id="{c3c49811-f1a5-4d13-bb04-5f11139531a4}">
 		<relationship name="modules">
 			<destination>{948e43eb-aaf8-4139-b22d-d69458978f12}</destination>
-			<destination>{a154d214-0287-42c3-b718-733796898437}</destination>
+			<destination>{2d5e4e47-f452-49aa-b2bc-afd7293d7d09}</destination>
 		</relationship>
 		<relationship name="markers">
-			<destination>{34ff7405-aa6d-4bf6-bd8a-16210f8e643a}</destination>
+			<destination>{465264a6-9034-49aa-9844-cf06f73ca840}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{42f2ef8e-7a36-4283-9350-9d8a38e3dcb8}">
@@ -101,7 +101,7 @@
 			<destination>{f8bf8f42-3f73-441b-baa9-78b6d10b4b95}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{a154d214-0287-42c3-b718-733796898437}">
+	<object class="SingleSound" id="{2d5e4e47-f452-49aa-b2bc-afd7293d7d09}">
 		<property name="start">
 			<value>0.875</value>
 		</property>
@@ -113,9 +113,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{2cd76192-3405-47b1-9b8d-f64e0d881cb9}">
-		<property name="volume">
-			<value>-19.5</value>
-		</property>
 		<property name="name">
 			<value>Flame Thrower Start</value>
 		</property>
@@ -129,7 +126,7 @@
 			<destination>{42f2ef8e-7a36-4283-9350-9d8a38e3dcb8}</destination>
 		</relationship>
 	</object>
-	<object class="LoopRegion" id="{34ff7405-aa6d-4bf6-bd8a-16210f8e643a}">
+	<object class="LoopRegion" id="{465264a6-9034-49aa-9844-cf06f73ca840}">
 		<property name="position">
 			<value>0.875</value>
 		</property>
