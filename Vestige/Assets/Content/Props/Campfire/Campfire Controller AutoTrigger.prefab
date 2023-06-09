@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7379422965482077268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7127422975588533512}
+  - component: {fileID: 2211207858836081073}
+  - component: {fileID: 427554950028170866}
+  m_Layer: 0
+  m_Name: Activation Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7127422975588533512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379422965482077268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4628816158829280282}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2211207858836081073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379422965482077268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.76, y: 3.28, z: 4.79}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &427554950028170866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379422965482077268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22c357499165044ebc1d833887cac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Player
+  onlyTriggerOnce: 1
+  callback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 272806486194106221}
+        m_TargetAssemblyTypeName: Vestige.CampfireController, Vestige
+        m_MethodName: Ignite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &6773064121707195796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697907432789201837, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+      propertyPath: m_Name
+      value: Campfire Controller Trigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+--- !u!114 &272806486194106221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6789165319417578233, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+  m_PrefabInstance: {fileID: 6773064121707195796}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d234bc6aeda7149ab851c2d699d5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &4628816158829280282 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2144305146360205710, guid: 6bf2d73bb52a8d64c86de77e6ef097f7, type: 3}
+  m_PrefabInstance: {fileID: 6773064121707195796}
+  m_PrefabAsset: {fileID: 0}

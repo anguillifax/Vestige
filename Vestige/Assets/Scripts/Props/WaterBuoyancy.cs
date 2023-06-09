@@ -7,12 +7,30 @@ namespace Vestige
 	public class WaterBuoyancy : MonoBehaviour
 	{
 		private const float ScaleFactor = 0.01f;
+		private static GameObject splashPrefab;
 
 		[Header("Common")]
 		public float upForce = 10;
 		public float forwardForce = 0;
 		public float waterSurface = 2;
 		public float maxForceDepth = 2;
+
+		private void Awake()
+		{
+			if (splashPrefab == null)
+			{
+				splashPrefab = Resources.Load<GameObject>("BuoyancySplash");
+			}
+		}
+
+		private void OnTriggerEnter(Collider other)
+		{
+			if (other.attachedRigidbody)
+			{
+				Vector3 center = other.attachedRigidbody.position;
+				Instantiate(splashPrefab, center, splashPrefab.transform.rotation);
+			}
+		}
 
 		private void OnTriggerStay(Collider other)
 		{

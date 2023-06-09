@@ -13,7 +13,7 @@ namespace Vestige.Prototype
         [SerializeField] private int maxSpawnAmount;
         [SerializeField] private float spawnDelay;
 
-        private WaitForSeconds spawnWait;
+		private WaitForSeconds spawnWait;
         private float enemyRadius;
         private EnemyManager enemyManager;
         private int maxRandomSpawnTries = 10;
@@ -34,7 +34,7 @@ namespace Vestige.Prototype
 		{
             enemyManager.detectionRadius = 30f;
             enemyManager.chaseDistance = 30f;
-		}
+			}
 
 		private void OnValidate()
 		{
