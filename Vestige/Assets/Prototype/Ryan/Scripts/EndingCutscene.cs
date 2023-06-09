@@ -25,5 +25,7 @@ namespace Vestige.Prototype
 		{
 			director.stopped -= OnPlayableDirectorStopped;
 		}
+
+
 	}
 }
