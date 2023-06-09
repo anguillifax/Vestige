@@ -5,7 +5,7 @@
 			<value>River_Flowing</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{904062c5-de59-4067-81f2-7ab10ed250db}</destination>
@@ -97,9 +97,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{924d09e8-4fb3-4332-8634-734a55718287}">
-		<property name="volume">
-			<value>-17</value>
-		</property>
 		<property name="name">
 			<value>River Flowing</value>
 		</property>
@@ -116,6 +113,7 @@
 	<object class="MixerBusEffectChain" id="{71a53a84-059e-48b0-8668-d3edba567da1}">
 		<relationship name="effects">
 			<destination>{b3a06015-0ec2-4345-8588-5c2c363943c8}</destination>
+			<destination>{8c2fe987-140a-431c-ac0c-93ce4ce0fa9b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{5adbfa19-df10-46d1-9b90-fc61c60a420d}" />
@@ -127,5 +125,13 @@
 	</object>
 	<object class="MixerBusPanner" id="{835d4385-c396-4599-858d-b6c96325228a}" />
 	<object class="MixerBusFader" id="{b3a06015-0ec2-4345-8588-5c2c363943c8}" />
+	<object class="SpatialiserEffect" id="{8c2fe987-140a-431c-ac0c-93ce4ce0fa9b}">
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>11</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{18a05e74-28bd-4d5f-a836-a21e939978f9}" />
 </objects>

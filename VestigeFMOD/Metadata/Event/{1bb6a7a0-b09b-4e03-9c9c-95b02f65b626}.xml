@@ -64,7 +64,6 @@
 	<object class="GroupTrack" id="{bff7530c-aa6e-4e5f-baed-61bf5798b8ef}">
 		<relationship name="modules">
 			<destination>{766660ac-729a-448d-b936-55247515156a}</destination>
-			<destination>{e6b2870c-b0fa-4ec5-8b1c-4bfb2459b26a}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{ab668071-cfe1-4dce-b447-0ca91a2c57fa}</destination>
@@ -73,7 +72,6 @@
 	<object class="Timeline" id="{1d77c544-5563-44c6-9d88-d8041e46d7f4}">
 		<relationship name="modules">
 			<destination>{766660ac-729a-448d-b936-55247515156a}</destination>
-			<destination>{e6b2870c-b0fa-4ec5-8b1c-4bfb2459b26a}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{a574ad98-d977-4d52-bd5b-cb4c9e88fe8f}</destination>
@@ -104,18 +102,10 @@
 			<destination>{e5c064d7-a284-43a2-9b54-ea466726d81e}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{e6b2870c-b0fa-4ec5-8b1c-4bfb2459b26a}">
-		<property name="start">
-			<value>0.875</value>
-		</property>
-		<property name="length">
-			<value>1.875</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{f3ce0117-2422-4c83-afe9-23cedafae2d3}</destination>
-		</relationship>
-	</object>
 	<object class="EventMixerGroup" id="{ab668071-cfe1-4dce-b447-0ca91a2c57fa}">
+		<property name="volume">
+			<value>-20</value>
+		</property>
 		<property name="name">
 			<value>Flame Thrower Restart</value>
 		</property>

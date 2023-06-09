@@ -8,7 +8,7 @@
 			<value>Player_Water_Splash</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{64511275-7dcf-4120-b887-d9877b8c0db6}</destination>
@@ -116,6 +116,7 @@
 	<object class="MixerBusEffectChain" id="{7d4a2ebe-07e7-471d-96ef-37798e1f5616}">
 		<relationship name="effects">
 			<destination>{9cd082d4-bab9-4f9d-bc9e-27390b3693d3}</destination>
+			<destination>{a707a198-7241-422c-8e4d-997e9f6706e3}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{794cd30e-6160-4b38-a23f-a9bbe03327b2}" />
@@ -127,5 +128,13 @@
 	</object>
 	<object class="MixerBusPanner" id="{22fed766-07e2-4c0f-be2a-cf3571ed8894}" />
 	<object class="MixerBusFader" id="{9cd082d4-bab9-4f9d-bc9e-27390b3693d3}" />
+	<object class="SpatialiserEffect" id="{a707a198-7241-422c-8e4d-997e9f6706e3}">
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>11</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{fc02bb19-1a16-4d57-b130-5cadbd3023ab}" />
 </objects>
