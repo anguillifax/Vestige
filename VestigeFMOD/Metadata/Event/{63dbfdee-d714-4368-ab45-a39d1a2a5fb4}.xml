@@ -98,6 +98,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5caa5284-fe8b-4366-87ab-8faf454851e2}">
+		<property name="volume">
+			<value>-2.5</value>
+		</property>
 		<property name="name">
 			<value>Barrel Explosion</value>
 		</property>

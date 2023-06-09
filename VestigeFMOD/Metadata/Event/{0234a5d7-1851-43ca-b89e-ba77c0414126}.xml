@@ -5,7 +5,7 @@
 			<value>Waterfall_Crashing</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{904062c5-de59-4067-81f2-7ab10ed250db}</destination>
@@ -97,9 +97,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9cd95dcc-ffac-4e54-8d93-617dfff5f47a}">
-		<property name="volume">
-			<value>-4.5</value>
-		</property>
 		<property name="name">
 			<value>Waterfall Crashing</value>
 		</property>
@@ -116,6 +113,7 @@
 	<object class="MixerBusEffectChain" id="{a30aefc3-348e-4269-9118-8c155203ca7b}">
 		<relationship name="effects">
 			<destination>{7063f61c-584e-4280-9552-f5164c4d2602}</destination>
+			<destination>{317c975d-47cd-49d8-964b-963c2fe23984}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{750dce79-b6d6-459c-9bee-ab8f0e05c6bc}" />
@@ -127,5 +125,13 @@
 	</object>
 	<object class="MixerBusPanner" id="{713f093f-8250-450d-91ab-7d5c3c6a226c}" />
 	<object class="MixerBusFader" id="{7063f61c-584e-4280-9552-f5164c4d2602}" />
+	<object class="SpatialiserEffect" id="{317c975d-47cd-49d8-964b-963c2fe23984}">
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>11</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{23c779d2-66ab-4edf-a1c0-68c759a1fc61}" />
 </objects>
