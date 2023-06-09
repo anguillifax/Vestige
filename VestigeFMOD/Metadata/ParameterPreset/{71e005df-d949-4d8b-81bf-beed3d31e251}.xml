@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{71e005df-d949-4d8b-81bf-beed3d31e251}">
+		<property name="name">
+			<value>Calm Music 2</value>
+		</property>
+		<relationship name="folder">
+			<destination>{adfeff69-20bd-47ed-b299-50e0672c69f0}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{f401cc87-64e1-48ef-a355-e5be239b84ea}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{f401cc87-64e1-48ef-a355-e5be239b84ea}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

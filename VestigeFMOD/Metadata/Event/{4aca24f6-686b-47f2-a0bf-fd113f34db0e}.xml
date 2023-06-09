@@ -5,7 +5,7 @@
 			<value>Torch_Ignite</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9f679893-2e55-417f-b370-e29bce1255c4}</destination>
@@ -77,6 +77,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{8c1542e9-eaac-4d92-9d98-b338d6ff1360}">
+		<property name="volume">
+			<value>-0.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{c9d3c232-25f1-4a88-b6f4-483f6590955a}</destination>
 		</relationship>
@@ -146,6 +149,7 @@
 	<object class="MixerBusEffectChain" id="{c9d3c232-25f1-4a88-b6f4-483f6590955a}">
 		<relationship name="effects">
 			<destination>{14679b40-d1f7-424a-ab65-4827f7d23c91}</destination>
+			<destination>{707d6b79-c1d8-4d33-9570-53defad5d663}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{12571bef-9201-4ba0-b42d-0b40dbb18c93}" />
@@ -157,5 +161,13 @@
 	</object>
 	<object class="MixerBusPanner" id="{0978a067-9886-423a-acfd-bf6ba2bd4c5f}" />
 	<object class="MixerBusFader" id="{14679b40-d1f7-424a-ab65-4827f7d23c91}" />
+	<object class="SpatialiserEffect" id="{707d6b79-c1d8-4d33-9570-53defad5d663}">
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>8</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{b3499b46-4c25-446a-b6c6-ddec7488979f}" />
 </objects>

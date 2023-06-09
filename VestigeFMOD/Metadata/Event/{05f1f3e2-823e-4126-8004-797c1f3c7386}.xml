@@ -120,7 +120,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{516485fa-4c70-49de-ace5-43bc69b0daef}">
 		<property name="volume">
-			<value>-6.5</value>
+			<value>-11</value>
 		</property>
 		<property name="name">
 			<value>Water Bomb Remove Pin</value>
